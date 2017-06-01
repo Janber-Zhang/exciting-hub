@@ -10,26 +10,85 @@ html,body{
 	left: 50%;
 	top: 50%;
 }
-#login .login_header{
+#login .login_header h1{
 	font-size: 48px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+#login .login_header p{
+	font-size: 28px;
 	text-align: center;
 	margin-bottom: 20px;
 }
 #login .login_body .login_body_nav{
 	position: relative;
+	padding: 5px;
 }
 #login .login_body .login_body_nav a{
-	cursor: pointer;
 	font-size: 20px;
 	color: #555;
 	margin:  0 20px;
+	opacity: .7;
+	-ms-filter: "alpha(Opacity=70)";
+	-webkit-transition: opacity .15s,color .15s;
+	transition: opacity .15s,color .15s;
+}
+#login .login_body .login_body_nav a:not(.active):hover{
+	color: #000;
+}
+#login .login_body .login_body_nav .active{
+	opacity: 1;
+	-ms-filter: "alpha(Opacity=100)";
+	color: #0f88eb;
 }
 #login .login_body .login_body_nav .login_body_nav_slider{
 	position: absolute;
-	left: 0;
+	left: 183px;
 	bottom: 0;
-	margin: 0 .8em;
-	width: 2.4em;
+	width: 4.5em;
 	height: 2px;
 	background: #0f88eb;
+	-webkit-transition: left .15s ease-in;
+	transition: left .15s ease-in;
+}
+#login .login_body .login_body_nav .right{
+	left: 263px;
+}
+#login .login_body .signin_box,
+#login .login_body .signup_box{
+	padding: 20px;
+}
+#login .login_body .signin_box .signin_box_warp, 
+#login .login_body .signup_box .signup_box_warp{
+	border: 1px solid #d5d5d5;
+	border-radius: 4px;
+	padding: 1px 0;
+}
+#login .login_body .signin_box .signin_box_warp input,
+#login .login_body .signup_box .signup_box_warp input{
+	width: 350px;
+	height: 50px;
+	color: #555;
+	font-size: 14px;
+	text-indent: 12px;
+}
+#login .login_body .signin_box .signin_box_warp input:first-child{
+	border-bottom: 1px solid #e8e8e8;
+}
+#login .login_body .signup_box .signup_box_warp input:not(:last-child){
+	border-bottom: 1px solid #e8e8e8;
+}
+#login .login_body .signin_box .submit_in,
+#login .login_body .signup_box .submit_up{
+	margin-top: 20px;
+	width: 352px;
+	background-color: #0f88eb;
+	color: #FFF;
+	height: 40px;
+	font-size: 15px;
+	border-radius: 3px;
+}
+#login .login_body .signin_box .submit_in:hover,
+#login .login_body .signup_box .submit_up:hover{
+	background-color: #55abed
 }

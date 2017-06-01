@@ -20,6 +20,9 @@
  	-webkit-box-sizing: border-box;
  	border: none;
  }
+ button, a{
+	cursor: pointer;
+ }
  li, ol, ul {
  	list-style: none
  }
@@ -37,4 +40,16 @@
  	border: 0;
  	-ms-interpolation-mode: bicubic;
  	-webkit-touch-callout: none
+ }
+ input::-webkit-input-placeholder { /* WebKit browsers*/ 
+ 	　　color:#999;
+ 　　}
+ input:-moz-placeholder {  /* Mozilla Firefox 4 to 18*/ 
+ 	　　color:#999;
+ 　　}
+ input::-moz-placeholder {  /* Mozilla Firefox 19+*/ 
+ 	　　color:#999;
+ 　　}
+ input:-ms-input-placeholder { /* Internet Explorer 10+*/ 
+ 	　　color:#999;
  }
