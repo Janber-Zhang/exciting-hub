@@ -1,0 +1,35 @@
+html,body{
+	height: 100%;
+	background-color: rgb(247, 250, 252);
+}
+#login{
+	width: 500px;
+	height: 500px;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+}
+#login .login_header{
+	font-size: 48px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+#login .login_body .login_body_nav{
+	position: relative;
+}
+#login .login_body .login_body_nav a{
+	cursor: pointer;
+	font-size: 20px;
+	color: #555;
+	margin:  0 20px;
+}
+#login .login_body .login_body_nav .login_body_nav_slider{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin: 0 .8em;
+	width: 2.4em;
+	height: 2px;
+	background: #0f88eb;
+}
