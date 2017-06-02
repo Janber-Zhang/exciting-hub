@@ -15,9 +15,13 @@
     "express": "~4.15.2",
     "express-partials": "^0.3.0",
     "flex.css": "^1.1.6",
+    "iview": "^2.0.0-rc.15",
     "jade": "~1.11.0",
     "jquery": "^3.2.1",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "vue": "^2.3.3",
+    "vue-router": "^2.5.3",
+    "vuex": "^2.3.1"
   }
 }
