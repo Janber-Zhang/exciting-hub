@@ -26,9 +26,20 @@ jQuery(document).ready(function($) {
 	$('.submit_in').unbind().click(function(event) {        //登录
 		event.stopPropagation();
 		var userObj = {
-			accunt     : $(this).parents('.data_box').find('.accunt').val(),
+			account     : $(this).parents('.data_box').find('.accunt').val(),
 			password   : $(this).parents('.data_box').find('.password').val()
 		};
 		console.log(userObj)
+		axios.post('/user/signin.excited',{
+                            account  : userObj.account,
+                            password : userObj.password
+                        }).then((res) => {
+                            if(res.data.result==='true'){
+                                console.log('登录成功')
+                                window.location.href='/';
+                            }else{
+                                console.warn('密码错误')
+                            }
+                        })
 	});
 });

@@ -1,4 +1,10 @@
 {
-  "desc": "test",
-  "port":"8080"
+	"desc": "test",
+	"port":"8080",
+	"session":{
+		"secret": "excited",
+		"key": "excited",
+		"maxAge": 2592000000
+	},
+	"mongodb":"mongodb://localhost:27017"
 }
