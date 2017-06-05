@@ -1,9 +1,17 @@
 <div>
-	<p><%=user._id%></p>
-	<p><%=user.nickname%></p>
-	<p><%=user.account%></p>
+	<input type="hidden" id="userInfo" user-id="<%=user._id%>" user-account="<%=user.account%>" user-nickname="<%=user.nickname%>">
     <div id="app" style="background-color: #ffffff">
         <router-view></router-view>
     </div>
 </div>
 <script src="/web/homePage/dist/build.js"></script>
+<script>
+	$(document).ready(function() {
+        userInfo = {
+            _id      : $('#userInfo').attr('user-id'),
+            account  : $('#userInfo').attr('user-account'),
+            nickname : $('#userInfo').attr('user-nickname')
+        };
+        console.log(userInfo)
+    });
+</script>

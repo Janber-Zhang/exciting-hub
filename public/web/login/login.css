@@ -4,7 +4,6 @@ html,body{
 }
 .warn{
 	color: red !important;
-	background-color: #f5eaea;
 }
 #login{
 	width: 500px;
@@ -62,6 +61,11 @@ html,body{
 #login .login_body .signin_box,
 #login .login_body .signup_box{
 	padding: 20px;
+}
+#login .login_body .signin_box .tips,
+#login .login_body .signup_box .tips{
+	margin: 5px;
+	height: 20px;
 }
 #login .login_body .signin_box .signin_box_warp, 
 #login .login_body .signup_box .signup_box_warp{

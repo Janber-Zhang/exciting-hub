@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
 	$('.submit_up').unbind().click(function(event) {                 //注册
 		event.stopPropagation();
 		if ($(this).parents('.data_box').find('.accunt').hasClass('warn')) {
-			alert('账号已存在！')
+			$(this).parents('.data_box').find('.tips').html('账号已存在').addClass('warn');
 			return
 		}
 		var userObj = {
@@ -40,15 +40,15 @@ jQuery(document).ready(function($) {
 			password   : $(this).parents('.data_box').find('.password').val()
 		};
 		if (!userObj.nickname) {
-			console.log('请输入昵称')
+			$(this).parents('.data_box').find('.tips').html('请输入昵称').addClass('warn');
 			return
 		}
 		if (!userObj.account) {
-			console.log('请输入账号')
+			$(this).parents('.data_box').find('.tips').html('请输入账号').addClass('warn');
 			return
 		}
 		if (!userObj.password) {
-			console.log('请输入密码')
+			$(this).parents('.data_box').find('.tips').html('请输入密码').addClass('warn');
 			return
 		}
 		axios.post('/user/signup.excited',{
@@ -67,6 +67,7 @@ jQuery(document).ready(function($) {
 
 	$('.submit_in').unbind().click(function(event) {                 //登录
 		event.stopPropagation();
+		var this_ = this;
 		var userObj = {
 			account     : $(this).parents('.data_box').find('.accunt').val(),
 			password   : $(this).parents('.data_box').find('.password').val()
@@ -80,7 +81,7 @@ jQuery(document).ready(function($) {
 				console.log('登录成功')
 				window.location.href='/';
 			}else{
-				console.warn('密码错误')
+				$(this_).parents('.data_box').find('.tips').html('账号密码错误').addClass('warn');
 			}
 		})
 	});
