@@ -24,6 +24,14 @@ router.post('/signin.excited', (req, res, next) => {
         })
 });
 
+//注销
+router.get('/signout.excited', (req, res, next) => {
+    req.session.user=null;
+    res.send({
+        result:'true'
+    })
+});
+
 //注册
 router.post('/signup.excited', (req, res, next) => {
     let user ={
@@ -31,7 +39,6 @@ router.post('/signup.excited', (req, res, next) => {
         password:req.body.password,
         account:req.body.account
     };
-    console.log(user)
     UserModel
         .create(user)
         .then((data) => {

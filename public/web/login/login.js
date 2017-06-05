@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
 		}).then((res) => {
 			if(res.data.result==='true'){
 				console.log('注册成功')
-				// window.location.href='/';
+				window.location.href='/';
 			}else{
 				alert('操作失败')
 			}
@@ -78,8 +78,7 @@ jQuery(document).ready(function($) {
 		}).then((res) => {
 			if(res.data.result==='true'){
 				console.log('登录成功')
-				console.log(res)
-				// window.location.href='/';
+				window.location.href='/';
 			}else{
 				console.warn('密码错误')
 			}
