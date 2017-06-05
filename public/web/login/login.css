@@ -2,6 +2,10 @@ html,body{
 	height: 100%;
 	background-color: rgb(247, 250, 252);
 }
+.warn{
+	color: red !important;
+	background-color: #f5eaea;
+}
 #login{
 	width: 500px;
 	height: 500px;
@@ -72,6 +76,7 @@ html,body{
 	color: #555;
 	font-size: 14px;
 	text-indent: 12px;
+	transition: color .3s;
 }
 #login .login_body .signin_box .signin_box_warp input:first-child{
 	border-bottom: 1px solid #e8e8e8;

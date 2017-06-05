@@ -6,7 +6,7 @@ var	db = mongoose.connect(config.mongodb);
   * 连接成功
   */
 mongoose.connection.on('connected', function () {    
-    console.log('Mongoose connection open to ' + db);  
+    console.log('Mongoose connection open to ' + config.mongodb);  
 });    
 
 /**
@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
 	password: { type: String , required : true }
 });
 
-const UserModel = db.model('excited', UserSchema);
+const UserModel = db.model('users', UserSchema);
 
 module.exports = {
 	UserModel
