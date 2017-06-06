@@ -12,7 +12,6 @@ router.get('/', checkLogin, function(req, res, next) {
 });
 router.get('/login', function(req, res, next) {
   res.render('web/login/login', { 
-  	layout: '../public/web/layout.ejs',
   	title: 'login' 
   });
 });

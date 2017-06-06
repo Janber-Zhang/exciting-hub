@@ -3,13 +3,16 @@
  */
 import Vue          from 'vue';
 import VueRouter    from 'vue-router';
+import Vuex         from 'vuex';
 import routes    	from './router';
+import store    	from './src/vuex/index';
 import iView        from 'iview' 
 import './src/css/app.less';
 import 'iview/dist/styles/iview.css';    // iView CSS
 
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
 Vue.use(iView);
 
 const router = new VueRouter({
@@ -17,5 +20,6 @@ const router = new VueRouter({
 })
 
 const app = new Vue({
-  router
+  router,
+  store
 }).$mount('#app')

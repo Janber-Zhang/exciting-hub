@@ -1,32 +1,54 @@
-<link rel="stylesheet" href="/web/login/login.css">
-<script src="/web/login/login.js"></script>
-<div id="login">
-	<div class="login_header">
-		<h1>Exciting Hub</h1>
-		<p>Are You Ready?</p>
-	</div>
-	<div class="login_body">
-		<div class="login_body_nav" flex="main:center">
-			<a href="javascript:;" class="signin active">登录</a>
-			<a href="javascript:;" class="signup">注册</a>
-			<span class="login_body_nav_slider"></span>
-		</div>
-		<div class="signin_box data_box" flex="dir:top cross:center">
-			<div class="signin_box_warp" flex="dir:top cross:center">
-				<input type="text" class="accunt" placeholder="账号">
-				<input type="password" class="password" placeholder="密码">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Exciting-Hub</title>
+	<link rel="icon" href="../images/exciting.jpg" type="image/x-icon">
+	<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="../css/libs/flex.css">
+	<link rel="stylesheet" href="../css/global.css">
+	<link rel="stylesheet" href="/web/login/login.css">
+	<script src="../js/libs/jquery.min.js"></script>
+	<script src="../js/libs/ejs.js"></script>
+	<script src="../js/libs/axios.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script src="/web/login/login.js"></script>
+</head>
+<body>
+	<div id="main" style="display: relative;">
+		<div id="login">
+			<div class="login_header">
+				<h1>Exciting Hub</h1>
+				<p>Are You Ready?</p>
 			</div>
-			<div class="tips"></div>
-			<button class="submit_in">登录</button>
-		</div>
-		<div class="signup_box data_box" flex="dir:top cross:center" style="display: none">
-			<div class="signup_box_warp" flex="dir:top cross:center">
-				<input type="text" class="nickname" placeholder="昵称">
-				<input type="text" class="accunt" placeholder="账号">
-				<input type="password" class="password" placeholder="密码">
+			<div class="login_body">
+				<div class="login_body_nav" flex="main:center">
+					<a href="javascript:;" class="signin active">登录</a>
+					<a href="javascript:;" class="signup">注册</a>
+					<span class="login_body_nav_slider"></span>
+				</div>
+				<div class="signin_box data_box" flex="dir:top cross:center">
+					<div class="signin_box_warp" flex="dir:top cross:center">
+						<input type="text" class="accunt" placeholder="账号">
+						<input type="password" class="password" placeholder="密码">
+					</div>
+					<div class="tips"></div>
+					<button class="submit_in">登录</button>
+				</div>
+				<div class="signup_box data_box" flex="dir:top cross:center" style="display: none">
+					<div class="signup_box_warp" flex="dir:top cross:center">
+						<input type="text" class="nickname" placeholder="昵称">
+						<input type="text" class="accunt" placeholder="账号">
+						<input type="password" class="password" placeholder="密码">
+					</div>
+					<div class="tips"></div>
+					<button class="submit_up">注册</button>
+				</div>
 			</div>
-			<div class="tips"></div>
-			<button class="submit_up">注册</button>
 		</div>
 	</div>
-</div>
+</body>
+</html>

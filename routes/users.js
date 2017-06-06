@@ -74,4 +74,16 @@ router.get('/checkAccountExist.excited', (req, res, next) => {
         })
 });
 
+//获取用户信息
+router.get('/getUserInfo.excited', (req, res, next) => {
+    let user = req.session.user;
+    if (user.password) {
+        delete user.password
+    }
+    res.send({
+        result:'true',
+        data: user
+    })
+});
+
 module.exports = router;

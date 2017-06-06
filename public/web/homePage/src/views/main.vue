@@ -1,14 +1,25 @@
 <template>
-  <div class="main_body" flex="main:center cross:center">
-    <img width="300" src="/images/excited.jpeg" alt="">
+  <div>
+    <nav-header></nav-header>
+    <div class="main_body" flex="main:center cross:center">
+      <img width="300" src="/images/excited.jpeg" alt="">
+    </div>
   </div>
-  
 </template>
 
 <script>
+import header from './header.vue'
 export default {
   created(){
-
+    let this_ = this,
+        param = {
+          serviceUrl: '/user/getUserInfo.excited'
+        }
+    var queryUserInfo = util.queryData('get',param,(res)=>{
+        this.$store.dispatch('initUserInfo',res.data);
+        var aa = this.$store.getters.getUserInfo;
+    });
+    
   },
   ready(){
 
@@ -22,7 +33,10 @@ export default {
 
   },
   components:{
-    
+    'nav-header': header
+  },
+  computed:{
+
   }
 }
 </script>
@@ -34,5 +48,6 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: -1;
   }
 </style>

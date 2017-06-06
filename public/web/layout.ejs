@@ -14,8 +14,19 @@
 	<script src="../js/util.js"></script>
 </head>
 <body>
+	<input type="hidden" id="userInfo" user-id="<%=user._id%>" user-account="<%=user.account%>" user-nickname="<%=user.nickname%>">
+
 	<div id="main" style="display: relative;">
 		<%-body%>
 	</div>
 </body>
+<script>
+	$(document).ready(function() {
+		window.g_user = {
+			_id      : $('#userInfo').attr('user-id'),
+			account  : $('#userInfo').attr('user-account'),
+			nickname : $('#userInfo').attr('user-nickname')
+		};
+	});
+</script>
 </html>
