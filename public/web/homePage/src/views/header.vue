@@ -1,14 +1,14 @@
 <template>
   <div class="header">
     <div class="wrap" flex="main:justify">
-      <Tabs value="name1">
-        <Tab-pane label="首页" name="name1"></Tab-pane>
-        <Tab-pane label="聊天" name="name2"></Tab-pane>
-        <Tab-pane label="我的" name="name3"></Tab-pane>
+      <Tabs value="name1" @on-click="switchTab($event)">
+        <Tab-pane label="首页" name="Index"></Tab-pane>
+        <Tab-pane label="聊天" name="Chatting"></Tab-pane>
+        <Tab-pane label="我的" name="Building"></Tab-pane>
       </Tabs>
       <Dropdown trigger="click" @on-click="userHandle($event)">
         <a href="javascript:void(0)">
-          <img src="/images/logo.jpg" width="40" alt="">
+          <img src="/images/logo.jpg" width="40" class="user_ico" alt="">
           {{userInfo.nickname}}
           <Icon type="arrow-down-b"></Icon>
         </a>
@@ -41,6 +41,19 @@
         if (key === 'logout') {
           util.logout();
         }
+      },
+      switchTab: function(key) {
+        switch (key) {
+          case 'Index':
+            this.$router.push({ path: '/' });
+            break;
+          case 'Chatting':
+            this.$router.push({ path: 'chat' });
+            break;
+          case 'Building':
+            this.$router.push({ path: '/' });
+            break;
+        }
       }
     },
     components:{
@@ -62,5 +75,8 @@
   .wrap{
     width: 960px;
     margin: 0 auto;
+  }
+  .user_ico{
+    border-radius: 50%;
   }
 </style>

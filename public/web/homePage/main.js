@@ -23,7 +23,7 @@ const router = new VueRouter({
 iView.LoadingBar.config({              //iview loading
 	color: '#3e76f6',
 	failedColor: '#e96900',
-	height: 2
+	height: 1
 });
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
