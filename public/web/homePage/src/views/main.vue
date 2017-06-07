@@ -2,7 +2,7 @@
   <div>
     <nav-header></nav-header>
     <div class="main_body" flex="main:center cross:center">
-      <img width="300" src="/images/excited.jpeg" alt="">
+      <router-view></router-view>
     </div>
   </div>
 </template>
