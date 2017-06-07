@@ -1,6 +1,7 @@
 
-import App     from './src/views/main.vue'
-import Chat    from './src/views/chat.vue'
+import App        from './src/views/main.vue'
+import Chat       from './src/views/chat.vue'
+import History    from './src/views/history.vue'
 const routes = [
 	{ 
 		path: '/', 
@@ -8,7 +9,7 @@ const routes = [
 		children: [
 			{
 				path: '/',
-				component : Chat
+				component : History
 			},
 			{
 				path: 'chat',
