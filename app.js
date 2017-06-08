@@ -10,6 +10,7 @@ var config = require('./config/config.json');
 
 var index = require('./routes/index');
 var Users = require('./routes/users');
+var upload = require('./routes/upload');
 
 var app = express();
 
@@ -54,6 +55,7 @@ app.use(session({
 
 app.use('/', index);
 app.use('/user', Users);
+app.use('/upload', upload);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -38,8 +38,19 @@
     methods:{
       userHandle: function(key) {
         console.log(key)
+        switch (key) {
+          case 'myProfile':
+            this.$router.push({ path: 'myProfile' });
+            break;
+          case 'myApp':
+            this.$router.push({ path: 'chat' });
+            break;
+          case 'logout':
+            util.logout();
+            break;
+        }
         if (key === 'logout') {
-          util.logout();
+          
         }
       },
       switchTab: function(key) {
@@ -73,8 +84,7 @@
     background-color: #dedede;
   }
   .wrap{
-    width: 960px;
-    margin: 0 auto;
+    padding: 0 30px;
   }
   .user_ico{
     border-radius: 50%;

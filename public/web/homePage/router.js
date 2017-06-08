@@ -2,6 +2,7 @@
 import App        from './src/views/main.vue'
 import Chat       from './src/views/chat.vue'
 import History    from './src/views/history.vue'
+import myProfile  from './src/views/myProfile.vue'
 const routes = [
 	{ 
 		path: '/', 
@@ -14,6 +15,10 @@ const routes = [
 			{
 				path: 'chat',
 				component : Chat
+			},
+			{
+				path: 'myProfile',
+				component : myProfile
 			}
 		]	
 	}
