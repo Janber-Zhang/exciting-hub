@@ -13387,7 +13387,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.main_body[_v-6f1a1609]{\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: -1;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.main_body[_v-6f1a1609]{\n  padding-top: 30px;\n  width: 900px;\n  margin: 0 auto;\n  font-family: \"Helvetica Neue\",Helvetica,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",\"\\5FAE\\8F6F\\96C5\\9ED1\",Arial,sans-serif;\n}\n", ""]);
 
 	// exports
 
@@ -13695,8 +13695,14 @@
 	      serviceUrl: '/user/getUserInfo.excited'
 	    };
 	    var queryUserInfo = util.queryData('get', param, function (res) {
-	      _this.$store.dispatch('initUserInfo', res.data);
-	      var aa = _this.$store.getters.getUserInfo;
+	      var default_info = {
+	        nickname: '测试',
+	        avatar: [],
+	        sex: 'unknown',
+	        introduction: '这个人很懒，什么也没写...'
+	      };
+	      var userInfo = $.extend({}, default_info, res.data);
+	      _this.$store.dispatch('initUserInfo', userInfo);
 	    });
 	  },
 	  ready: function ready() {},
@@ -13715,19 +13721,17 @@
 	  //
 	  // <style scoped>
 	  //   .main_body{
-	  //     position: absolute;
-	  //     top: 0;
-	  //     right: 0;
-	  //     bottom: 0;
-	  //     left: 0;
-	  //     z-index: -1;
+	  //     padding-top: 30px;
+	  //     width: 900px;
+	  //     margin: 0 auto;
+	  //     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 	  //   }
 	  // </style>
 
 	}; // <template>
 	//   <div>
 	//     <nav-header></nav-header>
-	//     <div class="main_body" flex="main:center cross:center">
+	//     <div class="main_body" flex="main:center">
 	//       <router-view></router-view>
 	//     </div>
 	//   </div>
@@ -13804,7 +13808,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.header[_v-abec8a46]{\n  height: 40px;\n  background-color: #dedede;\n}\n.wrap[_v-abec8a46]{\n  padding: 0 30px;\n}\n.user_ico[_v-abec8a46]{\n  border-radius: 50%;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.header[_v-abec8a46]{\n  height: 40px;\n  background-color: #dedede;\n  box-shadow: 0px 0px 6px rgba(0,0,0,.5)\n}\n.wrap[_v-abec8a46]{\n  width: 900px;\n}\n.user_ico[_v-abec8a46]{\n  border-radius: 50%;\n}\n.nav li[_v-abec8a46]{\n  cursor: pointer;\n  width: 100px;\n  text-align: center;\n  font-size: 20px;\n  height: 40px;\n  line-height: 40px;\n}\n.nav li[_v-abec8a46]:hover{\n  background-color: #e5e5e5;\n  color: #777;\n}\n", ""]);
 
 	// exports
 
@@ -13819,22 +13823,20 @@
 	  value: true
 	});
 	// <template>
-	//   <div class="header">
-	//     <div class="wrap" flex="main:justify">
-	//       <Tabs value="name1" @on-click="switchTab($event)">
-	//         <Tab-pane label="首页" name="Index"></Tab-pane>
-	//         <Tab-pane label="聊天" name="Chatting"></Tab-pane>
-	//         <Tab-pane label="我的" name="Building"></Tab-pane>
-	//       </Tabs>
+	//   <div class="header" flex="main:center">
+	//     <div class="wrap" flex="main:justify cross:center">
+	//       <ul class="nav" flex="main:center cross:center">
+	//         <li @click="switchTab('Index')">首页</li>
+	//         <li @click="switchTab('Chat')">聊天</li>
+	//       </ul>
 	//       <Dropdown trigger="click" @on-click="userHandle($event)">
 	//         <a href="javascript:void(0)">
-	//           <img src="/images/logo.jpg" width="40" class="user_ico" alt="">
+	//           <img src="/images/logo.jpg" width="35" class="user_ico" alt="">
 	//           {{userInfo.nickname}}
 	//           <Icon type="arrow-down-b"></Icon>
 	//         </a>
 	//         <Dropdown-menu slot="list">
 	//           <Dropdown-item name="myProfile">我的信息</Dropdown-item>
-	//           <Dropdown-item name="myApp">我的应用</Dropdown-item>
 	//           <Dropdown-item name="logout">注销登录</Dropdown-item>
 	//         </Dropdown-menu>
 	//       </Dropdown>
@@ -13854,7 +13856,6 @@
 
 	  methods: {
 	    userHandle: function userHandle(key) {
-	      console.log(key);
 	      switch (key) {
 	        case 'myProfile':
 	          this.$router.push({ path: 'myProfile' });
@@ -13873,11 +13874,8 @@
 	        case 'Index':
 	          this.$router.push({ path: '/' });
 	          break;
-	        case 'Chatting':
+	        case 'Chat':
 	          this.$router.push({ path: 'chat' });
-	          break;
-	        case 'Building':
-	          this.$router.push({ path: '/' });
 	          break;
 	      }
 	    }
@@ -13894,12 +13892,25 @@
 	  //   .header{
 	  //     height: 40px;
 	  //     background-color: #dedede;
+	  //     box-shadow: 0px 0px 6px rgba(0,0,0,.5)
 	  //   }
 	  //   .wrap{
-	  //     padding: 0 30px;
+	  //     width: 900px;
 	  //   }
 	  //   .user_ico{
 	  //     border-radius: 50%;
+	  //   }
+	  //   .nav li{
+	  //     cursor: pointer;
+	  //     width: 100px;
+	  //     text-align: center;
+	  //     font-size: 20px;
+	  //     height: 40px;
+	  //     line-height: 40px;
+	  //   }
+	  //   .nav li:hover{
+	  //     background-color: #e5e5e5;
+	  //     color: #777;
 	  //   }
 	  // </style>
 
@@ -13909,13 +13920,13 @@
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"header\" _v-abec8a46=\"\">\n  <div class=\"wrap\" flex=\"main:justify\" _v-abec8a46=\"\">\n    <tabs value=\"name1\" @on-click=\"switchTab($event)\" _v-abec8a46=\"\">\n      <tab-pane label=\"首页\" name=\"Index\" _v-abec8a46=\"\"></tab-pane>\n      <tab-pane label=\"聊天\" name=\"Chatting\" _v-abec8a46=\"\"></tab-pane>\n      <tab-pane label=\"我的\" name=\"Building\" _v-abec8a46=\"\"></tab-pane>\n    </tabs>\n    <dropdown trigger=\"click\" @on-click=\"userHandle($event)\" _v-abec8a46=\"\">\n      <a href=\"javascript:void(0)\" _v-abec8a46=\"\">\n        <img src=\"/images/logo.jpg\" width=\"40\" class=\"user_ico\" alt=\"\" _v-abec8a46=\"\">\n        {{userInfo.nickname}}\n        <icon type=\"arrow-down-b\" _v-abec8a46=\"\"></icon>\n      </a>\n      <dropdown-menu slot=\"list\" _v-abec8a46=\"\">\n        <dropdown-item name=\"myProfile\" _v-abec8a46=\"\">我的信息</dropdown-item>\n        <dropdown-item name=\"myApp\" _v-abec8a46=\"\">我的应用</dropdown-item>\n        <dropdown-item name=\"logout\" _v-abec8a46=\"\">注销登录</dropdown-item>\n      </dropdown-menu>\n    </dropdown>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"header\" flex=\"main:center\" _v-abec8a46=\"\">\n  <div class=\"wrap\" flex=\"main:justify cross:center\" _v-abec8a46=\"\">\n    <ul class=\"nav\" flex=\"main:center cross:center\" _v-abec8a46=\"\">\n      <li @click=\"switchTab('Index')\" _v-abec8a46=\"\">首页</li>\n      <li @click=\"switchTab('Chat')\" _v-abec8a46=\"\">聊天</li>\n    </ul>\n    <dropdown trigger=\"click\" @on-click=\"userHandle($event)\" _v-abec8a46=\"\">\n      <a href=\"javascript:void(0)\" _v-abec8a46=\"\">\n        <img src=\"/images/logo.jpg\" width=\"35\" class=\"user_ico\" alt=\"\" _v-abec8a46=\"\">\n        {{userInfo.nickname}}\n        <icon type=\"arrow-down-b\" _v-abec8a46=\"\"></icon>\n      </a>\n      <dropdown-menu slot=\"list\" _v-abec8a46=\"\">\n        <dropdown-item name=\"myProfile\" _v-abec8a46=\"\">我的信息</dropdown-item>\n        <dropdown-item name=\"logout\" _v-abec8a46=\"\">注销登录</dropdown-item>\n      </dropdown-menu>\n    </dropdown>\n  </div>\n</div>\n";
 
 /***/ },
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div _v-6f1a1609=\"\">\n  <nav-header _v-6f1a1609=\"\"></nav-header>\n  <div class=\"main_body\" flex=\"main:center cross:center\" _v-6f1a1609=\"\">\n    <router-view _v-6f1a1609=\"\"></router-view>\n  </div>\n</div>\n";
+	module.exports = "\n<div _v-6f1a1609=\"\">\n  <nav-header _v-6f1a1609=\"\"></nav-header>\n  <div class=\"main_body\" flex=\"main:center\" _v-6f1a1609=\"\">\n    <router-view _v-6f1a1609=\"\"></router-view>\n  </div>\n</div>\n";
 
 /***/ },
 /* 18 */
@@ -14030,7 +14041,7 @@
 		value: true
 	});
 	// <template>
-	// 	<div>
+	// 	<div flex="main:center cross:center" style="padding-top:20px">
 	// 		<Timeline>
 	// 			<Timeline-item>
 	// 				<p class="time">2017/05/26</p>
@@ -14072,7 +14083,7 @@
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div>\n\t<Timeline>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/05/26</p>\n\t\t\t<p class=\"content\">create repo</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">initial</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">login-server</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/03</p>\n\t\t\t<p class=\"content\">homepage</p>\n\t\t</Timeline-item>\n\t</Timeline>\n</div>\n";
+	module.exports = "\n<div flex=\"main:center cross:center\" style=\"padding-top:20px\">\n\t<Timeline>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/05/26</p>\n\t\t\t<p class=\"content\">create repo</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">initial</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">login-server</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/03</p>\n\t\t\t<p class=\"content\">homepage</p>\n\t\t</Timeline-item>\n\t</Timeline>\n</div>\n";
 
 /***/ },
 /* 24 */
@@ -14124,25 +14135,36 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
-	    created: function created() {},
+	    created: function created() {
+	        var _this = this;
+
+	        var this_ = this,
+	            param = {
+	            serviceUrl: '/user/getUserInfo.excited'
+	        };
+	        var queryUserInfo = util.queryData('get', param, function (res) {
+	            var default_info = {
+	                nickname: '测试',
+	                avatar: [],
+	                sex: 'unknown',
+	                introduction: '这个人很懒，什么也没写...'
+	            };
+	            _this.userInfo = $.extend({}, default_info, res.data);
+	            _this.show = true;
+	        });
+	    },
 	    ready: function ready() {},
 	    data: function data() {
 	        return {
-	            formItem: {
-	                input: '',
-	                select: '',
-	                radio: 'male',
-	                checkbox: [],
-	                switch: true,
-	                date: '',
-	                time: '',
-	                slider: [20, 50],
-	                textarea: ''
-	            }
+	            show: false
 	        };
 	    },
 
-	    methods: {},
+	    methods: {
+	        update_user: function update_user() {
+	            console.log(this.userInfo);
+	        }
+	    },
 	    components: {
 	        'upload-pic': _uploadPic2.default
 	    },
@@ -14150,59 +14172,25 @@
 	    // </script>
 
 	}; // <template>
-	//     <Form :model="formItem" :label-width="80">
-	//         <Form-item label="输入框">
-	//             <Input v-model="formItem.input" placeholder="请输入"></Input>
+	//     <Form :model="userInfo" :label-width="80" style="width: 600px" v-if="show">
+	//         <Form-item label="代号">
+	//             <Input v-model="userInfo.nickname" placeholder="请输入代号"></Input>
 	//         </Form-item>
 	//         <Form-item label="头像">
-	//             <upload-pic></upload-pic>
+	//             <upload-pic :upload-list="userInfo.avatar"></upload-pic>
 	//         </Form-item>
-	//         <Form-item label="选择器">
-	//             <Select v-model="formItem.select" placeholder="请选择">
-	//                 <Option value="beijing">北京市</Option>
-	//                 <Option value="shanghai">上海市</Option>
-	//                 <Option value="shenzhen">深圳市</Option>
-	//             </Select>
-	//         </Form-item>
-	//         <Form-item label="日期控件">
-	//             <Row>
-	//                 <Col span="11">
-	//                     <Date-picker type="date" placeholder="选择日期" v-model="formItem.date"></Date-picker>
-	//                 </Col>
-	//                 <Col span="2" style="text-align: center">-</Col>
-	//                 <Col span="11">
-	//                     <Time-picker type="time" placeholder="选择时间" v-model="formItem.time"></Time-picker>
-	//                 </Col>
-	//             </Row>
-	//         </Form-item>
-	//         <Form-item label="单选框">
-	//             <Radio-group v-model="formItem.radio">
+	//         <Form-item label="性别">
+	//             <Radio-group v-model="userInfo.sex">
 	//                 <Radio label="male">男</Radio>
 	//                 <Radio label="female">女</Radio>
+	//                 <Radio label="unknown">未知</Radio>
 	//             </Radio-group>
 	//         </Form-item>
-	//         <Form-item label="多选框">
-	//             <Checkbox-group v-model="formItem.checkbox">
-	//                 <Checkbox label="吃饭"></Checkbox>
-	//                 <Checkbox label="睡觉"></Checkbox>
-	//                 <Checkbox label="跑步"></Checkbox>
-	//                 <Checkbox label="看电影"></Checkbox>
-	//             </Checkbox-group>
-	//         </Form-item>
-	//         <Form-item label="开关">
-	//             <Switch v-model="formItem.switch" size="large">
-	//                 <span slot="open">开启</span>
-	//                 <span slot="close">关闭</span>
-	//             </Switch>
-	//         </Form-item>
-	//         <Form-item label="滑块">
-	//             <Slider v-model="formItem.slider" range></Slider>
-	//         </Form-item>
-	//         <Form-item label="文本域">
-	//             <Input v-model="formItem.textarea" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
+	//         <Form-item label="自我介绍">
+	//             <Input v-model="userInfo.introduction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
 	//         </Form-item>
 	//         <Form-item>
-	//             <Button type="primary">提交</Button>
+	//             <Button type="primary" @click="update_user()">提交</Button>
 	//             <Button type="ghost" style="margin-left: 8px">取消</Button>
 	//         </Form-item>
 	//     </Form>
@@ -14278,7 +14266,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.demo-upload-list{\n    display: inline-block;\n    width: 60px;\n    height: 60px;\n    text-align: center;\n    line-height: 60px;\n    border: 1px solid transparent;\n    border-radius: 4px;\n    overflow: hidden;\n    background: #fff;\n    position: relative;\n    box-shadow: 0 1px 1px rgba(0,0,0,.2);\n    margin-right: 4px;\n}\n.demo-upload-list img{\n    width: 100%;\n    height: 100%;\n}\n.demo-upload-list-cover{\n    display: none;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0,0,0,.6);\n}\n.demo-upload-list:hover .demo-upload-list-cover{\n    display: block;\n}\n.demo-upload-list-cover i{\n    color: #fff;\n    font-size: 20px;\n    cursor: pointer;\n    margin: 0 2px;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.demo-upload-list{\n    display: inline-block;\n    width: 60px;\n    height: 60px;\n    text-align: center;\n    line-height: 60px;\n    border: 1px solid transparent;\n    border-radius: 4px;\n    overflow: hidden;\n    background: #fff;\n    position: relative;\n    box-shadow: 0 1px 1px rgba(0,0,0,.2);\n    margin-right: 4px;\n}\n.demo-upload-list img{\n    width: 100%;\n    height: 100%;\n}\n.demo-upload-list-cover{\n    display: none;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0,0,0,.6);\n}\n.demo-upload-list:hover .demo-upload-list-cover{\n    display: block;\n}\n.demo-upload-list-cover i{\n    color: #fff;\n    font-size: 20px;\n    cursor: pointer;\n    margin: 0 2px;\n}\n", ""]);
 
 	// exports
 
@@ -14293,8 +14281,8 @@
 	    value: true
 	});
 	// <template>
-	// 	<div>
-	// 		<div class="demo-upload-list" v-for="item in uploadList">
+	//     <div>
+	//         <div class="demo-upload-list" v-for="item in uploadList">
 	//         <template v-if="item.status === 'finished'">
 	//             <img :src="item.url">
 	//             <div class="demo-upload-list-cover">
@@ -14327,36 +14315,32 @@
 	//     <Modal title="查看图片" v-model="visible">
 	//         <img :src="preView_url">
 	//     </Modal>
-	// 	</div>
+	//     </div>
+	//
 	// </template>
 	// <script>
 	exports.default = {
 	    data: function data() {
 	        return {
+	            defaultList: [],
 	            imgName: '',
 	            visible: false,
-	            preView_url: '',
-	            uploadList: []
+	            preView_url: ''
 	        };
 	    },
 
-	    props: {
-	        defaultList: {
-	            type: Array,
-	            required: false
-	        }
-	    },
 	    methods: {
-	        handleView: function handleView(item) {
-	            this.imgName = item.name;
+	        handleView: function handleView(name) {
 	            this.preView_url = item.url;
 	            this.visible = true;
 	        },
 	        handleRemove: function handleRemove(file) {
+	            // 从 upload 实例删除数据
 	            var fileList = this.$refs.upload.fileList;
 	            this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
 	        },
 	        handleSuccess: function handleSuccess(res, file) {
+	            // 因为上传过程为实例，这里模拟添加 url
 	            file.url = res.data.url;
 	            file.name = res.data.name;
 	        },
@@ -14383,60 +14367,71 @@
 	        }
 	    },
 	    mounted: function mounted() {
-	        this.uploadList = this.$refs.upload.fileList;
+	        this.$refs.upload.fileList = this.uploadList;
+	    },
+
+	    props: {
+	        uploadList: {
+	            type: Array,
+	            default: function _default() {
+	                return [];
+	            },
+	            required: true
+	        }
 	    }
+	    // </script>
+	    // <style>
+	    //     .demo-upload-list{
+	    //         display: inline-block;
+	    //         width: 60px;
+	    //         height: 60px;
+	    //         text-align: center;
+	    //         line-height: 60px;
+	    //         border: 1px solid transparent;
+	    //         border-radius: 4px;
+	    //         overflow: hidden;
+	    //         background: #fff;
+	    //         position: relative;
+	    //         box-shadow: 0 1px 1px rgba(0,0,0,.2);
+	    //         margin-right: 4px;
+	    //     }
+	    //     .demo-upload-list img{
+	    //         width: 100%;
+	    //         height: 100%;
+	    //     }
+	    //     .demo-upload-list-cover{
+	    //         display: none;
+	    //         position: absolute;
+	    //         top: 0;
+	    //         bottom: 0;
+	    //         left: 0;
+	    //         right: 0;
+	    //         background: rgba(0,0,0,.6);
+	    //     }
+	    //     .demo-upload-list:hover .demo-upload-list-cover{
+	    //         display: block;
+	    //     }
+	    //     .demo-upload-list-cover i{
+	    //         color: #fff;
+	    //         font-size: 20px;
+	    //         cursor: pointer;
+	    //         margin: 0 2px;
+	    //     }
+	    // </style>
+
 	};
-	// </script>
-	// <style>
-	//     .demo-upload-list{
-	//         display: inline-block;
-	//         width: 60px;
-	//         height: 60px;
-	//         text-align: center;
-	//         line-height: 60px;
-	//         border: 1px solid transparent;
-	//         border-radius: 4px;
-	//         overflow: hidden;
-	//         background: #fff;
-	//         position: relative;
-	//         box-shadow: 0 1px 1px rgba(0,0,0,.2);
-	//         margin-right: 4px;
-	//     }
-	//     .demo-upload-list img{
-	//         width: 100%;
-	//         height: 100%;
-	//     }
-	//     .demo-upload-list-cover{
-	//         display: none;
-	//         position: absolute;
-	//         top: 0;
-	//         bottom: 0;
-	//         left: 0;
-	//         right: 0;
-	//         background: rgba(0,0,0,.6);
-	//     }
-	//     .demo-upload-list:hover .demo-upload-list-cover{
-	//         display: block;
-	//     }
-	//     .demo-upload-list-cover i{
-	//         color: #fff;
-	//         font-size: 20px;
-	//         cursor: pointer;
-	//         margin: 0 2px;
-	//     }
-	// </style>
 
 /***/ },
 /* 30 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<div>\n\t\t<div class=\"demo-upload-list\" v-for=\"item in uploadList\">\n        <template v-if=\"item.status === 'finished'\">\n            <img :src=\"item.url\">\n            <div class=\"demo-upload-list-cover\">\n                <Icon type=\"ios-eye-outline\" @click.native=\"handleView(item)\"></Icon>\n                <Icon type=\"ios-trash-outline\" @click.native=\"handleRemove(item)\"></Icon>\n            </div>\n        </template>\n        <template v-else>\n            <Progress v-if=\"item.showProgress\" :percent=\"item.percentage\" hide-info></Progress>\n        </template>\n    </div>\n    <Upload\n        ref=\"upload\"\n        :show-upload-list=\"false\"\n        :default-file-list=\"defaultList\"\n        :on-success=\"handleSuccess\"\n        :format=\"['jpg','jpeg','png']\"\n        :max-size=\"2048\"\n        :on-format-error=\"handleFormatError\"\n        :on-exceeded-size=\"handleMaxSize\"\n        :before-upload=\"handleBeforeUpload\"\n        multiple\n        type=\"drag\"\n        action=\"/upload\"\n        style=\"display: inline-block;width:58px;\">\n        <div style=\"width: 58px;height:58px;line-height: 58px;\">\n            <Icon type=\"camera\" size=\"20\"></Icon>\n        </div>\n    </Upload>\n    <Modal title=\"查看图片\" v-model=\"visible\">\n        <img :src=\"preView_url\">\n    </Modal>\n\t</div>\n";
+	module.exports = "\n<div>\n    <div class=\"demo-upload-list\" v-for=\"item in uploadList\">\n    <template v-if=\"item.status === 'finished'\">\n        <img :src=\"item.url\">\n        <div class=\"demo-upload-list-cover\">\n            <Icon type=\"ios-eye-outline\" @click.native=\"handleView(item)\"></Icon>\n            <Icon type=\"ios-trash-outline\" @click.native=\"handleRemove(item)\"></Icon>\n        </div>\n    </template>\n    <template v-else>\n        <Progress v-if=\"item.showProgress\" :percent=\"item.percentage\" hide-info></Progress>\n    </template>\n</div>\n<Upload\n    ref=\"upload\"\n    :show-upload-list=\"false\"\n    :default-file-list=\"defaultList\"\n    :on-success=\"handleSuccess\"\n    :format=\"['jpg','jpeg','png']\"\n    :max-size=\"2048\"\n    :on-format-error=\"handleFormatError\"\n    :on-exceeded-size=\"handleMaxSize\"\n    :before-upload=\"handleBeforeUpload\"\n    multiple\n    type=\"drag\"\n    action=\"/upload\"\n    style=\"display: inline-block;width:58px;\">\n    <div style=\"width: 58px;height:58px;line-height: 58px;\">\n        <Icon type=\"camera\" size=\"20\"></Icon>\n    </div>\n</Upload>\n<Modal title=\"查看图片\" v-model=\"visible\">\n    <img :src=\"preView_url\">\n</Modal>\n</div>\n\n";
 
 /***/ },
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<Form :model=\"formItem\" :label-width=\"80\">\n    <Form-item label=\"输入框\">\n        <Input v-model=\"formItem.input\" placeholder=\"请输入\"></Input>\n    </Form-item>\n    <Form-item label=\"头像\">\n        <upload-pic></upload-pic>\n    </Form-item>\n    <Form-item label=\"选择器\">\n        <Select v-model=\"formItem.select\" placeholder=\"请选择\">\n            <Option value=\"beijing\">北京市</Option>\n            <Option value=\"shanghai\">上海市</Option>\n            <Option value=\"shenzhen\">深圳市</Option>\n        </Select>\n    </Form-item>\n    <Form-item label=\"日期控件\">\n        <Row>\n            <Col span=\"11\">\n                <Date-picker type=\"date\" placeholder=\"选择日期\" v-model=\"formItem.date\"></Date-picker>\n            </Col>\n            <Col span=\"2\" style=\"text-align: center\">-</Col>\n            <Col span=\"11\">\n                <Time-picker type=\"time\" placeholder=\"选择时间\" v-model=\"formItem.time\"></Time-picker>\n            </Col>\n        </Row>\n    </Form-item>\n    <Form-item label=\"单选框\">\n        <Radio-group v-model=\"formItem.radio\">\n            <Radio label=\"male\">男</Radio>\n            <Radio label=\"female\">女</Radio>\n        </Radio-group>\n    </Form-item>\n    <Form-item label=\"多选框\">\n        <Checkbox-group v-model=\"formItem.checkbox\">\n            <Checkbox label=\"吃饭\"></Checkbox>\n            <Checkbox label=\"睡觉\"></Checkbox>\n            <Checkbox label=\"跑步\"></Checkbox>\n            <Checkbox label=\"看电影\"></Checkbox>\n        </Checkbox-group>\n    </Form-item>\n    <Form-item label=\"开关\">\n        <Switch v-model=\"formItem.switch\" size=\"large\">\n            <span slot=\"open\">开启</span>\n            <span slot=\"close\">关闭</span>\n        </Switch>\n    </Form-item>\n    <Form-item label=\"滑块\">\n        <Slider v-model=\"formItem.slider\" range></Slider>\n    </Form-item>\n    <Form-item label=\"文本域\">\n        <Input v-model=\"formItem.textarea\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n    </Form-item>\n    <Form-item>\n        <Button type=\"primary\">提交</Button>\n        <Button type=\"ghost\" style=\"margin-left: 8px\">取消</Button>\n    </Form-item>\n</Form>\n";
+	module.exports = "\n<Form :model=\"userInfo\" :label-width=\"80\" style=\"width: 600px\" v-if=\"show\">\n    <Form-item label=\"代号\">\n        <Input v-model=\"userInfo.nickname\" placeholder=\"请输入代号\"></Input>\n    </Form-item>\n    <Form-item label=\"头像\">\n        <upload-pic :upload-list=\"userInfo.avatar\"></upload-pic>\n    </Form-item>\n    <Form-item label=\"性别\">\n        <Radio-group v-model=\"userInfo.sex\">\n            <Radio label=\"male\">男</Radio>\n            <Radio label=\"female\">女</Radio>\n            <Radio label=\"unknown\">未知</Radio>\n        </Radio-group>\n    </Form-item>\n    <Form-item label=\"自我介绍\">\n        <Input v-model=\"userInfo.introduction\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n    </Form-item>\n    <Form-item>\n        <Button type=\"primary\" @click=\"update_user()\">提交</Button>\n        <Button type=\"ghost\" style=\"margin-left: 8px\">取消</Button>\n    </Form-item>\n</Form>\n";
 
 /***/ },
 /* 32 */

@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav-header></nav-header>
-    <div class="main_body" flex="main:center cross:center">
+    <div class="main_body" flex="main:center">
       <router-view></router-view>
     </div>
   </div>
@@ -16,8 +16,14 @@ export default {
           serviceUrl: '/user/getUserInfo.excited'
         }
     var queryUserInfo = util.queryData('get',param,(res)=>{
-        this.$store.dispatch('initUserInfo',res.data);
-        var aa = this.$store.getters.getUserInfo;
+        let default_info = {
+          nickname: '测试',
+          avatar: [],
+          sex: 'unknown',
+          introduction: '这个人很懒，什么也没写...'
+        } 
+        var userInfo = $.extend({}, default_info, res.data);
+        this.$store.dispatch('initUserInfo',userInfo);
     });
     
   },
@@ -43,11 +49,9 @@ export default {
 
 <style scoped>
   .main_body{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
+    padding-top: 30px;
+    width: 900px;
+    margin: 0 auto;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   }
 </style>

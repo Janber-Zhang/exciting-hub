@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div flex="main:center cross:center" style="padding-top:20px">
 		<Timeline>
 			<Timeline-item>
 				<p class="time">2017/05/26</p>

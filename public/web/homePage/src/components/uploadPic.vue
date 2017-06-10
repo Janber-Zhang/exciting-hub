@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<div class="demo-upload-list" v-for="item in uploadList">
+    <div>
+        <div class="demo-upload-list" v-for="item in uploadList">
         <template v-if="item.status === 'finished'">
             <img :src="item.url">
             <div class="demo-upload-list-cover">
@@ -33,35 +33,31 @@
     <Modal title="查看图片" v-model="visible">
         <img :src="preView_url">
     </Modal>
-	</div>
+    </div>
+    
 </template>
 <script>
     export default {
         data () {
             return {
+                defaultList: [],
                 imgName: '',
                 visible: false,
-                preView_url: '',
-                uploadList: []
-            }
-        },
-        props:{
-            defaultList:{
-                type:Array,
-                required:false
+                preView_url: ''
             }
         },
         methods: {
-            handleView (item) {
-                this.imgName = item.name;
+            handleView (name) {
                 this.preView_url = item.url;
                 this.visible = true;
             },
             handleRemove (file) {
+                // 从 upload 实例删除数据
                 const fileList = this.$refs.upload.fileList;
                 this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
             },
             handleSuccess (res, file) {
+                // 因为上传过程为实例，这里模拟添加 url
                 file.url = res.data.url;
                 file.name = res.data.name;
             },
@@ -88,7 +84,16 @@
             }
         },
         mounted () {
-            this.uploadList = this.$refs.upload.fileList;
+            this.$refs.upload.fileList = this.uploadList;
+        },
+        props: {
+             uploadList:{
+                type:Array,
+                default : function(){
+                    return []
+                },
+                required:true
+            }
         }
     }
 </script>
