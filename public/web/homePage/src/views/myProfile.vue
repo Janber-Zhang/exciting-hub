@@ -24,12 +24,13 @@
 </template>
 <script>
     import uploadPic from '../components/uploadPic'
+    import VUE       from 'vue'
     export default {
         created(){
             let this_ = this,
             param = {
               serviceUrl: '/user/getUserInfo.excited'
-          }
+            }
           var queryUserInfo = util.queryData('get',param,(res)=>{
             let default_info = {
               nickname: '测试',
@@ -46,7 +47,8 @@
       },
       data(){
         return {
-            show: false
+            show: false,
+            userInfo: {}
         }
     },
     methods:{
@@ -58,7 +60,7 @@
         'upload-pic' : uploadPic
     },
     computed:{
-        
+
     }
 }
 </script>

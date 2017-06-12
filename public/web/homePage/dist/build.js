@@ -14132,46 +14132,13 @@
 
 	var _uploadPic2 = _interopRequireDefault(_uploadPic);
 
+	var _vue = __webpack_require__(1);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = {
-	    created: function created() {
-	        var _this = this;
-
-	        var this_ = this,
-	            param = {
-	            serviceUrl: '/user/getUserInfo.excited'
-	        };
-	        var queryUserInfo = util.queryData('get', param, function (res) {
-	            var default_info = {
-	                nickname: '测试',
-	                avatar: [],
-	                sex: 'unknown',
-	                introduction: '这个人很懒，什么也没写...'
-	            };
-	            _this.userInfo = $.extend({}, default_info, res.data);
-	            _this.show = true;
-	        });
-	    },
-	    ready: function ready() {},
-	    data: function data() {
-	        return {
-	            show: false
-	        };
-	    },
-
-	    methods: {
-	        update_user: function update_user() {
-	            console.log(this.userInfo);
-	        }
-	    },
-	    components: {
-	        'upload-pic': _uploadPic2.default
-	    },
-	    computed: {}
-	    // </script>
-
-	}; // <template>
+	// <template>
 	//     <Form :model="userInfo" :label-width="80" style="width: 600px" v-if="show">
 	//         <Form-item label="代号">
 	//             <Input v-model="userInfo.nickname" placeholder="请输入代号"></Input>
@@ -14196,6 +14163,45 @@
 	//     </Form>
 	// </template>
 	// <script>
+	exports.default = {
+	    created: function created() {
+	        var _this = this;
+
+	        var this_ = this,
+	            param = {
+	            serviceUrl: '/user/getUserInfo.excited'
+	        };
+	        var queryUserInfo = util.queryData('get', param, function (res) {
+	            var default_info = {
+	                nickname: '测试',
+	                avatar: [],
+	                sex: 'unknown',
+	                introduction: '这个人很懒，什么也没写...'
+	            };
+	            _this.userInfo = $.extend({}, default_info, res.data);
+	            _this.show = true;
+	        });
+	    },
+	    ready: function ready() {},
+	    data: function data() {
+	        return {
+	            show: false,
+	            userInfo: {}
+	        };
+	    },
+
+	    methods: {
+	        update_user: function update_user() {
+	            console.log(this.userInfo);
+	        }
+	    },
+	    components: {
+	        'upload-pic': _uploadPic2.default
+	    },
+	    computed: {}
+	    // </script>
+
+	};
 
 /***/ },
 /* 26 */
