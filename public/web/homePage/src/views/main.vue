@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="isready">
     <nav-header></nav-header>
     <div class="main_body" flex="main:center">
       <router-view></router-view>
@@ -23,8 +23,9 @@ export default {
           introduction: '这个人很懒，什么也没写...'
         } 
         var userInfo = $.extend({}, default_info, res.data);
-        this.$store.dispatch('initUserInfo',userInfo);
+        
     });
+    this.$store.dispatch('initUserInfo');
     
   },
   ready(){
@@ -32,7 +33,7 @@ export default {
   },
   data(){
     return {
-      msg: 'Welcome to Exciting-hub'
+      
     }
   },
   method:{
@@ -42,7 +43,9 @@ export default {
     'nav-header': header
   },
   computed:{
-
+    isready(){
+        return this.$store.getters.getReadyState
+      }
   }
 }
 </script>

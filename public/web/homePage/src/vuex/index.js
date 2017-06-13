@@ -8,7 +8,8 @@ Vue.use(Vuex);
 
 const state = {
 	userInfo:{asd:'asd'},
-	data:{}
+	data:{},
+	readyState: false
 };
 
 export default new Vuex.Store({

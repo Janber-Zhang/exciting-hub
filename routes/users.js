@@ -77,12 +77,46 @@ router.get('/checkAccountExist.excited', (req, res, next) => {
 //获取用户信息
 router.get('/getUserInfo.excited', (req, res, next) => {
     let user = req.session.user;
-    if (user.password) {
-        delete user.password
-    }
-    res.send({
-        result:'true',
-        data: user
+    
+    UserModel
+        .findById(user._id)
+        .exec((err,data) => {
+            if (data !== null) {
+                delete data.password
+            }
+            res.send({
+                result:'true',
+                data:data
+            })
+        })
+});
+//编辑用户信息
+router.post('/editUserInfo.excited', (req, res, next) => {
+    let userInfo = JSON.parse(req.body.user),
+        condiction = {_id: userInfo._id},
+        query = {$set: 
+            {
+                nickname   : userInfo.nickname, 
+                user_id    : userInfo._id,
+                avatar     : userInfo.avatar,
+                sex        : userInfo.sex,
+                introduction:userInfo.introduction
+            }
+        };
+    UserModel.update(condiction, query, (err, result)=>{
+        console.log(err)
+        console.log(result)
+        if(err) {
+            console.log(err)
+            res.send({
+                result:'true',
+                msg: 'success'
+            })
+        }
+        res.send({
+            result:'true',
+            msg: 'server error'
+        })
     })
 });
 

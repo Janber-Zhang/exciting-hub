@@ -19,9 +19,12 @@ mongoose.connection.on('error',function (err) {
 mongoose.Promise = global.Promise;
 
 const UserSchema = new mongoose.Schema({
-	account: { type: String, unique : true},
-	nickname : { type: String , default : ''},
-	password: { type: String , required : true }
+	account		: { type: String, unique : true},
+	nickname 	: { type: String , default : ''},
+	sex 		: { type: String , default : 'unknown'},
+	avatar 		: { type: Array , default : []},
+	introduction: { type: String , default : ''},
+	password	: { type: String , required : true }
 });
 
 const UserModel = db.model('users', UserSchema);

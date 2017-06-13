@@ -5,9 +5,9 @@
         <li @click="switchTab('Index')">首页</li>
         <li @click="switchTab('Chat')">聊天</li>
       </ul>
-      <Dropdown trigger="click" @on-click="userHandle($event)">
+      <Dropdown @on-click="userHandle($event)">
         <a href="javascript:void(0)">
-          <img src="/images/logo.jpg" width="35" class="user_ico" alt="">
+          <img :src="userInfo.avatar[0]?userInfo.avatar[0].url:'/images/logo.jpg'" width="35" class="user_ico" alt="">
           {{userInfo.nickname}}
           <Icon type="arrow-down-b"></Icon>
         </a>
