@@ -23,7 +23,8 @@
 <script>
   export default {
     created(){
-
+      let users = JSON.parse(JSON.stringify(this.userInfo));
+      
     },
     ready(){
 
@@ -37,17 +38,11 @@
       userHandle: function(key) {
         switch (key) {
           case 'myProfile':
-            this.$router.push({ path: 'myProfile' });
-            break;
-          case 'myApp':
-            this.$router.push({ path: 'chat' });
+            this.$router.push({ path: '/myProfile' });
             break;
           case 'logout':
             util.logout();
             break;
-        }
-        if (key === 'logout') {
-          
         }
       },
       switchTab: function(key) {
@@ -56,7 +51,7 @@
             this.$router.push({ path: '/' });
             break;
           case 'Chat':
-            this.$router.push({ path: 'chat' });
+            this.$router.push({ path: '/chat' });
             break;
         }
       }

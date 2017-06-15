@@ -3,38 +3,97 @@
 /**
  * Module dependencies.
  */
-require( "console-stamp" )( console, { pattern : "yyyy-mm-dd HH:MM:ss.l" } );
-var app = require('../app');
-var debug = require('debug')('myapp:server');
-var http = require('http');
-var configPort = require('../config/config.json').port;
+ require( "console-stamp" )( console, { pattern : "yyyy-mm-dd HH:MM:ss.l" } );
+ var IO = require('socket.io');
+ var app = require('../app');
+ var debug = require('debug')('myapp:server');
+ var http = require('http');
+ var configPort = require('../config/config.json').port;
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(configPort || process.env.PORT || '3000');
-app.set('port', port);
+ var port = normalizePort(configPort || process.env.PORT || '3000');
+ app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+ var server = http.createServer(app);
+
+// 创建socket服务
+var socketIO = IO(server);
+// 房间用户名单
+var roomInfo = {};
+
+socketIO.on('connection', function (socket) {
+  // 获取请求建立socket连接的url
+  // 如: http://localhost:3000/room/room_1, roomID为room_1
+  var url = socket.request.headers.referer;
+  console.log(socket.request.headers.referer)
+  var splited = url.split('/');
+  var roomID = splited[splited.length - 1];   // 获取房间ID
+  var user = '';
+
+
+  socket.on('join', function (userName) {
+    user = userName;
+
+    // 将用户昵称加入房间名单中
+    if (!roomInfo[roomID]) {
+      roomInfo[roomID] = [];
+    }
+    roomInfo[roomID].push(user);
+
+    socket.join(roomID);    // 加入房间
+    // 通知房间内人员
+    socketIO.to(roomID).emit('sys', user + '加入了房间', roomInfo[roomID]);  
+    console.log(user + '加入了' + roomID);
+  });
+
+  socket.on('leave', function () {
+    socket.emit('disconnect');
+  });
+
+  socket.on('disconnect', function () {
+    // 从房间名单中移除
+    var index = roomInfo[roomID].indexOf(user);
+    if (index !== -1) {
+      roomInfo[roomID].splice(index, 1);
+    }
+
+    socket.leave(roomID);    // 退出房间
+    socketIO.to(roomID).emit('sys', user + '退出了房间', roomInfo[roomID]);
+    console.log(user + '退出了' + roomID);
+  });
+
+  // 接收用户消息,发送相应的房间
+  socket.on('message', function (msg) {
+    // 验证如果用户不在房间内则不给发送
+    console.log(msg)
+    if (roomInfo[roomID].indexOf(user) === -1) {  
+      return false;
+    }
+    socketIO.to(roomID).emit('msg', user, msg);
+  });
+
+});
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+ server.listen(port);
+ server.on('error', onError);
+ server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
+ function normalizePort(val) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -54,27 +113,27 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+ function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
   var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  ? 'Pipe ' + port
+  : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
+    console.error(bind + ' requires elevated privileges');
+    process.exit(1);
+    break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
+    console.error(bind + ' is already in use');
+    process.exit(1);
+    break;
     default:
-      throw error;
+    throw error;
   }
 }
 
@@ -82,10 +141,10 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
+ function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  ? 'pipe ' + addr
+  : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 }
