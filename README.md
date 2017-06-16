@@ -1,3 +1,1 @@
 # exciting-hub
-
-test
