@@ -2,112 +2,253 @@
 	<div class="chatRoom" flex="main:justify">
 		<div class="userList">
 			<ul>
-				<li v-for="user in users">{{user}}</li>
+				<li>用户列表</li>
+				<li v-for="user in users" flex="main:left corss:cneter">
+					<img :src="user.user.avatar" alt="" width="20" height="20">
+					<span>{{user.user.nickname}}</span>
+				</li>
 			</ul>
 		</div>
 		<div class="content" flex="dir:top main:justify">
-			<ul class="msgBox"><li v-for="msg in msgArr">{{msg}}</li></ul>
+			<ul id="msgBox" class="msgBox">
+				<li v-for="msg in msgArr">
+					<div class="right_" v-if="msg.isMine">
+						<img :src="msg.user.user.avatar" class="right" alt="" width="30" height="30">
+						<p class="name_right">{{msg.user.user.nickname}}</p>
+						<p class="msg">
+							<i class="arr_right"></i>
+							{{msg.msg}}
+						</p>
+					</div>
+					<div class="left_" v-else>
+						<img :src="msg.user.user.avatar" alt="" class="left" width="30" height="30">
+						<p>{{msg.user.user.nickname}}</p>
+						<p class="msg">
+							<i class="arr"></i>
+							{{msg.msg}}
+						</p>
+					</div>
+				</li>
+			</ul>
 			<div class="inputBox">
 				<textarea name="msg" v-model="inputMsg" id="inputMsg" @keyup.enter="send()" cols="30" rows="10"></textarea>
-				<button>发送</button>
+				<button @click="send()">发送</button>
 			</div>
 		</div>
 	</div>
 </template>
-<style scoped>
+<style lang='less' scoped>
 	.chatRoom{
 		width: 700px;
 		margin-top: 30px;
 		border: 1px solid #dedede;
 		height: 500px;
+		.userList{
+			width: 200px;
+			border-right: 1px solid #dedede;
+			ul li{
+				padding: 5px 10px;
+				img{
+					margin-right: 10px;
+				}
+			}
+			ul li:first-child{
+				text-align: center;
+			}
+		}
+		.content{
+			width: 599px;
+			.msgBox{
+				height: 350px;
+				overflow-y: auto;
+				border-bottom: 1px solid #dedede;
+				li {
+					position: relative;
+					padding: 10px 50px 10px 50px;
+					.right_{
+						float: right;
+					}
+					.left{
+						position: absolute;
+						left: 10px;
+					}
+					.right{
+						position: absolute;
+						right: 10px;
+					}
+					.name_right{
+						text-align: right;
+					}
+					.msg{
+						display: inline-block;
+						font-size: 14px;
+						color: #333;
+						padding: 5px;
+						border: 1px solid #dedede;
+						border-radius: 4px;
+						max-width: 410px;
+						position: relative;
+						background-color: #f5f5f5;
+						padding: 5px 10px;
+						.arr{
+							width: 0;
+							height: 0;
+							border-left: 10px solid transparent;
+							border-right: 10px solid transparent;
+							border-top: 10px solid #f5f5f5;
+							position: absolute;
+							top: -1px;
+							left: -7px;
+							border-width: 6px;
+						}
+						.arr_right{
+							width: 0;
+							height: 0;
+							border-left: 10px solid transparent;
+							border-right: 10px solid transparent;
+							border-top: 10px solid #f5f5f5;
+							position: absolute;
+							top: -1px;
+							right: -7px;
+							border-width: 6px;
+						}
+					}
+				}
+				li:after{
+					content: ".";
+					visibility: hidden;
+					display: block;
+					height: 0;
+					overflow: hidden;
+					clear: both;
+				}
+			}
+			.inputBox{
+				height: 150px;
+				overflow-y: auto;
+				position: relative;
+				#inputMsg{
+					width: 100%;
+					height: 120px;
+					text-indent: 10px;
+					color: #333;
+					padding: 10px;
+					font-size: 14px;
+					resize:none;
+				}
+				button{
+					width: 80px;
+					height: 30px;
+					position: absolute;
+					display: inline-block;
+					right: 4px;
+					bottom: 4px;
+					color: #FFF;
+					font-size: 14px;
+					background-color: #2d8cf0;
+					border-radius: 4px;
+				}
+				button:hover{
+					background-color: #57a3f3;
+				}
+			}
+		}
 	}
-	.chatBox{
-		width: 700px;
-	}
-	.userList{
-		width: 200px;
-		border-right: 1px solid #dedede;
-	}
-	.content{
-		width: 599px;
-	}
-	.content .msgBox{
-		height: 350px;
-		overflow-y: auto;
-		border-bottom: 1px solid #dedede;
-	}
-	.content .inputBox{
-		height: 150px;
-		overflow-y: auto;
-		position: relative;
-	}
-	.content .inputBox #inputMsg{
-		width: 100%;
-		height: 120px;
-		text-indent: 10px;
-		color: #333;
-		padding: 10px;
-		font-size: 14px;
-		resize:none;
-	}
-	.content .inputBox button{
-		width: 80px;
-		height: 30px;
-		position: absolute;
-		display: inline-block;
-		right: 4px;
-		bottom: 4px;
-		color: #FFF;
-		font-size: 14px;
-		background-color: #2d8cf0;
-		border-radius: 4px;
-	}
-	.content .inputBox button:hover{
-		background-color: #57a3f3;
-	}
+	
 </style>
 <script>
 	export default {
 		created(){
-			console.log(this.msg)
-			// ---------创建连接-----------
-			var socket = io();
-      // 加入房间
-      socket.on('connect', function () {
-      	socket.emit('join', userName);
-      });
-	    },
-	    mounted(){
-	    	
-	    },
-	    data(){
-	    	return {
-	    		SOCKET: null,
-	    		users: [2,1],
-	    		msgArr: [],
-	    		inputMsg: ''
-	    	}
-	    },
-	    methods:{
-	    	send: function(){
-	    		let msg = 1;
-	    		this.msgArr.push(this.inputMsg);
-	    		this.inputMsg = '';
-	    	}
-	    },
-	    components:{
 
+		},
+		mounted(){
+			this.socketInit();
+		},
+		data(){
+			return {
+				SOCKET: null,    //保存socket对象
+				users: [],			 //当前聊天室用户
+				msgArr: [],			 //消息列表
+				inputMsg: ''		 //待发送消息
+			}
+		},
+		methods:{
+			socketInit: function(){
+				let this_ = this;
+				let defaultAvatar = '/images/logo.jpg';
+				if (this.userInfo.avatar && this.userInfo.avatar[0]) {
+					defaultAvatar = this.userInfo.avatar[0].url;
+				}
+				//封装用户-房间信息
+				let userObj = {
+					user: {
+						nickname: this.userInfo.nickname,
+						avatar: defaultAvatar,
+						_id: this.userInfo._id
+					},
+					roomInfo: this.$route.params.roomId
+				}
+				// ---------创建连接-----------
+				this.SOCKET = io();
+			  // 加入房间
+			  this.SOCKET.on('connect', function () {
+			  	this_.SOCKET.emit('join', JSON.stringify(userObj));
+			  });
+			  //监听消息
+			  this.SOCKET.on('msg', function (user, msg) {
+			  	this_.dealMsgInfo(user, msg);
+			  });
+	      // 监听系统消息
+	      this.SOCKET.on('sys', function (sysMsg, users, user) {
+	      	this_.dealSysInfo(sysMsg, users, user);
+	      });
 	    },
-	    computed:{
-	    	userInfo(){
-	    		return this.$store.getters.getUserInfo
+	    dealSysInfo: function(sysMsg, users, user) {
+	    	let this_ = this;
+	    	let roomUsers = [];
+	    	users.forEach(function(item,index){
+	    		if (item.roomInfo === this_.$route.params.roomId) {
+	    			roomUsers.push(item);
+	    		}
+	    	});
+	    	this.users = roomUsers;
+	    	roomUsers.forEach(function(item, index){
+	    		if (item.user._id === user.user._id) {
+	    			this_.$Message.success(sysMsg);
+	    		}
+	    	});
+	    	roomUsers = null;
+	    },
+	    dealMsgInfo: function(user, msg) {
+	    	let isMine = false;
+	    	if (user.user._id === this.userInfo._id) {
+	    		isMine = true;
 	    	}
+	    	this.msgArr.push({
+	    		msg: msg,
+	    		user: user,
+	    		isMine: isMine
+	    	});
+	    	setTimeout(function() {
+	    		$('#msgBox').scrollTop($('#msgBox')[0].scrollHeight);
+	    	}, 10);
 	    },
-	    deactivated() {
-	    	console.log("1");
-	    },
-	    beforeDestroy() {
-	    	console.log("销毁前");
-	    },
+	    send: function(){
+	    	let msg = 1;
+	    	this.SOCKET.send(this.inputMsg);
+	    	this.inputMsg = '';
+	    }
+	  },
+	  components:{
+
+	  },
+	  computed:{
+	  	userInfo(){
+	  		return this.$store.getters.getUserInfo
+	  	}
+	  },
+	  beforeDestroy() {
+	  	this.SOCKET.emit('leave');
 	  }
-	</script>
+	}
+</script>

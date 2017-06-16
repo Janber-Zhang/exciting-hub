@@ -53,11 +53,8 @@
   <script>
     $(function () {
       // ----------设置昵称-------------
-      var userName = '';
-      while ($('#userName').text().trim() === '') {
-        userName = prompt("请设置你的昵称","");
-        $('#userName').text(userName);
-      }
+      var userName = 'test';
+      $('#userName').text(userName);
 
 
       // ---------创建连接-----------

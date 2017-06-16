@@ -10,7 +10,7 @@ router.get('/', checkLogin, function(req, res, next) {
   	user: req.session.user
   });
 });
-router.get('/chat/:roomID', function(req, res, next) {
+router.get('/chat/:roomID', checkLogin,function(req, res, next) {
   var roomID = req.params.roomID;
   // 渲染页面数据(见views/room.hbs)
   res.render('web/chat/chat', {
