@@ -24,7 +24,11 @@
 		margin: 0 auto;
 	}
 	.roomList li{
-		margin:0 30px;
+		padding: 0 20px;
+		margin: 0 10px;
+	}
+	.roomList li:hover{
+		background-color: #dedede;
 	}
 	.pointer{
 		cursor: pointer;

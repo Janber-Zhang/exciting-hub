@@ -9,6 +9,10 @@ Vue.use(Vuex);
 const state = {
 	userInfo:{asd:'asd'},
 	data:{},
+	chat: {
+		roomId: 'default',
+		msgArr: []
+	},
 	readyState: false
 };
 
