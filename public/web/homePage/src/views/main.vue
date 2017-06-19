@@ -4,11 +4,13 @@
     <div class="main_body" flex="main:center">
       <router-view></router-view>
     </div>
+    <copy-footer></copy-footer>
   </div>
 </template>
 
 <script>
 import header from './header.vue'
+import footer from './footer.vue'
 export default {
   created(){
     let this_ = this,
@@ -40,7 +42,8 @@ export default {
 
   },
   components:{
-    'nav-header': header
+    'nav-header': header,
+    'copy-footer': footer
   },
   computed:{
     isready(){
@@ -52,7 +55,7 @@ export default {
 
 <style scoped>
   .main_body{
-    padding-top: 30px;
+    padding: 30px 0;
     width: 900px;
     margin: 0 auto;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;

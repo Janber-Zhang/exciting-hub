@@ -31,8 +31,6 @@ var roomInfo = {};
 socketIO.on('connection', function (socket) {
   // 获取请求建立socket连接的url
   // 如: http://localhost:3000/room/room_1, roomID为room_1
-  var url = socket.request.headers.referer;
-  var splited = url.split('/');
   var roomID = 'excited_room';   // 设置房间ID
   var user = '';
 
@@ -48,7 +46,7 @@ socketIO.on('connection', function (socket) {
     socket.join(roomID);
     // 通知房间内人员
     socketIO.to(roomID).emit('sys',user.user.nickname + '加入了房间', roomInfo[roomID], user);  
-    console.log(user + '已上线');
+    console.log(user.user.nickname + '已上线');
   });
 
   socket.on('leave', function () {
@@ -64,7 +62,7 @@ socketIO.on('connection', function (socket) {
 
     socket.leave(roomID);    // 退出房间
     socketIO.to(roomID).emit('sys', user.user.nickname + '退出了房间', roomInfo[roomID]);
-    console.log(user + '已下线');
+    console.log(user.user.nickname + '已下线');
   });
 
   // 接收用户消息,发送相应的房间
