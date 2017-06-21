@@ -1,0 +1,11 @@
+{
+	"desc": "test",
+	"port":"8080",
+	"session":{
+		"secret": "excited",
+		"key": "excited",
+		"maxAge": 2592000000
+	},
+	"queryAPI":"http://localhost:3000",
+	"mongodb":"mongodb://localhost:27017/excited"
+}

@@ -30,6 +30,15 @@ var util = {
 		logout.then(()=>{
 			location.href = '/login';
 		});
+	},
+	ajaxQuery: function (param,cb){
+		console.log('123')
+		var promise_ =  axios.post('/query/queryData', param).then((res) => {
+			if (cb) {
+				cb(res.data)
+			}
+		});
+		return promise_
 	}
 
 }

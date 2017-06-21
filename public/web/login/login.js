@@ -17,15 +17,23 @@ jQuery(document).ready(function($) {
 
 	$('#login .signup_box .accunt').unbind().blur(function(event) {  //检查账号是否存在
 		var this_ = this;
-		var account = $(this).val();
-		console.log(account);
-		axios.get('user/checkAccountExist.excited?account='+account).then((res) => {
-			if (res.data.data) {
-				$(this_).addClass('warn');
-			} else {
-				$(this_).removeClass('warn');
-			}
+		var param = {
+			httpType      :    'get',
+			serviceName   :    'user',
+			functionName  :    'checkAccountExist.excited',
+			account       :     $(this).val()
+
+		}
+		util.ajaxQuery(param,function(res){
+			console.log(res)
 		});
+		// axios.get('user/checkAccountExist.excited?account='+account).then((res) => {
+		// 	if (res.data.data) {
+		// 		$(this_).addClass('warn');
+		// 	} else {
+		// 		$(this_).removeClass('warn');
+		// 	}
+		// });
 	});
 
 	$('.submit_up').unbind().click(function(event) {                 //注册
