@@ -6,6 +6,6 @@
 		"key": "excited",
 		"maxAge": 2592000000
 	},
-	"queryAPI":"http://localhost:3000",
+	"queryAPI":"http://localhost:8888",
 	"mongodb":"mongodb://localhost:27017/excited"
 }
