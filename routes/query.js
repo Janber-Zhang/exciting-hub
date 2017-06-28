@@ -9,18 +9,21 @@ router.post('/queryData', (req, res, next) => {
     if (!('httpType' in params)) {
         params.httpType = 'get';
     }
-    if (!('serviceName' in params) || !('functionName' in params)) {
+    if (!('serviceUrl' in params)) {
         //参数错误
         res.send('{"refresh":1}');
         return;
     }
-    var serviceName = params.serviceName;
-    var functionName = params.functionName;
+    var serviceUrl = params.serviceUrl;
     var httpType = params.httpType;
-    delete params["serviceName"];
-    delete params["functionName"];
+    delete params["serviceUrl"];
     delete params["httpType"];
-    var serviceUrl = config.queryAPI + '/' + serviceName + '/' + functionName;
+    var apiUrl = config.queryAPI;
+    if (params.apiModule && params.apiModule == 'newAPI') {
+        apiUrl = config.newAPI;
+        delete params["apiModule"];
+    }
+    var serviceUrl = apiUrl + '/' + serviceUrl;
     if (httpType == 'get') {
         if (Object.keys(params).length){
             serviceUrl += '?';
@@ -37,7 +40,7 @@ router.post('/queryData', (req, res, next) => {
         });
     }
     if (httpType == 'post') {
-        axios.post(serviceUrl, param).then((res_) => {
+        axios.post(serviceUrl, params).then((res_) => {
             res.send(res_.data);
         })
         .catch(function(err){

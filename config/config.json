@@ -7,5 +7,6 @@
 		"maxAge": 2592000000
 	},
 	"queryAPI":"http://localhost:8080",
+	"newAPI":"http://localhost:8002",
 	"mongodb":"mongodb://localhost:27017/excited"
 }
