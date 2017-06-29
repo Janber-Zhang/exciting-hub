@@ -1,9 +1,11 @@
 const actions = {
 	initUserInfo (context){
 		let param = {
-			serviceUrl: '/user/getUserInfo.excited'
+			httpType      :    'get',
+			serviceUrl    :    'users/user/getuserinfo',
+			apiModule     :    'newAPI'
 		}
-		var queryUserInfo = util.queryData('get',param,(res)=>{
+		var queryUserInfo = util.ajaxQuery(param, (res)=>{
 			let default_info = {
 				nickname: '测试',
 				avatar: [],

@@ -22,7 +22,6 @@ jQuery(document).ready(function($) {
 			serviceUrl    :    'users/user/checkexist',
 			apiModule     :    'newAPI',
 			account       :     $(this).val()
-
 		}
 		util.ajaxQuery(param,function(res){
 			if (!res.data.result) {

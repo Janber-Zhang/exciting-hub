@@ -13397,7 +13397,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.main_body[_v-6f1a1609]{\n  padding: 30px 0;\n  width: 900px;\n  margin: 0 auto;\n  font-family: \"Helvetica Neue\",Helvetica,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",\"\\5FAE\\8F6F\\96C5\\9ED1\",Arial,sans-serif;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.main_body[_v-6f1a1609]{\n  padding: 30px 0;\n  width: 900px;\n  margin: 0 auto;\n  font-family: \"Helvetica Neue\",Helvetica,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",\"\\5FAE\\8F6F\\96C5\\9ED1\",Arial,sans-serif;\n}\n", ""]);
 
 	// exports
 
@@ -13713,19 +13713,6 @@
 	// <script>
 	exports.default = {
 	  created: function created() {
-	    var this_ = this,
-	        param = {
-	      serviceUrl: '/user/getUserInfo.excited'
-	    };
-	    var queryUserInfo = util.queryData('get', param, function (res) {
-	      var default_info = {
-	        nickname: '测试',
-	        avatar: [],
-	        sex: 'unknown',
-	        introduction: '这个人很懒，什么也没写...'
-	      };
-	      var userInfo = $.extend({}, default_info, res.data);
-	    });
 	    this.$store.dispatch('initUserInfo');
 	  },
 	  ready: function ready() {},
@@ -13825,7 +13812,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.header[_v-abec8a46]{\n  height: 40px;\n  background-color: #dedede;\n  box-shadow: 0px 0px 6px rgba(0,0,0,.5)\n}\n.wrap[_v-abec8a46]{\n  width: 900px;\n}\n.user_ico[_v-abec8a46]{\n  border-radius: 50%;\n}\n.nav li[_v-abec8a46]{\n  cursor: pointer;\n  width: 100px;\n  text-align: center;\n  font-size: 20px;\n  height: 40px;\n  line-height: 40px;\n}\n.nav li[_v-abec8a46]:hover{\n  background-color: #e5e5e5;\n  color: #777;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.header[_v-abec8a46]{\n  height: 40px;\n  background-color: #dedede;\n  box-shadow: 0px 0px 6px rgba(0,0,0,.5)\n}\n.wrap[_v-abec8a46]{\n  width: 900px;\n}\n.user_ico[_v-abec8a46]{\n  border-radius: 50%;\n}\n.nav li[_v-abec8a46]{\n  cursor: pointer;\n  width: 100px;\n  text-align: center;\n  font-size: 20px;\n  height: 40px;\n  line-height: 40px;\n}\n.nav li[_v-abec8a46]:hover{\n  background-color: #e5e5e5;\n  color: #777;\n}\n", ""]);
 
 	// exports
 
@@ -13882,6 +13869,7 @@
 
 	  methods: {
 	    userHandle: function userHandle(key) {
+	      console.log('213123123');
 	      switch (key) {
 	        case 'myProfile':
 	          this.$router.push({ path: '/myProfile' });
@@ -15152,9 +15140,11 @@
 	var actions = {
 		initUserInfo: function initUserInfo(context) {
 			var param = {
-				serviceUrl: '/user/getUserInfo.excited'
+				httpType: 'get',
+				serviceUrl: 'users/user/getuserinfo',
+				apiModule: 'newAPI'
 			};
-			var queryUserInfo = util.queryData('get', param, function (res) {
+			var queryUserInfo = util.ajaxQuery(param, function (res) {
 				var default_info = {
 					nickname: '测试',
 					avatar: [],

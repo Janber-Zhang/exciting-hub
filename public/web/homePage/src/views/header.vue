@@ -36,6 +36,7 @@
     },
     methods:{
       userHandle: function(key) {
+        console.log('213123123')
         switch (key) {
           case 'myProfile':
             this.$router.push({ path: '/myProfile' });

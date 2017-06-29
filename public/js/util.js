@@ -26,14 +26,21 @@ var util = {
 		}
 	},
 	logout: function() {						//登出
-		var logout = this.queryData('get',{serviceUrl:'/user/signout.excited'});
-		logout.then(()=>{
+		let param = {
+			httpType      :    'post',
+			serviceUrl    :    'users/user/logout',
+			apiModule     :    'newAPI'
+		}
+		var queryUserInfo = util.ajaxQuery(param, (res)=>{
 			location.href = '/login';
 		});
 	},
 	ajaxQuery: function (param,cb){
-		console.log('123')
 		var promise_ =  axios.post('/query/queryData', param).then((res) => {
+			if (res.data.errno === 1111) {
+				debugger
+				location.href = '/login';
+			}
 			if (cb) {
 				cb(res.data)
 			}
