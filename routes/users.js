@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var UserModel = require('../model/Model').UserModel;
+// var UserModel = require('../model/Model').UserModel;
 
 //注销
 router.post('/logout', (req, res, next) => {

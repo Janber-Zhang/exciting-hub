@@ -14148,7 +14148,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.chat[_v-757087b0]{\n\twidth: 700px;\n}\n.roomList[_v-757087b0]{\n\twidth: 700px;\n\tmargin: 0 auto;\n}\n.roomList li[_v-757087b0]{\n\tpadding: 0 20px;\n\tmargin: 0 10px;\n}\n.roomList li[_v-757087b0]:hover{\n\tbackground-color: #dedede;\n}\n.pointer[_v-757087b0]{\n\tcursor: pointer;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.chat[_v-757087b0]{\n\twidth: 700px;\n}\n.roomList[_v-757087b0]{\n\twidth: 700px;\n\tmargin: 0 auto;\n}\n.roomList li[_v-757087b0]{\n\tpadding: 0 20px;\n\tmargin: 0 10px;\n}\n.roomList li[_v-757087b0]:hover{\n\tbackground-color: #f5f5f5;\n}\n.active[_v-757087b0]{\n\tbackground-color: #dedede !important;\n}\n.pointer[_v-757087b0]{\n\tcursor: pointer;\n}\n", ""]);
 
 	// exports
 
@@ -14165,13 +14165,13 @@
 	// <template>
 	// 	<div class="chat">
 	// 		<ul class="roomList" flex="main:center">
-	// 			<li @click="selectRoom('html5')">
+	// 			<li @click="selectRoom('html5')" :class="{'active':room_name == 'html5'}">
 	// 				<Icon class="pointer" type="social-html5-outline" size="50"></Icon>
 	// 			</li>
-	// 			<li @click="selectRoom('angular')">
+	// 			<li @click="selectRoom('angular')" :class="{'active':room_name == 'angular'}">
 	// 				<Icon class="pointer" type="social-angular-outline" size="50"></Icon>
 	// 			</li>
-	// 			<li @click="selectRoom('nodejs')">
+	// 			<li @click="selectRoom('nodejs')" :class="{'active':room_name == 'nodejs'}">
 	// 				<Icon class="pointer" type="social-nodejs" size="50"></Icon>
 	// 			</li>
 	// 		</ul>
@@ -14192,7 +14192,10 @@
 	// 		margin: 0 10px;
 	// 	}
 	// 	.roomList li:hover{
-	// 		background-color: #dedede;
+	// 		background-color: #f5f5f5;
+	// 	}
+	// 	.active{
+	// 		background-color: #dedede !important;
 	// 	}
 	// 	.pointer{
 	// 		cursor: pointer;
@@ -14200,17 +14203,25 @@
 	// </style>
 	// <script>
 	exports.default = {
-		created: function created() {},
+		created: function created() {
+			console.log(this.$route.params);
+			this.room_name = this.$route.params.roomId;
+		},
 		ready: function ready() {},
 		data: function data() {
 			return {
-				msg: 'Welcome to Exciting-hub'
+				msg: 'Welcome to Exciting-hub',
+				room_name: ''
 			};
 		},
 
 		methods: {
 			selectRoom: function selectRoom(key) {
 				var this_ = this;
+				if (this.room_name == key) {
+					return;
+				}
+				this.room_name = key;
 				var path_room = '/chat/' + key;
 				var path_root = '/chat';
 				this.$router.push({ path: path_root });
@@ -14229,7 +14240,7 @@
 /* 30 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"chat\" _v-757087b0=\"\">\n\t<ul class=\"roomList\" flex=\"main:center\" _v-757087b0=\"\">\n\t\t<li @click=\"selectRoom('html5')\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-html5-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('angular')\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-angular-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('nodejs')\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-nodejs\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t</ul>\n\t<router-view _v-757087b0=\"\"></router-view>\n</div>\n\n";
+	module.exports = "\n<div class=\"chat\" _v-757087b0=\"\">\n\t<ul class=\"roomList\" flex=\"main:center\" _v-757087b0=\"\">\n\t\t<li @click=\"selectRoom('html5')\" :class=\"{'active':room_name == 'html5'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-html5-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('angular')\" :class=\"{'active':room_name == 'angular'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-angular-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('nodejs')\" :class=\"{'active':room_name == 'nodejs'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-nodejs\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t</ul>\n\t<router-view _v-757087b0=\"\"></router-view>\n</div>\n\n";
 
 /***/ },
 /* 31 */
