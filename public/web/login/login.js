@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
 		}
 		util.ajaxQuery(param,function(res){
 			if(res.data.result===true){
-				console.log('登录成功')
+				console.log('登录成功');
 				window.location.href='/';
 			}else{
 				$(this_).parents('.data_box').find('.tips').html('账号密码错误').addClass('warn');

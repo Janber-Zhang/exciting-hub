@@ -14751,18 +14751,21 @@
 	  created: function created() {
 	    var _this = this;
 
-	    var this_ = this,
-	        param = {
-	      serviceUrl: '/user/getUserInfo.excited'
+	    var this_ = this;
+	    var param = {
+	      httpType: 'get',
+	      serviceUrl: 'users/user/getuserinfo',
+	      apiModule: 'newAPI'
 	    };
-	    var queryUserInfo = util.queryData('get', param, function (res) {
+	    var queryUserInfo = util.ajaxQuery(param, function (res) {
 	      var default_info = {
 	        nickname: '测试',
 	        avatar: [],
 	        sex: 'unknown',
 	        introduction: '这个人很懒，什么也没写...'
 	      };
-	      _this.userInfo = $.extend({}, default_info, res.data);
+	      var userInfo = $.extend({}, default_info, res.data.user);
+	      _this.userInfo = $.extend({}, default_info, userInfo);
 	      _this.show = true;
 	    });
 	  },
@@ -14780,11 +14783,13 @@
 
 	      console.log(this.userInfo);
 	      var param = {
-	        serviceUrl: '/user/editUserInfo.excited',
+	        httpType: 'post',
+	        serviceUrl: 'users/user/update',
+	        apiModule: 'newAPI',
 	        user: (0, _stringify2.default)(this.userInfo)
 	      };
-	      var queryUserInfo = util.queryData('post', param, function (res) {
-	        if (res.msg = 'success') {
+	      var queryUserInfo = util.ajaxQuery(param, function (res) {
+	        if (res.data.result) {
 	          _this2.$Message.success('保存成功！');
 	          _this2.$store.dispatch('initUserInfo');
 	          _this2.$router.push({ path: '/' });
@@ -15151,7 +15156,7 @@
 					sex: 'unknown',
 					introduction: '这个人很懒，什么也没写...'
 				};
-				var userInfo = $.extend({}, default_info, res.data);
+				var userInfo = $.extend({}, default_info, res.data.user);
 				context.commit('initUserInfo', userInfo);
 				context.commit('initReadyState', true);
 			});

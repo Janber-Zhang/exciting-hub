@@ -5,14 +5,14 @@ const actions = {
 			serviceUrl    :    'users/user/getuserinfo',
 			apiModule     :    'newAPI'
 		}
-		var queryUserInfo = util.ajaxQuery(param, (res)=>{
+		let queryUserInfo = util.ajaxQuery(param, (res)=>{
 			let default_info = {
 				nickname: '测试',
 				avatar: [],
 				sex: 'unknown',
 				introduction: '这个人很懒，什么也没写...'
-			} 
-			var userInfo = $.extend({}, default_info, res.data);
+			}
+			let userInfo = $.extend({}, default_info, res.data.user);
 			context.commit('initUserInfo',userInfo);
 			context.commit('initReadyState',true);
 		});

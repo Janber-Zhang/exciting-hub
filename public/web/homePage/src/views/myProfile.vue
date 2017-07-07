@@ -27,18 +27,21 @@
   import VUE       from 'vue'
   export default {
     created(){
-      let this_ = this,
-      param = {
-        serviceUrl: '/user/getUserInfo.excited'
-      }
-      var queryUserInfo = util.queryData('get',param,(res)=>{
+      let this_ = this;
+      let param = {
+        httpType      :    'get',
+        serviceUrl    :    'users/user/getuserinfo',
+        apiModule     :    'newAPI'
+      };
+      var queryUserInfo = util.ajaxQuery(param, (res)=>{
         let default_info = {
           nickname: '测试',
           avatar: [],
           sex: 'unknown',
           introduction: '这个人很懒，什么也没写...'
-        } 
-        this.userInfo = $.extend({}, default_info, res.data);
+        }
+        let userInfo = $.extend({}, default_info, res.data.user);
+        this.userInfo = $.extend({}, default_info, userInfo);
         this.show = true;
       });
     },
@@ -55,11 +58,13 @@
       update_user: function(){
         console.log(this.userInfo)
         let param = {
-          serviceUrl: '/user/editUserInfo.excited',
-          user: JSON.stringify(this.userInfo)
+          httpType      :    'post',
+          serviceUrl    :    'users/user/update',
+          apiModule     :    'newAPI',
+          user          :     JSON.stringify(this.userInfo)
         }
-        var queryUserInfo = util.queryData('post',param,(res)=>{
-          if (res.msg = 'success') {
+        var queryUserInfo = util.ajaxQuery(param, (res)=>{
+          if (res.data.result) {
             this.$Message.success('保存成功！');
             this.$store.dispatch('initUserInfo');
             this.$router.push({ path: '/' });
