@@ -55,8 +55,14 @@ router.post('/queryData', (req, res, next) => {
   if (httpType == 'get') {
     if (Object.keys(params).length){
       serviceUrl += '?';
+      var i = 0;
       for (var key in params) {
-        serviceUrl += key + '=' +params[key];
+        if (i) {
+          serviceUrl += '&' + key + '=' + params[key];
+        } else {
+          serviceUrl += key + '=' + params[key];
+        }
+        i++
       }
     }
     axios.get(serviceUrl)
