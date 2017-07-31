@@ -21,7 +21,7 @@
     </Form-item>
     <Form-item>
       <Button type="primary" @click="update_user()">提交</Button>
-      <Button type="ghost" style="margin-left: 8px">取消</Button>
+      <Button type="ghost" @click="skip_2_home()" style="margin-left: 8px">取消</Button>
     </Form-item>
   </Form>
 </template>
@@ -73,6 +73,9 @@
             this.$router.push({ path: '/' });
           }
         });
+      },
+      skip_2_home: function(){
+        this.$router.push({ path: '/' });
       }
     },
     components:{

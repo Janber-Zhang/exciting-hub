@@ -14770,7 +14770,7 @@
 	//     </Form-item>
 	//     <Form-item>
 	//       <Button type="primary" @click="update_user()">提交</Button>
-	//       <Button type="ghost" style="margin-left: 8px">取消</Button>
+	//       <Button type="ghost" @click="skip_2_home()" style="margin-left: 8px">取消</Button>
 	//     </Form-item>
 	//   </Form>
 	// </template>
@@ -14823,6 +14823,9 @@
 	          _this2.$router.push({ path: '/' });
 	        }
 	      });
+	    },
+	    skip_2_home: function skip_2_home() {
+	      this.$router.push({ path: '/' });
 	    }
 	  },
 	  components: {
@@ -15067,7 +15070,7 @@
 /* 46 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<Form :model=\"userInfo\" :label-width=\"80\" style=\"width: 600px\" v-if=\"show\">\n  <Form-item label=\"代号\">\n    <Input v-model=\"userInfo.nickname\" placeholder=\"请输入代号\"></Input>\n  </Form-item>\n  <Form-item label=\"头像\">\n    <upload-pic :upload-list=\"userInfo.avatar\"></upload-pic>\n  </Form-item>\n  <Form-item label=\"性别\">\n    <Radio-group v-model=\"userInfo.sex\">\n      <Radio label=\"male\">男</Radio>\n      <Radio label=\"female\">女</Radio>\n      <Radio label=\"unknown\">未知</Radio>\n    </Radio-group>\n  </Form-item>\n  <Form-item label=\"出生年月\">\n    <Date-picker v-model=\"userInfo.birthday\" format=\"yyyy-MM-dd\" type=\"date\" placeholder=\"选择出生年月\"></Date-picker>\n  </Form-item>\n  <Form-item label=\"自我介绍\">\n    <Input v-model=\"userInfo.introduction\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n  </Form-item>\n  <Form-item>\n    <Button type=\"primary\" @click=\"update_user()\">提交</Button>\n    <Button type=\"ghost\" style=\"margin-left: 8px\">取消</Button>\n  </Form-item>\n</Form>\n";
+	module.exports = "\n<Form :model=\"userInfo\" :label-width=\"80\" style=\"width: 600px\" v-if=\"show\">\n  <Form-item label=\"代号\">\n    <Input v-model=\"userInfo.nickname\" placeholder=\"请输入代号\"></Input>\n  </Form-item>\n  <Form-item label=\"头像\">\n    <upload-pic :upload-list=\"userInfo.avatar\"></upload-pic>\n  </Form-item>\n  <Form-item label=\"性别\">\n    <Radio-group v-model=\"userInfo.sex\">\n      <Radio label=\"male\">男</Radio>\n      <Radio label=\"female\">女</Radio>\n      <Radio label=\"unknown\">未知</Radio>\n    </Radio-group>\n  </Form-item>\n  <Form-item label=\"出生年月\">\n    <Date-picker v-model=\"userInfo.birthday\" format=\"yyyy-MM-dd\" type=\"date\" placeholder=\"选择出生年月\"></Date-picker>\n  </Form-item>\n  <Form-item label=\"自我介绍\">\n    <Input v-model=\"userInfo.introduction\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n  </Form-item>\n  <Form-item>\n    <Button type=\"primary\" @click=\"update_user()\">提交</Button>\n    <Button type=\"ghost\" @click=\"skip_2_home()\" style=\"margin-left: 8px\">取消</Button>\n  </Form-item>\n</Form>\n";
 
 /***/ },
 /* 47 */
@@ -15138,7 +15141,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n.plus[_v-0162c56a]{\n\twidth: 100%;\n\tmargin-top: 200px;\n}\n.app_list[_v-0162c56a]{\n\twidth: 100%;\n}\n.app_list .app_item[_v-0162c56a]{\n\twidth: 120px;\n\theight: 120px;\n\tborder: 1px solid #dedede;\n\tcursor: pointer;\n}\n.app_list .app_item span[_v-0162c56a]{\n\tfont-size: 14px;\n\tfont-weight: bold;\n}\n.app_list .app_item[_v-0162c56a]:hover{\n\tanimation: swing 1s;\n\t-moz-animation: swing 1s;\n\t-webkit-animation: swing 1s;\n\t-o-animation: swing 1s;\n\t-webkit-animation-fill-mode: both;\n\t        animation-fill-mode: both;\n}\n", ""]);
 
 	// exports
 
@@ -15154,11 +15157,38 @@
 	});
 	// <template>
 	// 	<div class="plus">
-	// 		<h1>{{msg}}</h1>
+	// 		<div class="app_list" flex="main:justify">
+	// 			<div v-for="app in appList" class="app_item" @click="show_app(app)" flex="main:center cross:center">
+	// 				<span>{{app.name}}</span>
+	// 			</div>
+	// 		</div>
 	// 	</div>
 	// </template>
 	// <style scoped>
-	//
+	// 	.plus{
+	// 		width: 100%;
+	// 		margin-top: 200px;
+	// 	}
+	// 	.app_list{
+	// 		width: 100%;
+	// 	}
+	// 	.app_list .app_item{
+	// 		width: 120px;
+	// 		height: 120px;
+	// 		border: 1px solid #dedede;
+	// 		cursor: pointer;
+	// 	}
+	// 	.app_list .app_item span{
+	// 		font-size: 14px;
+	// 		font-weight: bold;
+	// 	}
+	// 	.app_list .app_item:hover{
+	// 		animation: swing 1s;
+	// 		-moz-animation: swing 1s;
+	// 		-webkit-animation: swing 1s;
+	// 		-o-animation: swing 1s;
+	// 		animation-fill-mode: both;
+	// 	}
 	// </style>
 	// <script>
 	exports.default = {
@@ -15166,11 +15196,27 @@
 		ready: function ready() {},
 		data: function data() {
 			return {
-				msg: 'Plus'
+				appList: [{
+					name: '生命格子',
+					value: 'lifeGrid'
+				}, {
+					name: '扫雷',
+					value: 'lifeGrid'
+				}, {
+					name: '代码仓库',
+					value: 'lifeGrid'
+				}, {
+					name: '人生',
+					value: 'lifeGrid'
+				}]
 			};
 		},
 
-		methods: {},
+		methods: {
+			show_app: function show_app(app) {
+				console.log(app);
+			}
+		},
 		components: {},
 		computed: {}
 		// </script>
@@ -15181,7 +15227,7 @@
 /* 51 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"plus\" _v-0162c56a=\"\">\n\t<h1 _v-0162c56a=\"\">{{msg}}</h1>\n</div>\n";
+	module.exports = "\n<div class=\"plus\" _v-0162c56a=\"\">\n\t<div class=\"app_list\" flex=\"main:justify\" _v-0162c56a=\"\">\n\t\t<div v-for=\"app in appList\" class=\"app_item\" @click=\"show_app(app)\" flex=\"main:center cross:center\" _v-0162c56a=\"\">\n\t\t\t<span _v-0162c56a=\"\">{{app.name}}</span>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 52 */
