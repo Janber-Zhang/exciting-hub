@@ -13,6 +13,9 @@
         <Radio label="unknown">未知</Radio>
       </Radio-group>
     </Form-item>
+    <Form-item label="出生年月">
+      <Date-picker v-model="userInfo.birthday" format="yyyy-MM-dd" type="date" placeholder="选择出生年月"></Date-picker>
+    </Form-item>
     <Form-item label="自我介绍">
       <Input v-model="userInfo.introduction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
     </Form-item>
@@ -35,10 +38,11 @@
       };
       var queryUserInfo = util.ajaxQuery(param, (res)=>{
         let default_info = {
-          nickname: '测试',
-          avatar: [],
-          sex: 'unknown',
-          introduction: '这个人很懒，什么也没写...'
+          nickname    : '测试',
+          avatar      : [],
+          sex         : 'unknown',
+          introduction: '这个人很懒，什么也没写...',
+          birthday    : new Date()
         }
         let userInfo = $.extend({}, default_info, res.data.user);
         this.userInfo = $.extend({}, default_info, userInfo);
@@ -56,7 +60,6 @@
     },
     methods:{
       update_user: function(){
-        console.log(this.userInfo)
         let param = {
           httpType      :    'post',
           serviceUrl    :    'users/user/update',

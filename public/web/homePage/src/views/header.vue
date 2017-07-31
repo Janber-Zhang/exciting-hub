@@ -4,6 +4,7 @@
       <ul class="nav" flex="main:center cross:center">
         <li @click="switchTab('Index')">首页</li>
         <li @click="switchTab('Chat')">聊天</li>
+        <li @click="switchTab('Plus')">拓展</li>
       </ul>
       <Dropdown @on-click="userHandle($event)">
         <a href="javascript:void(0)">
@@ -54,6 +55,12 @@
           case 'Chat':
             this.$router.push({ path: '/chat' });
             break;
+          case 'Plus':
+            this.$router.push({ path: '/plus' });
+            break;
+          default:
+            this.$router.push({ path: '/' });
+            break
         }
       }
     },

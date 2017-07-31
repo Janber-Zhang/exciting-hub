@@ -7,10 +7,11 @@ const actions = {
 		}
 		let queryUserInfo = util.ajaxQuery(param, (res)=>{
 			let default_info = {
-				nickname: '测试',
-				avatar: [],
-				sex: 'unknown',
-				introduction: '这个人很懒，什么也没写...'
+				nickname     : '测试',
+				avatar       : [],
+				sex          : 'unknown',
+				introduction : '这个人很懒，什么也没写...',
+				bitrhday     : ''
 			}
 			let userInfo = $.extend({}, default_info, res.data.user);
 			context.commit('initUserInfo',userInfo);
