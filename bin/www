@@ -45,7 +45,7 @@ socketIO.on('connection', function (socket) {
     // 加入房间
     socket.join(roomID);
     // 通知房间内人员
-    socketIO.to(roomID).emit('sys',user.user.nickname + '加入了房间', roomInfo[roomID], user);  
+    socketIO.to(roomID).emit('sys',user.user.nickname + '加入了房间', roomInfo[roomID], user, 'in');  
     // console.log(user.user.nickname + '已上线');
   });
 
@@ -61,7 +61,7 @@ socketIO.on('connection', function (socket) {
     }
 
     socket.leave(roomID);    // 退出房间
-    socketIO.to(roomID).emit('sys', user.user.nickname + '退出了房间', roomInfo[roomID], user);
+    socketIO.to(roomID).emit('sys', user.user.nickname + '退出了房间', roomInfo[roomID], user, 'out');
     // console.log(user.user.nickname + '已下线');
   });
 

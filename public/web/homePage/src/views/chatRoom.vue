@@ -3,7 +3,7 @@
 		<div class="userList">
 			<ul>
 				<li>用户列表</li>
-				<li v-for="user in users" flex="main:left corss:cneter">
+				<li v-for="user in users" class="user" @click="showUserInfo(user.user)" flex="main:left corss:cneter">
 					<img :src="user.user.avatar" alt="" width="20" height="20">
 					<span>{{user.user.nickname}}</span>
 				</li>
@@ -51,9 +51,18 @@
 				img{
 					margin-right: 10px;
 				}
+				span{
+					line-height: 20px;
+				}
 			}
 			ul li:first-child{
 				text-align: center;
+			}
+			.user{
+				cursor: pointer;
+				&:hover{
+					background-color: #f5f5f5;
+				}
 			}
 		}
 		.content{
@@ -182,9 +191,12 @@
 				//封装用户-房间信息
 				let userObj = {
 					user: {
-						nickname: this.userInfo.nickname,
-						avatar: defaultAvatar,
-						_id: this.userInfo._id
+						nickname     : this.userInfo.nickname,
+						avatar       : defaultAvatar,
+						_id          : this.userInfo._id,
+						introduction : this.userInfo.introduction,
+						birthday     : this.userInfo.birthday,
+						sex          : this.userInfo.sex
 					},
 					roomInfo: this.$route.params.roomId
 				}
@@ -199,11 +211,11 @@
 			  	this_.dealMsgInfo(user, msg);
 			  });
 		      // 监听系统消息
-		      this.SOCKET.on('sys', function (sysMsg, users, user) {
-		      	this_.dealSysInfo(sysMsg, users, user);
+		      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
+		      	this_.dealSysInfo(sysMsg, users, user, type);
 		      });
 	    },
-	    dealSysInfo: function(sysMsg, users, user) {
+	    dealSysInfo: function(sysMsg, users, user, type) {
 	    	let this_ = this;
 	    	let roomUsers = [];
 	    	let roomUsersObj = {}
@@ -213,12 +225,20 @@
 	    			roomUsersObj[item.user._id] = true;
 	    		}
 	    	});
-	    	this.users = roomUsers;
-	    	roomUsers.forEach(function(item, index){
-	    		if (item.user._id === user.user._id) {
-	    			this_.$Message.success(sysMsg);
+	    	// 判断当前推出人员是否是本房间退出
+	    	let isLocal = false;
+	    	this.users.forEach(function(item){
+	    		if (item.user._id == user.user._id) {
+	    			isLocal = true;
 	    		}
-	    	});
+	    	})
+	    	if (type == 'in' && roomUsersObj[user.user._id]) {
+	    		this_.$Message.success(sysMsg);
+	    	}
+	    	if (type == 'out' && !roomUsersObj[user.user._id] && isLocal) {
+	    		this_.$Message.success(sysMsg);
+	    	}
+	    	this.users = roomUsers;
 	    	roomUsers = null;
 	    },
 	    dealMsgInfo: function(user, msg) {
@@ -239,6 +259,9 @@
 	    	let msg = 1;
 	    	this.SOCKET.send(this.inputMsg);
 	    	this.inputMsg = '';
+	    },
+	    showUserInfo: function(user){
+	    	console.log(JSON.parse(JSON.stringify(user)));
 	    }
 	  },
 	  components:{

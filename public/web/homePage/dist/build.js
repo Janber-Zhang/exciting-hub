@@ -14340,7 +14340,7 @@
 
 
 	// module
-	exports.push([module.id, ".chatRoom[_v-4ad763a3] {\n  width: 700px;\n  margin-top: 30px;\n  border: 1px solid #dedede;\n  height: 500px;\n}\n.chatRoom .userList[_v-4ad763a3] {\n  width: 200px;\n  border-right: 1px solid #dedede;\n}\n.chatRoom .userList ul li[_v-4ad763a3] {\n  padding: 5px 10px;\n}\n.chatRoom .userList ul li img[_v-4ad763a3] {\n  margin-right: 10px;\n}\n.chatRoom .userList ul li[_v-4ad763a3]:first-child {\n  text-align: center;\n}\n.chatRoom .content[_v-4ad763a3] {\n  width: 599px;\n}\n.chatRoom .content .msgBox[_v-4ad763a3] {\n  height: 350px;\n  overflow-y: auto;\n  border-bottom: 1px solid #dedede;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3] {\n  position: relative;\n  padding: 10px 50px 10px 50px;\n}\n.chatRoom .content .msgBox li .right_[_v-4ad763a3] {\n  float: right;\n}\n.chatRoom .content .msgBox li .left[_v-4ad763a3] {\n  position: absolute;\n  left: 10px;\n}\n.chatRoom .content .msgBox li .right[_v-4ad763a3] {\n  position: absolute;\n  right: 10px;\n}\n.chatRoom .content .msgBox li .name_right[_v-4ad763a3] {\n  text-align: right;\n}\n.chatRoom .content .msgBox li .msg[_v-4ad763a3] {\n  display: inline-block;\n  font-size: 14px;\n  color: #333;\n  padding: 5px;\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  max-width: 410px;\n  position: relative;\n  background-color: #f5f5f5;\n  padding: 5px 10px;\n}\n.chatRoom .content .msgBox li .msg .arr[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  left: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li .msg .arr_right[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  right: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3]:after {\n  content: \".\";\n  visibility: hidden;\n  display: block;\n  height: 0;\n  overflow: hidden;\n  clear: both;\n}\n.chatRoom .content .inputBox[_v-4ad763a3] {\n  height: 150px;\n  overflow-y: auto;\n  position: relative;\n}\n.chatRoom .content .inputBox #inputMsg[_v-4ad763a3] {\n  width: 100%;\n  height: 120px;\n  text-indent: 10px;\n  color: #333;\n  padding: 10px;\n  font-size: 14px;\n  resize: none;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3] {\n  width: 80px;\n  height: 30px;\n  position: absolute;\n  display: inline-block;\n  right: 4px;\n  bottom: 4px;\n  color: #FFF;\n  font-size: 14px;\n  background-color: #2d8cf0;\n  border-radius: 4px;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3]:hover {\n  background-color: #57a3f3;\n}\n", ""]);
+	exports.push([module.id, ".chatRoom[_v-4ad763a3] {\n  width: 700px;\n  margin-top: 30px;\n  border: 1px solid #dedede;\n  height: 500px;\n}\n.chatRoom .userList[_v-4ad763a3] {\n  width: 200px;\n  border-right: 1px solid #dedede;\n}\n.chatRoom .userList ul li[_v-4ad763a3] {\n  padding: 5px 10px;\n}\n.chatRoom .userList ul li img[_v-4ad763a3] {\n  margin-right: 10px;\n}\n.chatRoom .userList ul li span[_v-4ad763a3] {\n  line-height: 20px;\n}\n.chatRoom .userList ul li[_v-4ad763a3]:first-child {\n  text-align: center;\n}\n.chatRoom .userList .user[_v-4ad763a3] {\n  cursor: pointer;\n}\n.chatRoom .userList .user[_v-4ad763a3]:hover {\n  background-color: #f5f5f5;\n}\n.chatRoom .content[_v-4ad763a3] {\n  width: 599px;\n}\n.chatRoom .content .msgBox[_v-4ad763a3] {\n  height: 350px;\n  overflow-y: auto;\n  border-bottom: 1px solid #dedede;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3] {\n  position: relative;\n  padding: 10px 50px 10px 50px;\n}\n.chatRoom .content .msgBox li .right_[_v-4ad763a3] {\n  float: right;\n}\n.chatRoom .content .msgBox li .left[_v-4ad763a3] {\n  position: absolute;\n  left: 10px;\n}\n.chatRoom .content .msgBox li .right[_v-4ad763a3] {\n  position: absolute;\n  right: 10px;\n}\n.chatRoom .content .msgBox li .name_right[_v-4ad763a3] {\n  text-align: right;\n}\n.chatRoom .content .msgBox li .msg[_v-4ad763a3] {\n  display: inline-block;\n  font-size: 14px;\n  color: #333;\n  padding: 5px;\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  max-width: 410px;\n  position: relative;\n  background-color: #f5f5f5;\n  padding: 5px 10px;\n}\n.chatRoom .content .msgBox li .msg .arr[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  left: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li .msg .arr_right[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  right: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3]:after {\n  content: \".\";\n  visibility: hidden;\n  display: block;\n  height: 0;\n  overflow: hidden;\n  clear: both;\n}\n.chatRoom .content .inputBox[_v-4ad763a3] {\n  height: 150px;\n  overflow-y: auto;\n  position: relative;\n}\n.chatRoom .content .inputBox #inputMsg[_v-4ad763a3] {\n  width: 100%;\n  height: 120px;\n  text-indent: 10px;\n  color: #333;\n  padding: 10px;\n  font-size: 14px;\n  resize: none;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3] {\n  width: 80px;\n  height: 30px;\n  position: absolute;\n  display: inline-block;\n  right: 4px;\n  bottom: 4px;\n  color: #FFF;\n  font-size: 14px;\n  background-color: #2d8cf0;\n  border-radius: 4px;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3]:hover {\n  background-color: #57a3f3;\n}\n", ""]);
 
 	// exports
 
@@ -14366,7 +14366,7 @@
 	// 		<div class="userList">
 	// 			<ul>
 	// 				<li>用户列表</li>
-	// 				<li v-for="user in users" flex="main:left corss:cneter">
+	// 				<li v-for="user in users" class="user" @click="showUserInfo(user.user)" flex="main:left corss:cneter">
 	// 					<img :src="user.user.avatar" alt="" width="20" height="20">
 	// 					<span>{{user.user.nickname}}</span>
 	// 				</li>
@@ -14414,9 +14414,18 @@
 	// 				img{
 	// 					margin-right: 10px;
 	// 				}
+	// 				span{
+	// 					line-height: 20px;
+	// 				}
 	// 			}
 	// 			ul li:first-child{
 	// 				text-align: center;
+	// 			}
+	// 			.user{
+	// 				cursor: pointer;
+	// 				&:hover{
+	// 					background-color: #f5f5f5;
+	// 				}
 	// 			}
 	// 		}
 	// 		.content{
@@ -14546,7 +14555,10 @@
 	        user: {
 	          nickname: this.userInfo.nickname,
 	          avatar: defaultAvatar,
-	          _id: this.userInfo._id
+	          _id: this.userInfo._id,
+	          introduction: this.userInfo.introduction,
+	          birthday: this.userInfo.birthday,
+	          sex: this.userInfo.sex
 	        },
 	        roomInfo: this.$route.params.roomId
 	        // ---------创建连接-----------
@@ -14560,11 +14572,11 @@
 	        this_.dealMsgInfo(user, msg);
 	      });
 	      // 监听系统消息
-	      this.SOCKET.on('sys', function (sysMsg, users, user) {
-	        this_.dealSysInfo(sysMsg, users, user);
+	      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
+	        this_.dealSysInfo(sysMsg, users, user, type);
 	      });
 	    },
-	    dealSysInfo: function dealSysInfo(sysMsg, users, user) {
+	    dealSysInfo: function dealSysInfo(sysMsg, users, user, type) {
 	      var this_ = this;
 	      var roomUsers = [];
 	      var roomUsersObj = {};
@@ -14574,12 +14586,20 @@
 	          roomUsersObj[item.user._id] = true;
 	        }
 	      });
-	      this.users = roomUsers;
-	      roomUsers.forEach(function (item, index) {
-	        if (item.user._id === user.user._id) {
-	          this_.$Message.success(sysMsg);
+	      // 判断当前推出人员是否是本房间退出
+	      var isLocal = false;
+	      this.users.forEach(function (item) {
+	        if (item.user._id == user.user._id) {
+	          isLocal = true;
 	        }
 	      });
+	      if (type == 'in' && roomUsersObj[user.user._id]) {
+	        this_.$Message.success(sysMsg);
+	      }
+	      if (type == 'out' && !roomUsersObj[user.user._id] && isLocal) {
+	        this_.$Message.success(sysMsg);
+	      }
+	      this.users = roomUsers;
 	      roomUsers = null;
 	    },
 	    dealMsgInfo: function dealMsgInfo(user, msg) {
@@ -14600,6 +14620,9 @@
 	      var msg = 1;
 	      this.SOCKET.send(this.inputMsg);
 	      this.inputMsg = '';
+	    },
+	    showUserInfo: function showUserInfo(user) {
+	      console.log(JSON.parse((0, _stringify2.default)(user)));
 	    }
 	  },
 	  components: {},
@@ -14618,7 +14641,7 @@
 /* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"chatRoom\" flex=\"main:justify\" _v-4ad763a3=\"\">\n\t<div class=\"userList\" _v-4ad763a3=\"\">\n\t\t<ul _v-4ad763a3=\"\">\n\t\t\t<li _v-4ad763a3=\"\">用户列表</li>\n\t\t\t<li v-for=\"user in users\" flex=\"main:left corss:cneter\" _v-4ad763a3=\"\">\n\t\t\t\t<img :src=\"user.user.avatar\" alt=\"\" width=\"20\" height=\"20\" _v-4ad763a3=\"\">\n\t\t\t\t<span _v-4ad763a3=\"\">{{user.user.nickname}}</span>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"content\" flex=\"dir:top main:justify\" _v-4ad763a3=\"\">\n\t\t<ul id=\"msgBox\" class=\"msgBox\" _v-4ad763a3=\"\">\n\t\t\t<li v-for=\"msg in msgArr\" _v-4ad763a3=\"\">\n\t\t\t\t<div class=\"right_\" v-if=\"msg.isMine\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" class=\"right\" alt=\"\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p class=\"name_right\" _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr_right\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"left_\" v-else=\"\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" alt=\"\" class=\"left\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"inputBox\" _v-4ad763a3=\"\">\n\t\t\t<textarea name=\"msg\" v-model=\"inputMsg\" id=\"inputMsg\" @keyup.enter=\"send()\" cols=\"30\" rows=\"10\" _v-4ad763a3=\"\"></textarea>\n\t\t\t<button @click=\"send()\" _v-4ad763a3=\"\">发送</button>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"chatRoom\" flex=\"main:justify\" _v-4ad763a3=\"\">\n\t<div class=\"userList\" _v-4ad763a3=\"\">\n\t\t<ul _v-4ad763a3=\"\">\n\t\t\t<li _v-4ad763a3=\"\">用户列表</li>\n\t\t\t<li v-for=\"user in users\" class=\"user\" @click=\"showUserInfo(user.user)\" flex=\"main:left corss:cneter\" _v-4ad763a3=\"\">\n\t\t\t\t<img :src=\"user.user.avatar\" alt=\"\" width=\"20\" height=\"20\" _v-4ad763a3=\"\">\n\t\t\t\t<span _v-4ad763a3=\"\">{{user.user.nickname}}</span>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"content\" flex=\"dir:top main:justify\" _v-4ad763a3=\"\">\n\t\t<ul id=\"msgBox\" class=\"msgBox\" _v-4ad763a3=\"\">\n\t\t\t<li v-for=\"msg in msgArr\" _v-4ad763a3=\"\">\n\t\t\t\t<div class=\"right_\" v-if=\"msg.isMine\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" class=\"right\" alt=\"\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p class=\"name_right\" _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr_right\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"left_\" v-else=\"\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" alt=\"\" class=\"left\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"inputBox\" _v-4ad763a3=\"\">\n\t\t\t<textarea name=\"msg\" v-model=\"inputMsg\" id=\"inputMsg\" @keyup.enter=\"send()\" cols=\"30\" rows=\"10\" _v-4ad763a3=\"\"></textarea>\n\t\t\t<button @click=\"send()\" _v-4ad763a3=\"\">发送</button>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 36 */
