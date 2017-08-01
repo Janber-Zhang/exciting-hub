@@ -198,17 +198,19 @@
 			  this.SOCKET.on('msg', function (user, msg) {
 			  	this_.dealMsgInfo(user, msg);
 			  });
-	      // 监听系统消息
-	      this.SOCKET.on('sys', function (sysMsg, users, user) {
-	      	this_.dealSysInfo(sysMsg, users, user);
-	      });
+		      // 监听系统消息
+		      this.SOCKET.on('sys', function (sysMsg, users, user) {
+		      	this_.dealSysInfo(sysMsg, users, user);
+		      });
 	    },
 	    dealSysInfo: function(sysMsg, users, user) {
 	    	let this_ = this;
 	    	let roomUsers = [];
+	    	let roomUsersObj = {}
 	    	users.forEach(function(item,index){
-	    		if (item.roomInfo === this_.$route.params.roomId) {
+	    		if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
 	    			roomUsers.push(item);
+	    			roomUsersObj[item.user._id] = true;
 	    		}
 	    	});
 	    	this.users = roomUsers;

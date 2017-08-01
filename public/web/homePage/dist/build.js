@@ -14567,9 +14567,11 @@
 	    dealSysInfo: function dealSysInfo(sysMsg, users, user) {
 	      var this_ = this;
 	      var roomUsers = [];
+	      var roomUsersObj = {};
 	      users.forEach(function (item, index) {
-	        if (item.roomInfo === this_.$route.params.roomId) {
+	        if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
 	          roomUsers.push(item);
+	          roomUsersObj[item.user._id] = true;
 	        }
 	      });
 	      this.users = roomUsers;
