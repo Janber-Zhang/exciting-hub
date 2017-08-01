@@ -1,9 +1,9 @@
 const getters = {
 	getUserInfo: (state)=>state.userInfo,
 	getReadyState: (state)=>{
-		console.log(state.readyState)
 		return state.readyState
-	}
+	},
+	getSmartApp: (state)=>state.smart_app.name
 };
 
 export default getters

@@ -13,6 +13,9 @@ const state = {
 		roomId: 'default',
 		msgArr: []
 	},
+	smart_app:{
+		name: ''
+	},
 	readyState: false
 };
 

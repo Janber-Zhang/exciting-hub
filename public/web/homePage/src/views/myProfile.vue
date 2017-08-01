@@ -42,7 +42,7 @@
           avatar      : [],
           sex         : 'unknown',
           introduction: '这个人很懒，什么也没写...',
-          birthday    : new Date()
+          birthday    : ''
         }
         let userInfo = $.extend({}, default_info, res.data.user);
         this.userInfo = $.extend({}, default_info, userInfo);

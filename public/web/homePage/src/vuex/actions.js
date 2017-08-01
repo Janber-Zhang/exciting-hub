@@ -11,12 +11,18 @@ const actions = {
 				avatar       : [],
 				sex          : 'unknown',
 				introduction : '这个人很懒，什么也没写...',
-				bitrhday     : ''
+				birthday     : ''
 			}
 			let userInfo = $.extend({}, default_info, res.data.user);
 			context.commit('initUserInfo',userInfo);
 			context.commit('initReadyState',true);
 		});
+	},
+	initSmartApp (context,data) {
+		let smart_app = {
+			name: data
+		}
+		context.commit('initSmartApp',smart_app)
 	}
 }
 

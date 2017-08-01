@@ -40,7 +40,6 @@
 <script>
 	export default {
 		created(){
-			console.log(this.$route.params);
 			this.room_name = this.$route.params.roomId;
 		},
 		ready(){
