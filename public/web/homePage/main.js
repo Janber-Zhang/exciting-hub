@@ -18,7 +18,7 @@ Vue.use(iView);
 const router = new VueRouter({
 	hashbangL: false,
 	history: true,
-  routes: routes
+    routes: routes
 })
 
 
