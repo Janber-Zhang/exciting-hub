@@ -4,9 +4,9 @@
  import Vue          from 'vue';
  import VueRouter    from 'vue-router';
  import Vuex         from 'vuex';
- import routes    	from './router';
- import store    	from './src/vuex/index';
- import iView        from 'iview' 
+ import routes     	 from './router';
+ import store        from './src/vuex/index';
+ import iView        from 'iview';
  import './src/css/app.less';
  import 'iview/dist/styles/iview.css';    // iView CSS
 

@@ -102,7 +102,6 @@
 				let months = (now_time.getFullYear() - birthday.getFullYear()) * 12;
 				months -= birthday.getMonth() + 1;
 				months += now_time.getMonth();
-				console.log('1')
 				months = months || 0;
 				return months<0? 0: months
 			}

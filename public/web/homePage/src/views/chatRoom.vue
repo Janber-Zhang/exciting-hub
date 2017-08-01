@@ -13,7 +13,7 @@
 			<ul id="msgBox" class="msgBox">
 				<li v-for="msg in msgArr">
 					<div class="right_" v-if="msg.isMine">
-						<img :src="msg.user.user.avatar" class="right" alt="" width="30" height="30">
+						<img :src="msg.user.user.avatar" class="right" alt="" @click="showUserInfo(msg.user.user)" width="30" height="30">
 						<p class="name_right">{{msg.user.user.nickname}}</p>
 						<p class="msg">
 							<i class="arr_right"></i>
@@ -21,7 +21,7 @@
 						</p>
 					</div>
 					<div class="left_" v-else>
-						<img :src="msg.user.user.avatar" alt="" class="left" width="30" height="30">
+						<img :src="msg.user.user.avatar" alt="" class="left" @click="showUserInfo(msg.user.user)" width="30" height="30">
 						<p>{{msg.user.user.nickname}}</p>
 						<p class="msg">
 							<i class="arr"></i>
@@ -35,6 +35,14 @@
 				<button @click="send()">发送</button>
 			</div>
 		</div>
+		<Modal
+			v-model="showTargetUser"
+			title="用户信息"
+			width="300">
+			<p>姓名：{{targetUser.nickname}}</p>
+			<p>性别：{{targetUser.sex | getSexStr}}</p>
+			<p>简介：{{targetUser.introduction}}</p>
+		</Modal>
 	</div>
 </template>
 <style lang='less' scoped>
@@ -80,10 +88,12 @@
 					.left{
 						position: absolute;
 						left: 10px;
+						cursor: pointer;
 					}
 					.right{
 						position: absolute;
 						right: 10px;
+						cursor: pointer;
 					}
 					.name_right{
 						text-align: right;
@@ -166,6 +176,7 @@
 	
 </style>
 <script>
+	import filters      from './../js/filters.js';
 	export default {
 		created(){
 
@@ -175,10 +186,12 @@
 		},
 		data(){
 			return {
-				SOCKET: null,    //保存socket对象
+				SOCKET: null,        //保存socket对象
 				users: [],			 //当前聊天室用户
 				msgArr: [],			 //消息列表
-				inputMsg: ''		 //待发送消息
+				inputMsg: '',		 //待发送消息
+				targetUser: {},    
+				showTargetUser: false
 			}
 		},
 		methods:{
@@ -256,16 +269,25 @@
 	    	}, 10);
 	    },
 	    send: function(){
-	    	let msg = 1;
+	    	if (this.inputMsg.length === 1) {
+	    		this.$Message.error('对方不想说话，并且向你抛出了一个异常');
+	    		this.inputMsg = '';
+	    		return
+	    	}
 	    	this.SOCKET.send(this.inputMsg);
 	    	this.inputMsg = '';
 	    },
 	    showUserInfo: function(user){
-	    	console.log(JSON.parse(JSON.stringify(user)));
+	    	const userInfo = JSON.parse(JSON.stringify(user));
+	    	this.targetUser = userInfo;
+	    	this.showTargetUser = true;
 	    }
 	  },
 	  components:{
 
+	  },
+	  filters: {
+	  	getSexStr: filters.getSexStr
 	  },
 	  computed:{
 	  	userInfo(){
