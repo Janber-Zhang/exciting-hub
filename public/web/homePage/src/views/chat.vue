@@ -1,16 +1,17 @@
 <template>
 	<div class="chat">
-		<ul class="roomList" flex="main:center">
-			<li @click="selectRoom('html5')" :class="{'active':room_name == 'html5'}">
+		<ul class="roomList" v-bind:class="{roomList_middle: !room_name}" flex="main:center">
+			<li @click="selectRoom('html5')" class="animated bounceIn" :class="{'active':room_name == 'html5'}">
 				<Icon class="pointer" type="social-html5-outline" size="50"></Icon>
 			</li>
-			<li @click="selectRoom('angular')" :class="{'active':room_name == 'angular'}">
+			<li @click="selectRoom('angular')" class="animated bounceIn" :class="{'active':room_name == 'angular'}">
 				<Icon class="pointer" type="social-angular-outline" size="50"></Icon>
 			</li>
-			<li @click="selectRoom('nodejs')" :class="{'active':room_name == 'nodejs'}">
+			<li @click="selectRoom('nodejs')" class="animated bounceIn" :class="{'active':room_name == 'nodejs'}">
 				<Icon class="pointer" type="social-nodejs" size="50"></Icon>
 			</li>
 		</ul>
+		<h1>{{flash_arr}}</h1>
 		<router-view></router-view>
 	</div>
 	
@@ -36,11 +37,16 @@
 	.pointer{
 		cursor: pointer;
 	}
+	.roomList_middle{
+		position: absolute;
+		transform: scaleY(-50%);
+		top: 40%;
+	}
 </style>
 <script>
 	export default {
 		created(){
-			this.room_name = this.$route.params.roomId;
+			this.init_room_name()
 		},
 		ready(){
 
@@ -51,6 +57,10 @@
 				room_name: ''
 			}
 		},
+		watch: {
+    		// 如果路由有变化，会再次执行该方法
+    		'$route' : 'init_room_name'
+    	},
 		methods:{
 			selectRoom: function(key){
 				let this_ = this;
@@ -64,10 +74,13 @@
 				setTimeout(function(){
 					this_.$router.push({ path: path_room })
 				},0);
+			},
+			init_room_name: function(){
+				this.room_name = this.$route.params.roomId;
 			}
 		},
 		components:{
-
+			
 		},
 		computed:{
 			

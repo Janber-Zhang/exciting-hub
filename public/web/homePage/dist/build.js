@@ -54,15 +54,15 @@
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _vuex = __webpack_require__(57);
+	var _vuex = __webpack_require__(4);
 
 	var _vuex2 = _interopRequireDefault(_vuex);
 
-	var _router = __webpack_require__(4);
+	var _router = __webpack_require__(5);
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _index = __webpack_require__(56);
+	var _index = __webpack_require__(58);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -12465,2297 +12465,6 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _main = __webpack_require__(5);
-
-	var _main2 = _interopRequireDefault(_main);
-
-	var _chat = __webpack_require__(25);
-
-	var _chat2 = _interopRequireDefault(_chat);
-
-	var _Chatroom = __webpack_require__(30);
-
-	var _Chatroom2 = _interopRequireDefault(_Chatroom);
-
-	var _history = __webpack_require__(35);
-
-	var _history2 = _interopRequireDefault(_history);
-
-	var _myProfile = __webpack_require__(38);
-
-	var _myProfile2 = _interopRequireDefault(_myProfile);
-
-	var _plus = __webpack_require__(46);
-
-	var _plus2 = _interopRequireDefault(_plus);
-
-	var _lifeGrid = __webpack_require__(51);
-
-	var _lifeGrid2 = _interopRequireDefault(_lifeGrid);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var routes = [{
-		path: '/',
-		component: _main2.default,
-		children: [{
-			path: '/',
-			name: 'history',
-			component: _history2.default
-		}, {
-			path: 'myProfile',
-			name: 'myProfile',
-			component: _myProfile2.default
-		}, {
-			path: 'chat',
-			name: 'chat',
-			component: _chat2.default,
-			children: [{
-				path: ':roomId',
-				component: _Chatroom2.default
-			}]
-		}, {
-			path: 'plus',
-			name: 'plus',
-			component: _plus2.default,
-			children: [{
-				path: 'lifeGrid',
-				name: 'lifeGrid',
-				component: _lifeGrid2.default
-			}]
-		}]
-	}];
-	exports.default = routes;
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(6)
-	__vue_script__ = __webpack_require__(10)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/main.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(24)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-6f1a1609/main.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(7);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6f1a1609&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./main.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6f1a1609&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./main.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.main_body[_v-6f1a1609]{\n  position: absolute;\n  top: 40px;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  padding: 30px 0;\n  font-family: \"Helvetica Neue\",Helvetica,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",\"\\5FAE\\8F6F\\96C5\\9ED1\",Arial,sans-serif;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-
-		if (media) {
-			styleElement.setAttribute("media", media);
-		}
-
-		if (sourceMap) {
-			// https://developer.chrome.com/devtools/docs/javascript-debugging
-			// this makes source maps inside style tags work properly in Chrome
-			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _header = __webpack_require__(11);
-
-	var _header2 = _interopRequireDefault(_header);
-
-	var _footer = __webpack_require__(19);
-
-	var _footer2 = _interopRequireDefault(_footer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// <template>
-	//   <div v-if="isready">
-	//     <nav-header></nav-header>
-	//     <div class="main_body" flex="main:center">
-	//       <router-view></router-view>
-	//     </div>
-	//     <copy-footer></copy-footer>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {
-	    this.$store.dispatch('initUserInfo');
-	  },
-	  ready: function ready() {},
-	  data: function data() {
-	    return {};
-	  },
-
-	  method: {},
-	  components: {
-	    'nav-header': _header2.default,
-	    'copy-footer': _footer2.default
-	  },
-	  computed: {
-	    isready: function isready() {
-	      return this.$store.getters.getReadyState;
-	    }
-	  }
-	  // </script>
-	  //
-	  // <style scoped>
-	  //   .main_body{
-	  //     position: absolute;
-	  //     top: 40px;
-	  //     left: 0;
-	  //     right: 0;
-	  //     bottom: 0;
-	  //     padding: 30px 0;
-	  //     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-	  //   }
-	  // </style>
-
-	};
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(12)
-	__vue_script__ = __webpack_require__(14)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/header.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(18)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-abec8a46/header.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(13);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-abec8a46&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-abec8a46&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.header[_v-abec8a46]{\n  height: 40px;\n  background-color: #dedede;\n  box-shadow: 0px 0px 6px rgba(0,0,0,.5)\n}\n.wrap[_v-abec8a46]{\n  width: 900px;\n}\n.user_ico[_v-abec8a46]{\n  border-radius: 50%;\n}\n.nav li[_v-abec8a46]{\n  cursor: pointer;\n  width: 100px;\n  text-align: center;\n  font-size: 20px;\n  height: 40px;\n  line-height: 40px;\n}\n.nav li[_v-abec8a46]:hover{\n  background-color: #e5e5e5;\n  color: #777;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _stringify = __webpack_require__(15);
-
-	var _stringify2 = _interopRequireDefault(_stringify);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// <template>
-	//   <div class="header" flex="main:center">
-	//     <div class="wrap" flex="main:justify cross:center">
-	//       <ul class="nav" flex="main:center cross:center">
-	//         <li @click="switchTab('Index')">首页</li>
-	//         <li @click="switchTab('Chat')">聊天</li>
-	//         <li @click="switchTab('Plus')">拓展</li>
-	//       </ul>
-	//       <Dropdown @on-click="userHandle($event)">
-	//         <a href="javascript:void(0)">
-	//           <img :src="userInfo.avatar[0]?userInfo.avatar[0].url:'/images/logo.jpg'" width="35" class="user_ico" alt="">
-	//           {{userInfo.nickname}}
-	//           <Icon type="arrow-down-b"></Icon>
-	//         </a>
-	//         <Dropdown-menu slot="list">
-	//           <Dropdown-item name="myProfile">我的信息</Dropdown-item>
-	//           <Dropdown-item name="logout">注销登录</Dropdown-item>
-	//         </Dropdown-menu>
-	//       </Dropdown>
-	//     </div>
-	//   </div>
-	// </template>
-	//
-	// <script>
-	exports.default = {
-	  created: function created() {
-	    var users = JSON.parse((0, _stringify2.default)(this.userInfo));
-	  },
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      msg: 'Welcome to Exciting-hub'
-	    };
-	  },
-
-	  methods: {
-	    userHandle: function userHandle(key) {
-	      console.log('213123123');
-	      switch (key) {
-	        case 'myProfile':
-	          this.$router.push({ path: '/myProfile' });
-	          break;
-	        case 'logout':
-	          util.logout();
-	          break;
-	      }
-	    },
-	    switchTab: function switchTab(key) {
-	      switch (key) {
-	        case 'Index':
-	          this.$router.push({ path: '/' });
-	          break;
-	        case 'Chat':
-	          this.$router.push({ path: '/chat' });
-	          break;
-	        case 'Plus':
-	          this.$router.push({ path: '/plus' });
-	          break;
-	        default:
-	          this.$router.push({ path: '/' });
-	          break;
-	      }
-	    }
-	  },
-	  components: {},
-	  computed: {
-	    userInfo: function userInfo() {
-	      return this.$store.getters.getUserInfo;
-	    }
-	  }
-	  // </script>
-	  //
-	  // <style scoped>
-	  //   .header{
-	  //     height: 40px;
-	  //     background-color: #dedede;
-	  //     box-shadow: 0px 0px 6px rgba(0,0,0,.5)
-	  //   }
-	  //   .wrap{
-	  //     width: 900px;
-	  //   }
-	  //   .user_ico{
-	  //     border-radius: 50%;
-	  //   }
-	  //   .nav li{
-	  //     cursor: pointer;
-	  //     width: 100px;
-	  //     text-align: center;
-	  //     font-size: 20px;
-	  //     height: 40px;
-	  //     line-height: 40px;
-	  //   }
-	  //   .nav li:hover{
-	  //     background-color: #e5e5e5;
-	  //     color: #777;
-	  //   }
-	  // </style>
-
-	};
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(16), __esModule: true };
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var core  = __webpack_require__(17)
-	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
-	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
-	  return $JSON.stringify.apply($JSON, arguments);
-	};
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"header\" flex=\"main:center\" _v-abec8a46=\"\">\n  <div class=\"wrap\" flex=\"main:justify cross:center\" _v-abec8a46=\"\">\n    <ul class=\"nav\" flex=\"main:center cross:center\" _v-abec8a46=\"\">\n      <li @click=\"switchTab('Index')\" _v-abec8a46=\"\">首页</li>\n      <li @click=\"switchTab('Chat')\" _v-abec8a46=\"\">聊天</li>\n      <li @click=\"switchTab('Plus')\" _v-abec8a46=\"\">拓展</li>\n    </ul>\n    <dropdown @on-click=\"userHandle($event)\" _v-abec8a46=\"\">\n      <a href=\"javascript:void(0)\" _v-abec8a46=\"\">\n        <img :src=\"userInfo.avatar[0]?userInfo.avatar[0].url:'/images/logo.jpg'\" width=\"35\" class=\"user_ico\" alt=\"\" _v-abec8a46=\"\">\n        {{userInfo.nickname}}\n        <icon type=\"arrow-down-b\" _v-abec8a46=\"\"></icon>\n      </a>\n      <dropdown-menu slot=\"list\" _v-abec8a46=\"\">\n        <dropdown-item name=\"myProfile\" _v-abec8a46=\"\">我的信息</dropdown-item>\n        <dropdown-item name=\"logout\" _v-abec8a46=\"\">注销登录</dropdown-item>\n      </dropdown-menu>\n    </dropdown>\n  </div>\n</div>\n";
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(20)
-	__vue_script__ = __webpack_require__(22)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/footer.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(23)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-ee51522a/footer.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(21);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./footer.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./footer.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n.copyright{\n\ttext-align: center;\n\tposition: fixed;\n\tbottom: 0;\n\twidth: 100%;\n\tpadding: 20px 0 10px; \n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	// <template>
-	// 	<p class="copyright">Copyright © 2017 Janber-Zhang. All rights reserved.</p>
-	// </template>
-	// <style>
-	// 	.copyright{
-	// 		text-align: center;
-	// 		position: fixed;
-	// 		bottom: 0;
-	// 		width: 100%;
-	// 		padding: 20px 0 10px; 
-	// 	}
-	// </style>
-	// <script>
-	exports.default = {
-		created: function created() {},
-		ready: function ready() {},
-		data: function data() {
-			return {
-				msg: 'Welcome to Exciting-hub'
-			};
-		},
-
-		methods: {},
-		components: {},
-		computed: {}
-		// </script>
-
-	};
-
-/***/ },
-/* 23 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<p class=\"copyright\">Copyright © 2017 Janber-Zhang. All rights reserved.</p>\n";
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div v-if=\"isready\" _v-6f1a1609=\"\">\n  <nav-header _v-6f1a1609=\"\"></nav-header>\n  <div class=\"main_body\" flex=\"main:center\" _v-6f1a1609=\"\">\n    <router-view _v-6f1a1609=\"\"></router-view>\n  </div>\n  <copy-footer _v-6f1a1609=\"\"></copy-footer>\n</div>\n";
-
-/***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(26)
-	__vue_script__ = __webpack_require__(28)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/chat.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(29)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-757087b0/chat.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(27);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-757087b0&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./chat.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-757087b0&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./chat.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.chat[_v-757087b0]{\n\twidth: 700px;\n}\n.roomList[_v-757087b0]{\n\twidth: 700px;\n\tmargin: 0 auto;\n}\n.roomList li[_v-757087b0]{\n\tpadding: 0 20px;\n\tmargin: 0 10px;\n}\n.roomList li[_v-757087b0]:hover{\n\tbackground-color: #f5f5f5;\n}\n.active[_v-757087b0]{\n\tbackground-color: #dedede !important;\n}\n.pointer[_v-757087b0]{\n\tcursor: pointer;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	// <template>
-	// 	<div class="chat">
-	// 		<ul class="roomList" flex="main:center">
-	// 			<li @click="selectRoom('html5')" :class="{'active':room_name == 'html5'}">
-	// 				<Icon class="pointer" type="social-html5-outline" size="50"></Icon>
-	// 			</li>
-	// 			<li @click="selectRoom('angular')" :class="{'active':room_name == 'angular'}">
-	// 				<Icon class="pointer" type="social-angular-outline" size="50"></Icon>
-	// 			</li>
-	// 			<li @click="selectRoom('nodejs')" :class="{'active':room_name == 'nodejs'}">
-	// 				<Icon class="pointer" type="social-nodejs" size="50"></Icon>
-	// 			</li>
-	// 		</ul>
-	// 		<router-view></router-view>
-	// 	</div>
-	//
-	// </template>
-	// <style scoped>
-	// 	.chat{
-	// 		width: 700px;
-	// 	}
-	// 	.roomList{
-	// 		width: 700px;
-	// 		margin: 0 auto;
-	// 	}
-	// 	.roomList li{
-	// 		padding: 0 20px;
-	// 		margin: 0 10px;
-	// 	}
-	// 	.roomList li:hover{
-	// 		background-color: #f5f5f5;
-	// 	}
-	// 	.active{
-	// 		background-color: #dedede !important;
-	// 	}
-	// 	.pointer{
-	// 		cursor: pointer;
-	// 	}
-	// </style>
-	// <script>
-	exports.default = {
-		created: function created() {
-			this.room_name = this.$route.params.roomId;
-		},
-		ready: function ready() {},
-		data: function data() {
-			return {
-				msg: 'Welcome to Exciting-hub',
-				room_name: ''
-			};
-		},
-
-		methods: {
-			selectRoom: function selectRoom(key) {
-				var this_ = this;
-				if (this.room_name == key) {
-					return;
-				}
-				this.room_name = key;
-				var path_room = '/chat/' + key;
-				var path_root = '/chat';
-				this.$router.push({ path: path_root });
-				setTimeout(function () {
-					this_.$router.push({ path: path_room });
-				}, 0);
-			}
-		},
-		components: {},
-		computed: {}
-		// </script>
-
-	};
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"chat\" _v-757087b0=\"\">\n\t<ul class=\"roomList\" flex=\"main:center\" _v-757087b0=\"\">\n\t\t<li @click=\"selectRoom('html5')\" :class=\"{'active':room_name == 'html5'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-html5-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('angular')\" :class=\"{'active':room_name == 'angular'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-angular-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('nodejs')\" :class=\"{'active':room_name == 'nodejs'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-nodejs\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t</ul>\n\t<router-view _v-757087b0=\"\"></router-view>\n</div>\n\n";
-
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(31)
-	__vue_script__ = __webpack_require__(33)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/Chatroom.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(34)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-4ad763a3/Chatroom.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(32);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4ad763a3&scoped=true!../../../../../node_modules/less-loader/dist/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Chatroom.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4ad763a3&scoped=true!../../../../../node_modules/less-loader/dist/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Chatroom.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 32 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".chatRoom[_v-4ad763a3] {\n  width: 700px;\n  margin-top: 30px;\n  border: 1px solid #dedede;\n  height: 500px;\n}\n.chatRoom .userList[_v-4ad763a3] {\n  width: 200px;\n  border-right: 1px solid #dedede;\n}\n.chatRoom .userList ul li[_v-4ad763a3] {\n  padding: 5px 10px;\n}\n.chatRoom .userList ul li img[_v-4ad763a3] {\n  margin-right: 10px;\n}\n.chatRoom .userList ul li span[_v-4ad763a3] {\n  line-height: 20px;\n}\n.chatRoom .userList ul li[_v-4ad763a3]:first-child {\n  text-align: center;\n}\n.chatRoom .userList .user[_v-4ad763a3] {\n  cursor: pointer;\n}\n.chatRoom .userList .user[_v-4ad763a3]:hover {\n  background-color: #f5f5f5;\n}\n.chatRoom .content[_v-4ad763a3] {\n  width: 599px;\n}\n.chatRoom .content .msgBox[_v-4ad763a3] {\n  height: 350px;\n  overflow-y: auto;\n  border-bottom: 1px solid #dedede;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3] {\n  position: relative;\n  padding: 10px 50px 10px 50px;\n}\n.chatRoom .content .msgBox li .right_[_v-4ad763a3] {\n  float: right;\n}\n.chatRoom .content .msgBox li .left[_v-4ad763a3] {\n  position: absolute;\n  left: 10px;\n  cursor: pointer;\n}\n.chatRoom .content .msgBox li .right[_v-4ad763a3] {\n  position: absolute;\n  right: 10px;\n  cursor: pointer;\n}\n.chatRoom .content .msgBox li .name_right[_v-4ad763a3] {\n  text-align: right;\n}\n.chatRoom .content .msgBox li .msg[_v-4ad763a3] {\n  display: inline-block;\n  font-size: 14px;\n  color: #333;\n  padding: 5px;\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  max-width: 410px;\n  position: relative;\n  background-color: #f5f5f5;\n  padding: 5px 10px;\n}\n.chatRoom .content .msgBox li .msg .arr[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  left: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li .msg .arr_right[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  right: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3]:after {\n  content: \".\";\n  visibility: hidden;\n  display: block;\n  height: 0;\n  overflow: hidden;\n  clear: both;\n}\n.chatRoom .content .inputBox[_v-4ad763a3] {\n  height: 150px;\n  overflow-y: auto;\n  position: relative;\n}\n.chatRoom .content .inputBox #inputMsg[_v-4ad763a3] {\n  width: 100%;\n  height: 120px;\n  text-indent: 10px;\n  color: #333;\n  padding: 10px;\n  font-size: 14px;\n  resize: none;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3] {\n  width: 80px;\n  height: 30px;\n  position: absolute;\n  display: inline-block;\n  right: 4px;\n  bottom: 4px;\n  color: #FFF;\n  font-size: 14px;\n  background-color: #2d8cf0;\n  border-radius: 4px;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3]:hover {\n  background-color: #57a3f3;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _stringify = __webpack_require__(15);
-
-	var _stringify2 = _interopRequireDefault(_stringify);
-
-	var _filters = __webpack_require__(61);
-
-	var _filters2 = _interopRequireDefault(_filters);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = {
-	  created: function created() {},
-	  mounted: function mounted() {
-	    this.socketInit();
-	  },
-	  data: function data() {
-	    return {
-	      SOCKET: null, //保存socket对象
-	      users: [], //当前聊天室用户
-	      msgArr: [], //消息列表
-	      inputMsg: '', //待发送消息
-	      targetUser: {},
-	      showTargetUser: false
-	    };
-	  },
-
-	  methods: {
-	    socketInit: function socketInit() {
-	      var this_ = this;
-	      var defaultAvatar = '/images/logo.jpg';
-	      if (this.userInfo.avatar && this.userInfo.avatar[0]) {
-	        defaultAvatar = this.userInfo.avatar[0].url;
-	      }
-	      //封装用户-房间信息
-	      var userObj = {
-	        user: {
-	          nickname: this.userInfo.nickname,
-	          avatar: defaultAvatar,
-	          _id: this.userInfo._id,
-	          introduction: this.userInfo.introduction,
-	          birthday: this.userInfo.birthday,
-	          sex: this.userInfo.sex
-	        },
-	        roomInfo: this.$route.params.roomId
-	        // ---------创建连接-----------
-	      };this.SOCKET = io();
-	      // 加入房间
-	      this.SOCKET.on('connect', function () {
-	        this_.SOCKET.emit('join', (0, _stringify2.default)(userObj));
-	      });
-	      //监听消息
-	      this.SOCKET.on('msg', function (user, msg) {
-	        this_.dealMsgInfo(user, msg);
-	      });
-	      // 监听系统消息
-	      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
-	        this_.dealSysInfo(sysMsg, users, user, type);
-	      });
-	    },
-	    dealSysInfo: function dealSysInfo(sysMsg, users, user, type) {
-	      var this_ = this;
-	      var roomUsers = [];
-	      var roomUsersObj = {};
-	      users.forEach(function (item, index) {
-	        if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
-	          roomUsers.push(item);
-	          roomUsersObj[item.user._id] = true;
-	        }
-	      });
-	      // 判断当前推出人员是否是本房间退出
-	      var isLocal = false;
-	      this.users.forEach(function (item) {
-	        if (item.user._id == user.user._id) {
-	          isLocal = true;
-	        }
-	      });
-	      if (type == 'in' && roomUsersObj[user.user._id]) {
-	        this_.$Message.success(sysMsg);
-	      }
-	      if (type == 'out' && !roomUsersObj[user.user._id] && isLocal) {
-	        this_.$Message.success(sysMsg);
-	      }
-	      this.users = roomUsers;
-	      roomUsers = null;
-	    },
-	    dealMsgInfo: function dealMsgInfo(user, msg) {
-	      var isMine = false;
-	      if (user.user._id === this.userInfo._id) {
-	        isMine = true;
-	      }
-	      this.msgArr.push({
-	        msg: msg,
-	        user: user,
-	        isMine: isMine
-	      });
-	      setTimeout(function () {
-	        $('#msgBox').scrollTop($('#msgBox')[0].scrollHeight);
-	      }, 10);
-	    },
-	    send: function send() {
-	      if (this.inputMsg.length === 1) {
-	        this.$Message.error('对方不想说话，并且向你抛出了一个异常');
-	        this.inputMsg = '';
-	        return;
-	      }
-	      this.SOCKET.send(this.inputMsg);
-	      this.inputMsg = '';
-	    },
-	    showUserInfo: function showUserInfo(user) {
-	      var userInfo = JSON.parse((0, _stringify2.default)(user));
-	      this.targetUser = userInfo;
-	      this.showTargetUser = true;
-	    }
-	  },
-	  components: {},
-	  filters: {
-	    getSexStr: _filters2.default.getSexStr
-	  },
-	  computed: {
-	    userInfo: function userInfo() {
-	      return this.$store.getters.getUserInfo;
-	    }
-	  },
-	  beforeDestroy: function beforeDestroy() {
-	    this.SOCKET.emit('leave');
-	  }
-	};
-	// </script>
-	// <template>
-	// 	<div class="chatRoom" flex="main:justify">
-	// 		<div class="userList">
-	// 			<ul>
-	// 				<li>用户列表</li>
-	// 				<li v-for="user in users" class="user" @click="showUserInfo(user.user)" flex="main:left corss:cneter">
-	// 					<img :src="user.user.avatar" alt="" width="20" height="20">
-	// 					<span>{{user.user.nickname}}</span>
-	// 				</li>
-	// 			</ul>
-	// 		</div>
-	// 		<div class="content" flex="dir:top main:justify">
-	// 			<ul id="msgBox" class="msgBox">
-	// 				<li v-for="msg in msgArr">
-	// 					<div class="right_" v-if="msg.isMine">
-	// 						<img :src="msg.user.user.avatar" class="right" alt="" @click="showUserInfo(msg.user.user)" width="30" height="30">
-	// 						<p class="name_right">{{msg.user.user.nickname}}</p>
-	// 						<p class="msg">
-	// 							<i class="arr_right"></i>
-	// 							{{msg.msg}}
-	// 						</p>
-	// 					</div>
-	// 					<div class="left_" v-else>
-	// 						<img :src="msg.user.user.avatar" alt="" class="left" @click="showUserInfo(msg.user.user)" width="30" height="30">
-	// 						<p>{{msg.user.user.nickname}}</p>
-	// 						<p class="msg">
-	// 							<i class="arr"></i>
-	// 							{{msg.msg}}
-	// 						</p>
-	// 					</div>
-	// 				</li>
-	// 			</ul>
-	// 			<div class="inputBox">
-	// 				<textarea name="msg" v-model="inputMsg" id="inputMsg" @keyup.enter="send()" cols="30" rows="10"></textarea>
-	// 				<button @click="send()">发送</button>
-	// 			</div>
-	// 		</div>
-	// 		<Modal
-	// 			v-model="showTargetUser"
-	// 			title="用户信息"
-	// 			width="300">
-	// 			<p>姓名：{{targetUser.nickname}}</p>
-	// 			<p>性别：{{targetUser.sex | getSexStr}}</p>
-	// 			<p>简介：{{targetUser.introduction}}</p>
-	// 		</Modal>
-	// 	</div>
-	// </template>
-	// <style lang='less' scoped>
-	// 	.chatRoom{
-	// 		width: 700px;
-	// 		margin-top: 30px;
-	// 		border: 1px solid #dedede;
-	// 		height: 500px;
-	// 		.userList{
-	// 			width: 200px;
-	// 			border-right: 1px solid #dedede;
-	// 			ul li{
-	// 				padding: 5px 10px;
-	// 				img{
-	// 					margin-right: 10px;
-	// 				}
-	// 				span{
-	// 					line-height: 20px;
-	// 				}
-	// 			}
-	// 			ul li:first-child{
-	// 				text-align: center;
-	// 			}
-	// 			.user{
-	// 				cursor: pointer;
-	// 				&:hover{
-	// 					background-color: #f5f5f5;
-	// 				}
-	// 			}
-	// 		}
-	// 		.content{
-	// 			width: 599px;
-	// 			.msgBox{
-	// 				height: 350px;
-	// 				overflow-y: auto;
-	// 				border-bottom: 1px solid #dedede;
-	// 				li {
-	// 					position: relative;
-	// 					padding: 10px 50px 10px 50px;
-	// 					.right_{
-	// 						float: right;
-	// 					}
-	// 					.left{
-	// 						position: absolute;
-	// 						left: 10px;
-	// 						cursor: pointer;
-	// 					}
-	// 					.right{
-	// 						position: absolute;
-	// 						right: 10px;
-	// 						cursor: pointer;
-	// 					}
-	// 					.name_right{
-	// 						text-align: right;
-	// 					}
-	// 					.msg{
-	// 						display: inline-block;
-	// 						font-size: 14px;
-	// 						color: #333;
-	// 						padding: 5px;
-	// 						border: 1px solid #dedede;
-	// 						border-radius: 4px;
-	// 						max-width: 410px;
-	// 						position: relative;
-	// 						background-color: #f5f5f5;
-	// 						padding: 5px 10px;
-	// 						.arr{
-	// 							width: 0;
-	// 							height: 0;
-	// 							border-left: 10px solid transparent;
-	// 							border-right: 10px solid transparent;
-	// 							border-top: 10px solid #f5f5f5;
-	// 							position: absolute;
-	// 							top: -1px;
-	// 							left: -7px;
-	// 							border-width: 6px;
-	// 						}
-	// 						.arr_right{
-	// 							width: 0;
-	// 							height: 0;
-	// 							border-left: 10px solid transparent;
-	// 							border-right: 10px solid transparent;
-	// 							border-top: 10px solid #f5f5f5;
-	// 							position: absolute;
-	// 							top: -1px;
-	// 							right: -7px;
-	// 							border-width: 6px;
-	// 						}
-	// 					}
-	// 				}
-	// 				li:after{
-	// 					content: ".";
-	// 					visibility: hidden;
-	// 					display: block;
-	// 					height: 0;
-	// 					overflow: hidden;
-	// 					clear: both;
-	// 				}
-	// 			}
-	// 			.inputBox{
-	// 				height: 150px;
-	// 				overflow-y: auto;
-	// 				position: relative;
-	// 				#inputMsg{
-	// 					width: 100%;
-	// 					height: 120px;
-	// 					text-indent: 10px;
-	// 					color: #333;
-	// 					padding: 10px;
-	// 					font-size: 14px;
-	// 					resize:none;
-	// 				}
-	// 				button{
-	// 					width: 80px;
-	// 					height: 30px;
-	// 					position: absolute;
-	// 					display: inline-block;
-	// 					right: 4px;
-	// 					bottom: 4px;
-	// 					color: #FFF;
-	// 					font-size: 14px;
-	// 					background-color: #2d8cf0;
-	// 					border-radius: 4px;
-	// 				}
-	// 				button:hover{
-	// 					background-color: #57a3f3;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	//
-	// </style>
-	// <script>
-
-/***/ },
-/* 34 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"chatRoom\" flex=\"main:justify\" _v-4ad763a3=\"\">\n\t<div class=\"userList\" _v-4ad763a3=\"\">\n\t\t<ul _v-4ad763a3=\"\">\n\t\t\t<li _v-4ad763a3=\"\">用户列表</li>\n\t\t\t<li v-for=\"user in users\" class=\"user\" @click=\"showUserInfo(user.user)\" flex=\"main:left corss:cneter\" _v-4ad763a3=\"\">\n\t\t\t\t<img :src=\"user.user.avatar\" alt=\"\" width=\"20\" height=\"20\" _v-4ad763a3=\"\">\n\t\t\t\t<span _v-4ad763a3=\"\">{{user.user.nickname}}</span>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"content\" flex=\"dir:top main:justify\" _v-4ad763a3=\"\">\n\t\t<ul id=\"msgBox\" class=\"msgBox\" _v-4ad763a3=\"\">\n\t\t\t<li v-for=\"msg in msgArr\" _v-4ad763a3=\"\">\n\t\t\t\t<div class=\"right_\" v-if=\"msg.isMine\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" class=\"right\" alt=\"\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p class=\"name_right\" _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr_right\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"left_\" v-else=\"\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" alt=\"\" class=\"left\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"inputBox\" _v-4ad763a3=\"\">\n\t\t\t<textarea name=\"msg\" v-model=\"inputMsg\" id=\"inputMsg\" @keyup.enter=\"send()\" cols=\"30\" rows=\"10\" _v-4ad763a3=\"\"></textarea>\n\t\t\t<button @click=\"send()\" _v-4ad763a3=\"\">发送</button>\n\t\t</div>\n\t</div>\n\t<modal v-model=\"showTargetUser\" title=\"用户信息\" width=\"300\" _v-4ad763a3=\"\">\n\t\t<p _v-4ad763a3=\"\">姓名：{{targetUser.nickname}}</p>\n\t\t<p _v-4ad763a3=\"\">性别：{{targetUser.sex | getSexStr}}</p>\n\t\t<p _v-4ad763a3=\"\">简介：{{targetUser.introduction}}</p>\n\t</modal>\n</div>\n";
-
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(36)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/history.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(37)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-68347ff4/history.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	// <template>
-	// 	<div flex="main:center cross:top" style="padding-top:20px">
-	// 		<Timeline>
-	// 			<Timeline-item>
-	// 				<p class="time">2017/05/26</p>
-	// 				<p class="content">create repo</p>
-	// 			</Timeline-item>
-	// 			<Timeline-item>
-	// 				<p class="time">2017/06/01</p>
-	// 				<p class="content">initial</p>
-	// 			</Timeline-item>
-	// 			<Timeline-item>
-	// 				<p class="time">2017/06/01</p>
-	// 				<p class="content">login-server</p>
-	// 			</Timeline-item>
-	// 			<Timeline-item>
-	// 				<p class="time">2017/06/03</p>
-	// 				<p class="content">homepage</p>
-	// 			</Timeline-item>
-	// 		</Timeline>
-	// 	</div>
-	// </template>
-	// <script>
-	exports.default = {
-		created: function created() {},
-		ready: function ready() {},
-		data: function data() {
-			return {
-				msg: 'Welcome to Exciting-hub'
-			};
-		},
-
-		methods: {},
-		components: {},
-		computed: {}
-		// </script>
-
-	};
-
-/***/ },
-/* 37 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div flex=\"main:center cross:top\" style=\"padding-top:20px\">\n\t<Timeline>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/05/26</p>\n\t\t\t<p class=\"content\">create repo</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">initial</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">login-server</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/03</p>\n\t\t\t<p class=\"content\">homepage</p>\n\t\t</Timeline-item>\n\t</Timeline>\n</div>\n";
-
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(39)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/myProfile.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(45)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-48b1973d/myProfile.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 39 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _stringify = __webpack_require__(15);
-
-	var _stringify2 = _interopRequireDefault(_stringify);
-
-	var _uploadPic = __webpack_require__(40);
-
-	var _uploadPic2 = _interopRequireDefault(_uploadPic);
-
-	var _vue = __webpack_require__(1);
-
-	var _vue2 = _interopRequireDefault(_vue);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// <template>
-	//   <Form :model="userInfo" :label-width="80" style="width: 600px" v-if="show">
-	//     <Form-item label="代号">
-	//       <Input v-model="userInfo.nickname" placeholder="请输入代号"></Input>
-	//     </Form-item>
-	//     <Form-item label="头像">
-	//       <upload-pic :upload-list="userInfo.avatar"></upload-pic>
-	//     </Form-item>
-	//     <Form-item label="性别">
-	//       <Radio-group v-model="userInfo.sex">
-	//         <Radio label="male">男</Radio>
-	//         <Radio label="female">女</Radio>
-	//         <Radio label="unknown">未知</Radio>
-	//       </Radio-group>
-	//     </Form-item>
-	//     <Form-item label="出生年月">
-	//       <Date-picker v-model="userInfo.birthday" format="yyyy-MM-dd" type="date" placeholder="选择出生年月"></Date-picker>
-	//     </Form-item>
-	//     <Form-item label="自我介绍">
-	//       <Input v-model="userInfo.introduction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
-	//     </Form-item>
-	//     <Form-item>
-	//       <Button type="primary" @click="update_user()">提交</Button>
-	//       <Button type="ghost" @click="skip_2_home()" style="margin-left: 8px">取消</Button>
-	//     </Form-item>
-	//   </Form>
-	// </template>
-	// <script>
-	exports.default = {
-	  created: function created() {
-	    var _this = this;
-
-	    var this_ = this;
-	    var param = {
-	      httpType: 'get',
-	      serviceUrl: 'users/user/getuserinfo',
-	      apiModule: 'newAPI'
-	    };
-	    var queryUserInfo = util.ajaxQuery(param, function (res) {
-	      var default_info = {
-	        nickname: '测试',
-	        avatar: [],
-	        sex: 'unknown',
-	        introduction: '这个人很懒，什么也没写...',
-	        birthday: ''
-	      };
-	      var userInfo = $.extend({}, default_info, res.data.user);
-	      _this.userInfo = $.extend({}, default_info, userInfo);
-	      _this.show = true;
-	    });
-	  },
-	  ready: function ready() {},
-	  data: function data() {
-	    return {
-	      show: false,
-	      userInfo: {}
-	    };
-	  },
-
-	  methods: {
-	    update_user: function update_user() {
-	      var _this2 = this;
-
-	      var param = {
-	        httpType: 'post',
-	        serviceUrl: 'users/user/update',
-	        apiModule: 'newAPI',
-	        user: (0, _stringify2.default)(this.userInfo)
-	      };
-	      var queryUserInfo = util.ajaxQuery(param, function (res) {
-	        if (res.data.result) {
-	          _this2.$Message.success('保存成功！');
-	          _this2.$store.dispatch('initUserInfo');
-	          _this2.$router.push({ path: '/' });
-	        }
-	      });
-	    },
-	    skip_2_home: function skip_2_home() {
-	      this.$router.push({ path: '/' });
-	    }
-	  },
-	  components: {
-	    'upload-pic': _uploadPic2.default
-	  },
-	  computed: {}
-	  // </script>
-
-	};
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(41)
-	__vue_script__ = __webpack_require__(43)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/components/uploadPic.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(44)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-5ccc94c2/uploadPic.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(42);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./uploadPic.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./uploadPic.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.demo-upload-list{\n    display: inline-block;\n    width: 60px;\n    height: 60px;\n    text-align: center;\n    line-height: 60px;\n    border: 1px solid transparent;\n    border-radius: 4px;\n    overflow: hidden;\n    background: #fff;\n    position: relative;\n    box-shadow: 0 1px 1px rgba(0,0,0,.2);\n    margin-right: 4px;\n}\n.demo-upload-list img{\n    width: 100%;\n    height: 100%;\n}\n.demo-upload-list-cover{\n    display: none;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0,0,0,.6);\n}\n.demo-upload-list:hover .demo-upload-list-cover{\n    display: block;\n}\n.demo-upload-list-cover i{\n    color: #fff;\n    font-size: 20px;\n    cursor: pointer;\n    margin: 0 2px;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 43 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	// <template>
-	//     <div>
-	//         <div class="demo-upload-list" v-for="item in uploadList">
-	//         <template v-if="item.status === 'finished'">
-	//             <img :src="item.url">
-	//             <div class="demo-upload-list-cover">
-	//                 <Icon type="ios-eye-outline" @click.native="handleView(item)"></Icon>
-	//                 <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
-	//             </div>
-	//         </template>
-	//         <template v-else>
-	//             <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
-	//         </template>
-	//     </div>
-	//     <Upload
-	//         ref="upload"
-	//         :show-upload-list="false"
-	//         :default-file-list="defaultList"
-	//         :on-success="handleSuccess"
-	//         :format="['jpg','jpeg','png']"
-	//         :max-size="2048"
-	//         :on-format-error="handleFormatError"
-	//         :on-exceeded-size="handleMaxSize"
-	//         :before-upload="handleBeforeUpload"
-	//         multiple
-	//         type="drag"
-	//         action="/upload"
-	//         style="display: inline-block;width:58px;">
-	//         <div style="width: 58px;height:58px;line-height: 58px;">
-	//             <Icon type="camera" size="20"></Icon>
-	//         </div>
-	//     </Upload>
-	//     <Modal title="查看图片" v-model="visible">
-	//         <img :src="preView_url">
-	//     </Modal>
-	//     </div>
-	//
-	// </template>
-	// <script>
-	exports.default = {
-	    data: function data() {
-	        return {
-	            defaultList: [],
-	            imgName: '',
-	            visible: false,
-	            preView_url: ''
-	        };
-	    },
-
-	    methods: {
-	        handleView: function handleView(name) {
-	            this.preView_url = item.url;
-	            this.visible = true;
-	        },
-	        handleRemove: function handleRemove(file) {
-	            // 从 upload 实例删除数据
-	            var fileList = this.$refs.upload.fileList;
-	            this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
-	        },
-	        handleSuccess: function handleSuccess(res, file) {
-	            // 因为上传过程为实例，这里模拟添加 url
-	            file.url = res.data.url;
-	            file.name = res.data.name;
-	        },
-	        handleFormatError: function handleFormatError(file) {
-	            this.$Notice.warning({
-	                title: '文件格式不正确',
-	                desc: '文件 ' + file.name + ' 格式不正确，请上传 jpg 或 png 格式的图片。'
-	            });
-	        },
-	        handleMaxSize: function handleMaxSize(file) {
-	            this.$Notice.warning({
-	                title: '超出文件大小限制',
-	                desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
-	            });
-	        },
-	        handleBeforeUpload: function handleBeforeUpload() {
-	            var check = this.uploadList.length < 5;
-	            if (!check) {
-	                this.$Notice.warning({
-	                    title: '最多只能上传 5 张图片。'
-	                });
-	            }
-	            return check;
-	        }
-	    },
-	    mounted: function mounted() {
-	        this.$refs.upload.fileList = this.uploadList;
-	    },
-
-	    props: {
-	        uploadList: {
-	            type: Array,
-	            default: function _default() {
-	                return [];
-	            },
-	            required: true
-	        }
-	    }
-	    // </script>
-	    // <style>
-	    //     .demo-upload-list{
-	    //         display: inline-block;
-	    //         width: 60px;
-	    //         height: 60px;
-	    //         text-align: center;
-	    //         line-height: 60px;
-	    //         border: 1px solid transparent;
-	    //         border-radius: 4px;
-	    //         overflow: hidden;
-	    //         background: #fff;
-	    //         position: relative;
-	    //         box-shadow: 0 1px 1px rgba(0,0,0,.2);
-	    //         margin-right: 4px;
-	    //     }
-	    //     .demo-upload-list img{
-	    //         width: 100%;
-	    //         height: 100%;
-	    //     }
-	    //     .demo-upload-list-cover{
-	    //         display: none;
-	    //         position: absolute;
-	    //         top: 0;
-	    //         bottom: 0;
-	    //         left: 0;
-	    //         right: 0;
-	    //         background: rgba(0,0,0,.6);
-	    //     }
-	    //     .demo-upload-list:hover .demo-upload-list-cover{
-	    //         display: block;
-	    //     }
-	    //     .demo-upload-list-cover i{
-	    //         color: #fff;
-	    //         font-size: 20px;
-	    //         cursor: pointer;
-	    //         margin: 0 2px;
-	    //     }
-	    // </style>
-
-	};
-
-/***/ },
-/* 44 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div>\n    <div class=\"demo-upload-list\" v-for=\"item in uploadList\">\n    <template v-if=\"item.status === 'finished'\">\n        <img :src=\"item.url\">\n        <div class=\"demo-upload-list-cover\">\n            <Icon type=\"ios-eye-outline\" @click.native=\"handleView(item)\"></Icon>\n            <Icon type=\"ios-trash-outline\" @click.native=\"handleRemove(item)\"></Icon>\n        </div>\n    </template>\n    <template v-else>\n        <Progress v-if=\"item.showProgress\" :percent=\"item.percentage\" hide-info></Progress>\n    </template>\n</div>\n<Upload\n    ref=\"upload\"\n    :show-upload-list=\"false\"\n    :default-file-list=\"defaultList\"\n    :on-success=\"handleSuccess\"\n    :format=\"['jpg','jpeg','png']\"\n    :max-size=\"2048\"\n    :on-format-error=\"handleFormatError\"\n    :on-exceeded-size=\"handleMaxSize\"\n    :before-upload=\"handleBeforeUpload\"\n    multiple\n    type=\"drag\"\n    action=\"/upload\"\n    style=\"display: inline-block;width:58px;\">\n    <div style=\"width: 58px;height:58px;line-height: 58px;\">\n        <Icon type=\"camera\" size=\"20\"></Icon>\n    </div>\n</Upload>\n<Modal title=\"查看图片\" v-model=\"visible\">\n    <img :src=\"preView_url\">\n</Modal>\n</div>\n\n";
-
-/***/ },
-/* 45 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<Form :model=\"userInfo\" :label-width=\"80\" style=\"width: 600px\" v-if=\"show\">\n  <Form-item label=\"代号\">\n    <Input v-model=\"userInfo.nickname\" placeholder=\"请输入代号\"></Input>\n  </Form-item>\n  <Form-item label=\"头像\">\n    <upload-pic :upload-list=\"userInfo.avatar\"></upload-pic>\n  </Form-item>\n  <Form-item label=\"性别\">\n    <Radio-group v-model=\"userInfo.sex\">\n      <Radio label=\"male\">男</Radio>\n      <Radio label=\"female\">女</Radio>\n      <Radio label=\"unknown\">未知</Radio>\n    </Radio-group>\n  </Form-item>\n  <Form-item label=\"出生年月\">\n    <Date-picker v-model=\"userInfo.birthday\" format=\"yyyy-MM-dd\" type=\"date\" placeholder=\"选择出生年月\"></Date-picker>\n  </Form-item>\n  <Form-item label=\"自我介绍\">\n    <Input v-model=\"userInfo.introduction\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n  </Form-item>\n  <Form-item>\n    <Button type=\"primary\" @click=\"update_user()\">提交</Button>\n    <Button type=\"ghost\" @click=\"skip_2_home()\" style=\"margin-left: 8px\">取消</Button>\n  </Form-item>\n</Form>\n";
-
-/***/ },
-/* 46 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(47)
-	__vue_script__ = __webpack_require__(49)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/plus.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(50)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-0162c56a/plus.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 47 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(48);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0162c56a&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./plus.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0162c56a&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./plus.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 48 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n.plus[_v-0162c56a]{\n\twidth: 100%;\n\toverflow:  auto;\n}\n.app_list[_v-0162c56a]{\n\twidth: 100%;\n\tpadding: 100px 0;\n}\n.app_list .app_item[_v-0162c56a]{\n\twidth: 120px;\n\theight: 120px;\n\tborder: 1px solid #dedede;\n\tcursor: pointer;\n\tmargin: 0 40px;\n}\n.app_list .app_item span[_v-0162c56a]{\n\tfont-size: 14px;\n\tfont-weight: bold;\n}\n.app_list .app_item[_v-0162c56a]:hover{\n\tanimation: swing 1s;\n\t-moz-animation: swing 1s;\n\t-webkit-animation: swing 1s;\n\t-o-animation: swing 1s;\n\t-webkit-animation-fill-mode: both;\n\t        animation-fill-mode: both;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 49 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	// <template>
-	// 	<div class="plus">
-	// 		<div v-if="!nowSmartApp" class="app_list" flex="main:center">
-	// 			<div v-for="app in appList" class="app_item" @click="show_app(app)" flex="main:center cross:center">
-	// 				<span>{{app.name}}</span>
-	// 			</div>
-	// 		</div>
-	// 		<router-view></router-view>
-	// 	</div>
-	// </template>
-	// <style scoped>
-	// 	.plus{
-	// 		width: 100%;
-	// 		overflow:  auto;
-	// 	}
-	// 	.app_list{
-	// 		width: 100%;
-	// 		padding: 100px 0;
-	// 	}
-	// 	.app_list .app_item{
-	// 		width: 120px;
-	// 		height: 120px;
-	// 		border: 1px solid #dedede;
-	// 		cursor: pointer;
-	// 		margin: 0 40px;
-	// 	}
-	// 	.app_list .app_item span{
-	// 		font-size: 14px;
-	// 		font-weight: bold;
-	// 	}
-	// 	.app_list .app_item:hover{
-	// 		animation: swing 1s;
-	// 		-moz-animation: swing 1s;
-	// 		-webkit-animation: swing 1s;
-	// 		-o-animation: swing 1s;
-	// 		animation-fill-mode: both;
-	// 	}
-	// </style>
-	// <script>
-	exports.default = {
-		created: function created() {
-			this.init_smart_app();
-		},
-		ready: function ready() {},
-
-		watch: {
-			// 如果路由有变化，会再次执行该方法
-			'$route': 'init_smart_app'
-		},
-		data: function data() {
-			return {
-				appList: [{
-					name: '生命格子',
-					value: 'lifeGrid'
-				}, {
-					name: '扫雷',
-					value: 'lifeGrid'
-				}, {
-					name: '代码仓库',
-					value: 'lifeGrid'
-				}, {
-					name: '人生',
-					value: 'lifeGrid'
-				}]
-			};
-		},
-
-		methods: {
-			show_app: function show_app(app) {
-				var path_smart_app = '/plus/' + app.value;
-				this.$router.push({ path: path_smart_app });
-			},
-			init_smart_app: function init_smart_app() {
-				var now_route = this.$route.name;
-				var app_name = false;
-				if (now_route !== 'plus') {
-					app_name = now_route;
-				}
-				this.$store.dispatch('initSmartApp', app_name);
-			}
-		},
-		components: {},
-		computed: {
-			nowSmartApp: function nowSmartApp() {
-				return this.$store.getters.getSmartApp;
-			}
-		}
-		// </script>
-
-	};
-
-/***/ },
-/* 50 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"plus\" _v-0162c56a=\"\">\n\t<div v-if=\"!nowSmartApp\" class=\"app_list\" flex=\"main:center\" _v-0162c56a=\"\">\n\t\t<div v-for=\"app in appList\" class=\"app_item\" @click=\"show_app(app)\" flex=\"main:center cross:center\" _v-0162c56a=\"\">\n\t\t\t<span _v-0162c56a=\"\">{{app.name}}</span>\n\t\t</div>\n\t</div>\n\t<router-view _v-0162c56a=\"\"></router-view>\n</div>\n";
-
-/***/ },
-/* 51 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(52)
-	__vue_script__ = __webpack_require__(54)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/views/smart_apps/lifeGrid.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(55)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-8c214f6e/lifeGrid.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(53);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-8c214f6e&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./lifeGrid.vue", function() {
-				var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-8c214f6e&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./lifeGrid.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 53 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(8)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.lifeGrid[_v-8c214f6e]{\n\twidth: 100%;\n}\n.lifeGrid .mainbody[_v-8c214f6e]{\n\twidth: 900px;\n}\n.lifeGrid .mainbody h2[_v-8c214f6e]{\n\tfont-size: 18px!important;\n\ttext-align: center;\n}\n.lifeGrid .mainbody p[_v-8c214f6e]{\n\tfont-size: 13px;\n\tmargin: 10px 200px;\n}\n.lifeGrid .mainbody .birthday_select[_v-8c214f6e]{\n\tmargin-top: 20px;\n}\n.lifeGrid .mainbody .birthday_select span[_v-8c214f6e]{\n\tmargin-right: 20px;\n}\n.lifeGrid .mainbody .tips[_v-8c214f6e]{\n\tmargin-top: 10px;\n\ttext-align: center;\n}\n.grid[_v-8c214f6e]{\n\twidth: 602px;\n\theight: 602px;\n\tmargin: 20px auto;\n\tborder-left: 1px solid #dedede;\n\tborder-top: 1px solid #dedede;\n}\n.grid .month_grid[_v-8c214f6e]{\n\tfloat: left;\n\twidth: 20px;\n\theight: 20px;\n\tborder-right: 1px solid #dedede;\n\tborder-bottom: 1px solid #dedede;\n}\n.grid .month_grid[_v-8c214f6e]:after{\n\tcontent: '';\n\tdisplay: block;\n\tclear: both;\n\theight: 0;\n\tvisibility: hidden;\n}\n.grid .month_grid.isGone[_v-8c214f6e]{\n\tbackground-color: #f90;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 54 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	// <template>
-	// 	<div class="lifeGrid" flex="main:center">
-	// 		<div class="mainbody">
-	// 			<h2>生命格子</h2>
-	// 			<p>如果一个月算一个小格子，人生其实只有900个格子。在一张A4纸上画一个30X30的表格，每过一个月就涂掉一格。也许你没有想过，被量化后的人生原来如此短暂...</p>
-	// 			<div class="birthday_select" flex="main:center cross:center">
-	// 				<span>出生日期</span>
-	// 				<Date-picker v-model="birthday" format="yyyy-MM-dd" type="date" style="width:200px" placeholder="选择出生年月"></Date-picker>
-	// 			</div>
-	// 			<div class="tips">
-	// 				<span>你已经活了</span><span>{{parseInt(yourlifeGone/12) + '年' + yourlifeGone%12 + '月'}}</span>
-	// 			</div>
-	// 			<div class="grid">
-	// 				<div v-for="i in 900" class="month_grid" v-bind:class="{isGone: i < yourlifeGone}"></div>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// </template>
-	// <style scoped>
-	// 	.lifeGrid{
-	// 		width: 100%;
-	// 	}
-	// 	.lifeGrid .mainbody{
-	// 		width: 900px;
-	// 	}
-	// 	.lifeGrid .mainbody h2{
-	// 		font-size: 18px!important;
-	// 		text-align: center;
-	// 	}
-	// 	.lifeGrid .mainbody p{
-	// 		font-size: 13px;
-	// 		margin: 10px 200px;
-	// 	}
-	// 	.lifeGrid .mainbody .birthday_select{
-	// 		margin-top: 20px;
-	// 	}
-	// 	.lifeGrid .mainbody .birthday_select span{
-	// 		margin-right: 20px;
-	// 	}
-	// 	.lifeGrid .mainbody .tips{
-	// 		margin-top: 10px;
-	// 		text-align: center;
-	// 	}
-	// 	.grid{
-	// 		width: 602px;
-	// 		height: 602px;
-	// 		margin: 20px auto;
-	// 		border-left: 1px solid #dedede;
-	// 		border-top: 1px solid #dedede;
-	// 	}
-	// 	.grid .month_grid{
-	// 		float: left;
-	// 		width: 20px;
-	// 		height: 20px;
-	// 		border-right: 1px solid #dedede;
-	// 		border-bottom: 1px solid #dedede;
-	// 	}
-	// 	.grid .month_grid:after{
-	// 		content: '';
-	// 		display: block;
-	// 		clear: both;
-	// 		height: 0;
-	// 		visibility: hidden;
-	// 	}
-	// 	.grid .month_grid.isGone{
-	// 		background-color: #f90;
-	// 	}
-	// </style>
-	// <script>
-	exports.default = {
-		created: function created() {
-			this.birthday = this.userInfo.birthday;
-		},
-		ready: function ready() {},
-		data: function data() {
-			return {
-				birthday: ''
-			};
-		},
-
-		methods: {},
-		components: {},
-		computed: {
-			userInfo: function userInfo() {
-				return this.$store.getters.getUserInfo;
-			},
-			shouldSelect: function shouldSelect() {
-				if (this.userInfo.birthday === '') {
-					return true;
-				} else {
-					return false;
-				}
-			},
-			yourlifeGone: function yourlifeGone() {
-				var now_time = new Date(),
-				    birthday = new Date(this.birthday);
-				var months = (now_time.getFullYear() - birthday.getFullYear()) * 12;
-				months -= birthday.getMonth() + 1;
-				months += now_time.getMonth();
-				months = months || 0;
-				return months < 0 ? 0 : months;
-			}
-		}
-		// </script>
-
-	};
-
-/***/ },
-/* 55 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"lifeGrid\" flex=\"main:center\" _v-8c214f6e=\"\">\n\t<div class=\"mainbody\" _v-8c214f6e=\"\">\n\t\t<h2 _v-8c214f6e=\"\">生命格子</h2>\n\t\t<p _v-8c214f6e=\"\">如果一个月算一个小格子，人生其实只有900个格子。在一张A4纸上画一个30X30的表格，每过一个月就涂掉一格。也许你没有想过，被量化后的人生原来如此短暂...</p>\n\t\t<div class=\"birthday_select\" flex=\"main:center cross:center\" _v-8c214f6e=\"\">\n\t\t\t<span _v-8c214f6e=\"\">出生日期</span>\n\t\t\t<date-picker v-model=\"birthday\" format=\"yyyy-MM-dd\" type=\"date\" style=\"width:200px\" placeholder=\"选择出生年月\" _v-8c214f6e=\"\"></date-picker>\n\t\t</div>\n\t\t<div class=\"tips\" _v-8c214f6e=\"\">\n\t\t\t<span _v-8c214f6e=\"\">你已经活了</span><span _v-8c214f6e=\"\">{{parseInt(yourlifeGone/12) + '年' + yourlifeGone%12 + '月'}}</span>\n\t\t</div>\n\t\t<div class=\"grid\" _v-8c214f6e=\"\">\n\t\t\t<div v-for=\"i in 900\" class=\"month_grid\" v-bind:class=\"{isGone: i < yourlifeGone}\" _v-8c214f6e=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 56 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _vue = __webpack_require__(1);
-
-	var _vue2 = _interopRequireDefault(_vue);
-
-	var _vuex = __webpack_require__(57);
-
-	var _vuex2 = _interopRequireDefault(_vuex);
-
-	var _getters = __webpack_require__(58);
-
-	var _getters2 = _interopRequireDefault(_getters);
-
-	var _mutations = __webpack_require__(59);
-
-	var _mutations2 = _interopRequireDefault(_mutations);
-
-	var _actions = __webpack_require__(60);
-
-	var _actions2 = _interopRequireDefault(_actions);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	_vue2.default.use(_vuex2.default);
-
-	var state = {
-		userInfo: { asd: 'asd' },
-		data: {},
-		chat: {
-			roomId: 'default',
-			msgArr: []
-		},
-		smart_app: {
-			name: ''
-		},
-		readyState: false
-	};
-
-	exports.default = new _vuex2.default.Store({
-		state: state,
-		mutations: _mutations2.default,
-		getters: _getters2.default,
-		actions: _actions2.default
-	});
-
-/***/ },
-/* 57 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/**
 	 * vuex v2.3.0
 	 * (c) 2017 Evan You
@@ -15568,7 +13277,2345 @@
 
 
 /***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _main = __webpack_require__(6);
+
+	var _main2 = _interopRequireDefault(_main);
+
+	var _chat = __webpack_require__(26);
+
+	var _chat2 = _interopRequireDefault(_chat);
+
+	var _Chatroom = __webpack_require__(31);
+
+	var _Chatroom2 = _interopRequireDefault(_Chatroom);
+
+	var _history = __webpack_require__(37);
+
+	var _history2 = _interopRequireDefault(_history);
+
+	var _myProfile = __webpack_require__(40);
+
+	var _myProfile2 = _interopRequireDefault(_myProfile);
+
+	var _plus = __webpack_require__(48);
+
+	var _plus2 = _interopRequireDefault(_plus);
+
+	var _lifeGrid = __webpack_require__(53);
+
+	var _lifeGrid2 = _interopRequireDefault(_lifeGrid);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var routes = [{
+		path: '/',
+		component: _main2.default,
+		children: [{
+			path: '/',
+			name: 'history',
+			component: _history2.default
+		}, {
+			path: 'myProfile',
+			name: 'myProfile',
+			component: _myProfile2.default
+		}, {
+			path: 'chat',
+			name: 'chat',
+			component: _chat2.default,
+			children: [{
+				path: ':roomId',
+				component: _Chatroom2.default
+			}]
+		}, {
+			path: 'plus',
+			name: 'plus',
+			component: _plus2.default,
+			children: [{
+				path: 'lifeGrid',
+				name: 'lifeGrid',
+				component: _lifeGrid2.default
+			}]
+		}]
+	}];
+	exports.default = routes;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(7)
+	__vue_script__ = __webpack_require__(11)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/main.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(25)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-6f1a1609/main.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(8);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6f1a1609&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./main.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-6f1a1609&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./main.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.main_body[_v-6f1a1609]{\n  position: absolute;\n  top: 40px;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  padding: 30px 0;\n  font-family: \"Helvetica Neue\",Helvetica,\"PingFang SC\",\"Hiragino Sans GB\",\"Microsoft YaHei\",\"\\5FAE\\8F6F\\96C5\\9ED1\",Arial,sans-serif;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _header = __webpack_require__(12);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	var _footer = __webpack_require__(20);
+
+	var _footer2 = _interopRequireDefault(_footer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	//   <div v-if="isready">
+	//     <nav-header></nav-header>
+	//     <div class="main_body" flex="main:center">
+	//       <router-view></router-view>
+	//     </div>
+	//     <copy-footer></copy-footer>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.$store.dispatch('initUserInfo');
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {};
+	  },
+
+	  method: {},
+	  components: {
+	    'nav-header': _header2.default,
+	    'copy-footer': _footer2.default
+	  },
+	  computed: {
+	    isready: function isready() {
+	      return this.$store.getters.getReadyState;
+	    }
+	  }
+	  // </script>
+	  //
+	  // <style scoped>
+	  //   .main_body{
+	  //     position: absolute;
+	  //     top: 40px;
+	  //     left: 0;
+	  //     right: 0;
+	  //     bottom: 0;
+	  //     padding: 30px 0;
+	  //     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	  //   }
+	  // </style>
+
+	};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(13)
+	__vue_script__ = __webpack_require__(15)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/header.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(19)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-abec8a46/header.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(14);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-abec8a46&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-abec8a46&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./header.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.header[_v-abec8a46]{\n  height: 40px;\n  background-color: #dedede;\n  box-shadow: 0px 0px 6px rgba(0,0,0,.5)\n}\n.wrap[_v-abec8a46]{\n  width: 900px;\n}\n.user_ico[_v-abec8a46]{\n  border-radius: 50%;\n}\n.nav li[_v-abec8a46]{\n  cursor: pointer;\n  width: 100px;\n  text-align: center;\n  font-size: 20px;\n  height: 40px;\n  line-height: 40px;\n}\n.nav li[_v-abec8a46]:hover{\n  background-color: #e5e5e5;\n  color: #777;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _stringify = __webpack_require__(16);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	//   <div class="header" flex="main:center">
+	//     <div class="wrap" flex="main:justify cross:center">
+	//       <ul class="nav" flex="main:center cross:center">
+	//         <li @click="switchTab('Index')">首页</li>
+	//         <li @click="switchTab('Chat')">聊天</li>
+	//         <li @click="switchTab('Plus')">拓展</li>
+	//       </ul>
+	//       <Dropdown @on-click="userHandle($event)">
+	//         <a href="javascript:void(0)">
+	//           <img :src="userInfo.avatar[0]?userInfo.avatar[0].url:'/images/logo.jpg'" width="35" class="user_ico" alt="">
+	//           {{userInfo.nickname}}
+	//           <Icon type="arrow-down-b"></Icon>
+	//         </a>
+	//         <Dropdown-menu slot="list">
+	//           <Dropdown-item name="myProfile">我的信息</Dropdown-item>
+	//           <Dropdown-item name="logout">注销登录</Dropdown-item>
+	//         </Dropdown-menu>
+	//       </Dropdown>
+	//     </div>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    var users = JSON.parse((0, _stringify2.default)(this.userInfo));
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      msg: 'Welcome to Exciting-hub'
+	    };
+	  },
+
+	  methods: {
+	    userHandle: function userHandle(key) {
+	      console.log('213123123');
+	      switch (key) {
+	        case 'myProfile':
+	          this.$router.push({ path: '/myProfile' });
+	          break;
+	        case 'logout':
+	          util.logout();
+	          break;
+	      }
+	    },
+	    switchTab: function switchTab(key) {
+	      switch (key) {
+	        case 'Index':
+	          this.$router.push({ path: '/' });
+	          break;
+	        case 'Chat':
+	          this.$router.push({ path: '/chat' });
+	          break;
+	        case 'Plus':
+	          this.$router.push({ path: '/plus' });
+	          break;
+	        default:
+	          this.$router.push({ path: '/' });
+	          break;
+	      }
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    userInfo: function userInfo() {
+	      return this.$store.getters.getUserInfo;
+	    }
+	  }
+	  // </script>
+	  //
+	  // <style scoped>
+	  //   .header{
+	  //     height: 40px;
+	  //     background-color: #dedede;
+	  //     box-shadow: 0px 0px 6px rgba(0,0,0,.5)
+	  //   }
+	  //   .wrap{
+	  //     width: 900px;
+	  //   }
+	  //   .user_ico{
+	  //     border-radius: 50%;
+	  //   }
+	  //   .nav li{
+	  //     cursor: pointer;
+	  //     width: 100px;
+	  //     text-align: center;
+	  //     font-size: 20px;
+	  //     height: 40px;
+	  //     line-height: 40px;
+	  //   }
+	  //   .nav li:hover{
+	  //     background-color: #e5e5e5;
+	  //     color: #777;
+	  //   }
+	  // </style>
+
+	};
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(17), __esModule: true };
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core  = __webpack_require__(18)
+	  , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return $JSON.stringify.apply($JSON, arguments);
+	};
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '2.4.0'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"header\" flex=\"main:center\" _v-abec8a46=\"\">\n  <div class=\"wrap\" flex=\"main:justify cross:center\" _v-abec8a46=\"\">\n    <ul class=\"nav\" flex=\"main:center cross:center\" _v-abec8a46=\"\">\n      <li @click=\"switchTab('Index')\" _v-abec8a46=\"\">首页</li>\n      <li @click=\"switchTab('Chat')\" _v-abec8a46=\"\">聊天</li>\n      <li @click=\"switchTab('Plus')\" _v-abec8a46=\"\">拓展</li>\n    </ul>\n    <dropdown @on-click=\"userHandle($event)\" _v-abec8a46=\"\">\n      <a href=\"javascript:void(0)\" _v-abec8a46=\"\">\n        <img :src=\"userInfo.avatar[0]?userInfo.avatar[0].url:'/images/logo.jpg'\" width=\"35\" class=\"user_ico\" alt=\"\" _v-abec8a46=\"\">\n        {{userInfo.nickname}}\n        <icon type=\"arrow-down-b\" _v-abec8a46=\"\"></icon>\n      </a>\n      <dropdown-menu slot=\"list\" _v-abec8a46=\"\">\n        <dropdown-item name=\"myProfile\" _v-abec8a46=\"\">我的信息</dropdown-item>\n        <dropdown-item name=\"logout\" _v-abec8a46=\"\">注销登录</dropdown-item>\n      </dropdown-menu>\n    </dropdown>\n  </div>\n</div>\n";
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(21)
+	__vue_script__ = __webpack_require__(23)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/footer.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(24)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-ee51522a/footer.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(22);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./footer.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./footer.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n.copyright{\n\ttext-align: center;\n\tposition: fixed;\n\tbottom: 0;\n\twidth: 100%;\n\tpadding: 20px 0 10px; \n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<p class="copyright">Copyright © 2017 Janber-Zhang. All rights reserved.</p>
+	// </template>
+	// <style>
+	// 	.copyright{
+	// 		text-align: center;
+	// 		position: fixed;
+	// 		bottom: 0;
+	// 		width: 100%;
+	// 		padding: 20px 0 10px; 
+	// 	}
+	// </style>
+	// <script>
+	exports.default = {
+		created: function created() {},
+		ready: function ready() {},
+		data: function data() {
+			return {
+				msg: 'Welcome to Exciting-hub'
+			};
+		},
+
+		methods: {},
+		components: {},
+		computed: {}
+		// </script>
+
+	};
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<p class=\"copyright\">Copyright © 2017 Janber-Zhang. All rights reserved.</p>\n";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div v-if=\"isready\" _v-6f1a1609=\"\">\n  <nav-header _v-6f1a1609=\"\"></nav-header>\n  <div class=\"main_body\" flex=\"main:center\" _v-6f1a1609=\"\">\n    <router-view _v-6f1a1609=\"\"></router-view>\n  </div>\n  <copy-footer _v-6f1a1609=\"\"></copy-footer>\n</div>\n";
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(27)
+	__vue_script__ = __webpack_require__(29)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/chat.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(30)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-757087b0/chat.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(28);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-757087b0&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./chat.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-757087b0&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./chat.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.chat[_v-757087b0]{\n\twidth: 700px;\n}\n.roomList[_v-757087b0]{\n\twidth: 700px;\n\tmargin: 0 auto;\n}\n.roomList li[_v-757087b0]{\n\tpadding: 0 20px;\n\tmargin: 0 10px;\n}\n.roomList li[_v-757087b0]:hover{\n\tbackground-color: #f5f5f5;\n}\n.active[_v-757087b0]{\n\tbackground-color: #dedede !important;\n}\n.pointer[_v-757087b0]{\n\tcursor: pointer;\n}\n.roomList_middle[_v-757087b0]{\n\tposition: absolute;\n\t-webkit-transform: scaleY(-50%);\n\t        transform: scaleY(-50%);\n\ttop: 40%;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div class="chat">
+	// 		<ul class="roomList" v-bind:class="{roomList_middle: !room_name}" flex="main:center">
+	// 			<li @click="selectRoom('html5')" class="animated bounceIn" :class="{'active':room_name == 'html5'}">
+	// 				<Icon class="pointer" type="social-html5-outline" size="50"></Icon>
+	// 			</li>
+	// 			<li @click="selectRoom('angular')" class="animated bounceIn" :class="{'active':room_name == 'angular'}">
+	// 				<Icon class="pointer" type="social-angular-outline" size="50"></Icon>
+	// 			</li>
+	// 			<li @click="selectRoom('nodejs')" class="animated bounceIn" :class="{'active':room_name == 'nodejs'}">
+	// 				<Icon class="pointer" type="social-nodejs" size="50"></Icon>
+	// 			</li>
+	// 		</ul>
+	// 		<h1>{{flash_arr}}</h1>
+	// 		<router-view></router-view>
+	// 	</div>
+	//
+	// </template>
+	// <style scoped>
+	// 	.chat{
+	// 		width: 700px;
+	// 	}
+	// 	.roomList{
+	// 		width: 700px;
+	// 		margin: 0 auto;
+	// 	}
+	// 	.roomList li{
+	// 		padding: 0 20px;
+	// 		margin: 0 10px;
+	// 	}
+	// 	.roomList li:hover{
+	// 		background-color: #f5f5f5;
+	// 	}
+	// 	.active{
+	// 		background-color: #dedede !important;
+	// 	}
+	// 	.pointer{
+	// 		cursor: pointer;
+	// 	}
+	// 	.roomList_middle{
+	// 		position: absolute;
+	// 		transform: scaleY(-50%);
+	// 		top: 40%;
+	// 	}
+	// </style>
+	// <script>
+	exports.default = {
+		created: function created() {
+			this.init_room_name();
+		},
+		ready: function ready() {},
+		data: function data() {
+			return {
+				msg: 'Welcome to Exciting-hub',
+				room_name: ''
+			};
+		},
+
+		watch: {
+			// 如果路由有变化，会再次执行该方法
+			'$route': 'init_room_name'
+		},
+		methods: {
+			selectRoom: function selectRoom(key) {
+				var this_ = this;
+				if (this.room_name == key) {
+					return;
+				}
+				this.room_name = key;
+				var path_room = '/chat/' + key;
+				var path_root = '/chat';
+				this.$router.push({ path: path_root });
+				setTimeout(function () {
+					this_.$router.push({ path: path_room });
+				}, 0);
+			},
+			init_room_name: function init_room_name() {
+				this.room_name = this.$route.params.roomId;
+			}
+		},
+		components: {},
+		computed: {}
+		// </script>
+
+	};
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"chat\" _v-757087b0=\"\">\n\t<ul class=\"roomList\" v-bind:class=\"{roomList_middle: !room_name}\" flex=\"main:center\" _v-757087b0=\"\">\n\t\t<li @click=\"selectRoom('html5')\" class=\"animated bounceIn\" :class=\"{'active':room_name == 'html5'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-html5-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('angular')\" class=\"animated bounceIn\" :class=\"{'active':room_name == 'angular'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-angular-outline\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t\t<li @click=\"selectRoom('nodejs')\" class=\"animated bounceIn\" :class=\"{'active':room_name == 'nodejs'}\" _v-757087b0=\"\">\n\t\t\t<icon class=\"pointer\" type=\"social-nodejs\" size=\"50\" _v-757087b0=\"\"></icon>\n\t\t</li>\n\t</ul>\n\t<h1 _v-757087b0=\"\">{{flash_arr}}</h1>\n\t<router-view _v-757087b0=\"\"></router-view>\n</div>\n\n";
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(32)
+	__vue_script__ = __webpack_require__(34)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/Chatroom.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(36)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-4ad763a3/Chatroom.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(33);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4ad763a3&scoped=true!../../../../../node_modules/less-loader/dist/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Chatroom.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4ad763a3&scoped=true!../../../../../node_modules/less-loader/dist/index.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Chatroom.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".chatRoom[_v-4ad763a3] {\n  width: 700px;\n  margin-top: 30px;\n  border: 1px solid #dedede;\n  height: 500px;\n}\n.chatRoom .userList[_v-4ad763a3] {\n  width: 200px;\n  border-right: 1px solid #dedede;\n}\n.chatRoom .userList ul li[_v-4ad763a3] {\n  padding: 5px 10px;\n}\n.chatRoom .userList ul li img[_v-4ad763a3] {\n  margin-right: 10px;\n}\n.chatRoom .userList ul li span[_v-4ad763a3] {\n  line-height: 20px;\n}\n.chatRoom .userList ul li[_v-4ad763a3]:first-child {\n  text-align: center;\n}\n.chatRoom .userList .user[_v-4ad763a3] {\n  cursor: pointer;\n}\n.chatRoom .userList .user[_v-4ad763a3]:hover {\n  background-color: #f5f5f5;\n}\n.chatRoom .content[_v-4ad763a3] {\n  width: 599px;\n}\n.chatRoom .content .msgBox[_v-4ad763a3] {\n  height: 350px;\n  overflow-y: auto;\n  border-bottom: 1px solid #dedede;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3] {\n  position: relative;\n  padding: 10px 50px 10px 50px;\n}\n.chatRoom .content .msgBox li .right_[_v-4ad763a3] {\n  float: right;\n}\n.chatRoom .content .msgBox li .left[_v-4ad763a3] {\n  position: absolute;\n  left: 10px;\n  cursor: pointer;\n}\n.chatRoom .content .msgBox li .right[_v-4ad763a3] {\n  position: absolute;\n  right: 10px;\n  cursor: pointer;\n}\n.chatRoom .content .msgBox li .name_right[_v-4ad763a3] {\n  text-align: right;\n}\n.chatRoom .content .msgBox li .msg[_v-4ad763a3] {\n  display: inline-block;\n  font-size: 14px;\n  color: #333;\n  padding: 5px;\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  max-width: 410px;\n  position: relative;\n  background-color: #f5f5f5;\n  padding: 5px 10px;\n}\n.chatRoom .content .msgBox li .msg .arr[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  left: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li .msg .arr_right[_v-4ad763a3] {\n  width: 0;\n  height: 0;\n  border-left: 10px solid transparent;\n  border-right: 10px solid transparent;\n  border-top: 10px solid #f5f5f5;\n  position: absolute;\n  top: -1px;\n  right: -7px;\n  border-width: 6px;\n}\n.chatRoom .content .msgBox li[_v-4ad763a3]:after {\n  content: \".\";\n  visibility: hidden;\n  display: block;\n  height: 0;\n  overflow: hidden;\n  clear: both;\n}\n.chatRoom .content .inputBox[_v-4ad763a3] {\n  height: 150px;\n  overflow-y: auto;\n  position: relative;\n}\n.chatRoom .content .inputBox #inputMsg[_v-4ad763a3] {\n  width: 100%;\n  height: 120px;\n  text-indent: 10px;\n  color: #333;\n  padding: 10px;\n  font-size: 14px;\n  resize: none;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3] {\n  width: 80px;\n  height: 30px;\n  position: absolute;\n  display: inline-block;\n  right: 4px;\n  bottom: 4px;\n  color: #FFF;\n  font-size: 14px;\n  background-color: #2d8cf0;\n  border-radius: 4px;\n}\n.chatRoom .content .inputBox button[_v-4ad763a3]:hover {\n  background-color: #57a3f3;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _stringify = __webpack_require__(16);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	var _filters = __webpack_require__(35);
+
+	var _filters2 = _interopRequireDefault(_filters);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {
+	    this.socketInit();
+	  },
+	  data: function data() {
+	    return {
+	      SOCKET: null, //保存socket对象
+	      users: [], //当前聊天室用户
+	      msgArr: [], //消息列表
+	      inputMsg: '', //待发送消息
+	      targetUser: {},
+	      showTargetUser: false
+	    };
+	  },
+
+	  methods: {
+	    socketInit: function socketInit() {
+	      var this_ = this;
+	      var defaultAvatar = '/images/logo.jpg';
+	      if (this.userInfo.avatar && this.userInfo.avatar[0]) {
+	        defaultAvatar = this.userInfo.avatar[0].url;
+	      }
+	      //封装用户-房间信息
+	      var userObj = {
+	        user: {
+	          nickname: this.userInfo.nickname,
+	          avatar: defaultAvatar,
+	          _id: this.userInfo._id,
+	          introduction: this.userInfo.introduction,
+	          birthday: this.userInfo.birthday,
+	          sex: this.userInfo.sex
+	        },
+	        roomInfo: this.$route.params.roomId
+	        // ---------创建连接-----------
+	      };this.SOCKET = io();
+	      // 加入房间
+	      this.SOCKET.on('connect', function () {
+	        this_.SOCKET.emit('join', (0, _stringify2.default)(userObj));
+	      });
+	      //监听消息
+	      this.SOCKET.on('msg', function (user, msg) {
+	        this_.dealMsgInfo(user, msg);
+	      });
+	      // 监听系统消息
+	      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
+	        this_.dealSysInfo(sysMsg, users, user, type);
+	      });
+	    },
+	    dealSysInfo: function dealSysInfo(sysMsg, users, user, type) {
+	      var this_ = this;
+	      var roomUsers = [];
+	      var roomUsersObj = {};
+	      users.forEach(function (item, index) {
+	        if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
+	          roomUsers.push(item);
+	          roomUsersObj[item.user._id] = true;
+	        }
+	      });
+	      // 判断当前推出人员是否是本房间退出
+	      var isLocal = false;
+	      this.users.forEach(function (item) {
+	        if (item.user._id == user.user._id) {
+	          isLocal = true;
+	        }
+	      });
+	      if (type == 'in' && roomUsersObj[user.user._id]) {
+	        this_.$Message.success(sysMsg);
+	      }
+	      if (type == 'out' && !roomUsersObj[user.user._id] && isLocal) {
+	        this_.$Message.success(sysMsg);
+	      }
+	      this.users = roomUsers;
+	      roomUsers = null;
+	    },
+	    dealMsgInfo: function dealMsgInfo(user, msg) {
+	      var isMine = false;
+	      if (user.user._id === this.userInfo._id) {
+	        isMine = true;
+	      }
+	      this.msgArr.push({
+	        msg: msg,
+	        user: user,
+	        isMine: isMine
+	      });
+	      setTimeout(function () {
+	        $('#msgBox').scrollTop($('#msgBox')[0].scrollHeight);
+	      }, 10);
+	    },
+	    send: function send() {
+	      if (this.inputMsg.length === 1) {
+	        this.$Message.error('对方不想说话，并且向你抛出了一个异常');
+	        this.inputMsg = '';
+	        return;
+	      }
+	      this.SOCKET.send(this.inputMsg);
+	      this.inputMsg = '';
+	    },
+	    showUserInfo: function showUserInfo(user) {
+	      var userInfo = JSON.parse((0, _stringify2.default)(user));
+	      this.targetUser = userInfo;
+	      this.showTargetUser = true;
+	    }
+	  },
+	  components: {},
+	  filters: {
+	    getSexStr: _filters2.default.getSexStr
+	  },
+	  computed: {
+	    userInfo: function userInfo() {
+	      return this.$store.getters.getUserInfo;
+	    }
+	  },
+	  beforeDestroy: function beforeDestroy() {
+	    this.SOCKET.emit('leave');
+	  }
+	};
+	// </script>
+	// <template>
+	// 	<div class="chatRoom" flex="main:justify">
+	// 		<div class="userList">
+	// 			<ul>
+	// 				<li>用户列表</li>
+	// 				<li v-for="user in users" class="user" @click="showUserInfo(user.user)" flex="main:left corss:cneter">
+	// 					<img :src="user.user.avatar" alt="" width="20" height="20">
+	// 					<span>{{user.user.nickname}}</span>
+	// 				</li>
+	// 			</ul>
+	// 		</div>
+	// 		<div class="content" flex="dir:top main:justify">
+	// 			<ul id="msgBox" class="msgBox">
+	// 				<li v-for="msg in msgArr">
+	// 					<div class="right_" v-if="msg.isMine">
+	// 						<img :src="msg.user.user.avatar" class="right" alt="" @click="showUserInfo(msg.user.user)" width="30" height="30">
+	// 						<p class="name_right">{{msg.user.user.nickname}}</p>
+	// 						<p class="msg">
+	// 							<i class="arr_right"></i>
+	// 							{{msg.msg}}
+	// 						</p>
+	// 					</div>
+	// 					<div class="left_" v-else>
+	// 						<img :src="msg.user.user.avatar" alt="" class="left" @click="showUserInfo(msg.user.user)" width="30" height="30">
+	// 						<p>{{msg.user.user.nickname}}</p>
+	// 						<p class="msg">
+	// 							<i class="arr"></i>
+	// 							{{msg.msg}}
+	// 						</p>
+	// 					</div>
+	// 				</li>
+	// 			</ul>
+	// 			<div class="inputBox">
+	// 				<textarea name="msg" v-model="inputMsg" id="inputMsg" @keyup.enter="send()" cols="30" rows="10"></textarea>
+	// 				<button @click="send()">发送</button>
+	// 			</div>
+	// 		</div>
+	// 		<Modal
+	// 			v-model="showTargetUser"
+	// 			title="用户信息"
+	// 			width="300">
+	// 			<p>姓名：{{targetUser.nickname}}</p>
+	// 			<p>性别：{{targetUser.sex | getSexStr}}</p>
+	// 			<p>简介：{{targetUser.introduction}}</p>
+	// 		</Modal>
+	// 	</div>
+	// </template>
+	// <style lang='less' scoped>
+	// 	.chatRoom{
+	// 		width: 700px;
+	// 		margin-top: 30px;
+	// 		border: 1px solid #dedede;
+	// 		height: 500px;
+	// 		.userList{
+	// 			width: 200px;
+	// 			border-right: 1px solid #dedede;
+	// 			ul li{
+	// 				padding: 5px 10px;
+	// 				img{
+	// 					margin-right: 10px;
+	// 				}
+	// 				span{
+	// 					line-height: 20px;
+	// 				}
+	// 			}
+	// 			ul li:first-child{
+	// 				text-align: center;
+	// 			}
+	// 			.user{
+	// 				cursor: pointer;
+	// 				&:hover{
+	// 					background-color: #f5f5f5;
+	// 				}
+	// 			}
+	// 		}
+	// 		.content{
+	// 			width: 599px;
+	// 			.msgBox{
+	// 				height: 350px;
+	// 				overflow-y: auto;
+	// 				border-bottom: 1px solid #dedede;
+	// 				li {
+	// 					position: relative;
+	// 					padding: 10px 50px 10px 50px;
+	// 					.right_{
+	// 						float: right;
+	// 					}
+	// 					.left{
+	// 						position: absolute;
+	// 						left: 10px;
+	// 						cursor: pointer;
+	// 					}
+	// 					.right{
+	// 						position: absolute;
+	// 						right: 10px;
+	// 						cursor: pointer;
+	// 					}
+	// 					.name_right{
+	// 						text-align: right;
+	// 					}
+	// 					.msg{
+	// 						display: inline-block;
+	// 						font-size: 14px;
+	// 						color: #333;
+	// 						padding: 5px;
+	// 						border: 1px solid #dedede;
+	// 						border-radius: 4px;
+	// 						max-width: 410px;
+	// 						position: relative;
+	// 						background-color: #f5f5f5;
+	// 						padding: 5px 10px;
+	// 						.arr{
+	// 							width: 0;
+	// 							height: 0;
+	// 							border-left: 10px solid transparent;
+	// 							border-right: 10px solid transparent;
+	// 							border-top: 10px solid #f5f5f5;
+	// 							position: absolute;
+	// 							top: -1px;
+	// 							left: -7px;
+	// 							border-width: 6px;
+	// 						}
+	// 						.arr_right{
+	// 							width: 0;
+	// 							height: 0;
+	// 							border-left: 10px solid transparent;
+	// 							border-right: 10px solid transparent;
+	// 							border-top: 10px solid #f5f5f5;
+	// 							position: absolute;
+	// 							top: -1px;
+	// 							right: -7px;
+	// 							border-width: 6px;
+	// 						}
+	// 					}
+	// 				}
+	// 				li:after{
+	// 					content: ".";
+	// 					visibility: hidden;
+	// 					display: block;
+	// 					height: 0;
+	// 					overflow: hidden;
+	// 					clear: both;
+	// 				}
+	// 			}
+	// 			.inputBox{
+	// 				height: 150px;
+	// 				overflow-y: auto;
+	// 				position: relative;
+	// 				#inputMsg{
+	// 					width: 100%;
+	// 					height: 120px;
+	// 					text-indent: 10px;
+	// 					color: #333;
+	// 					padding: 10px;
+	// 					font-size: 14px;
+	// 					resize:none;
+	// 				}
+	// 				button{
+	// 					width: 80px;
+	// 					height: 30px;
+	// 					position: absolute;
+	// 					display: inline-block;
+	// 					right: 4px;
+	// 					bottom: 4px;
+	// 					color: #FFF;
+	// 					font-size: 14px;
+	// 					background-color: #2d8cf0;
+	// 					border-radius: 4px;
+	// 				}
+	// 				button:hover{
+	// 					background-color: #57a3f3;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	//
+	// </style>
+	// <script>
+
+/***/ },
+/* 35 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var filters = {
+		getSexStr: function getSexStr(sex) {
+			var str = '';
+			switch (sex) {
+				case 'male':
+					str = '男';
+					break;
+				case 'famale':
+					str = '女';
+					break;
+				default:
+					str = '未知';
+					break;
+			}
+			return str;
+		}
+	};
+
+	exports.default = filters;
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"chatRoom\" flex=\"main:justify\" _v-4ad763a3=\"\">\n\t<div class=\"userList\" _v-4ad763a3=\"\">\n\t\t<ul _v-4ad763a3=\"\">\n\t\t\t<li _v-4ad763a3=\"\">用户列表</li>\n\t\t\t<li v-for=\"user in users\" class=\"user\" @click=\"showUserInfo(user.user)\" flex=\"main:left corss:cneter\" _v-4ad763a3=\"\">\n\t\t\t\t<img :src=\"user.user.avatar\" alt=\"\" width=\"20\" height=\"20\" _v-4ad763a3=\"\">\n\t\t\t\t<span _v-4ad763a3=\"\">{{user.user.nickname}}</span>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"content\" flex=\"dir:top main:justify\" _v-4ad763a3=\"\">\n\t\t<ul id=\"msgBox\" class=\"msgBox\" _v-4ad763a3=\"\">\n\t\t\t<li v-for=\"msg in msgArr\" _v-4ad763a3=\"\">\n\t\t\t\t<div class=\"right_\" v-if=\"msg.isMine\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" class=\"right\" alt=\"\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p class=\"name_right\" _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr_right\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"left_\" v-else=\"\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" alt=\"\" class=\"left\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"inputBox\" _v-4ad763a3=\"\">\n\t\t\t<textarea name=\"msg\" v-model=\"inputMsg\" id=\"inputMsg\" @keyup.enter=\"send()\" cols=\"30\" rows=\"10\" _v-4ad763a3=\"\"></textarea>\n\t\t\t<button @click=\"send()\" _v-4ad763a3=\"\">发送</button>\n\t\t</div>\n\t</div>\n\t<modal v-model=\"showTargetUser\" title=\"用户信息\" width=\"300\" _v-4ad763a3=\"\">\n\t\t<p _v-4ad763a3=\"\">姓名：{{targetUser.nickname}}</p>\n\t\t<p _v-4ad763a3=\"\">性别：{{targetUser.sex | getSexStr}}</p>\n\t\t<p _v-4ad763a3=\"\">简介：{{targetUser.introduction}}</p>\n\t</modal>\n</div>\n";
+
+/***/ },
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(38)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/history.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(39)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-68347ff4/history.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div flex="main:center cross:top" style="padding-top:20px">
+	// 		<Timeline>
+	// 			<Timeline-item>
+	// 				<p class="time">2017/05/26</p>
+	// 				<p class="content">create repo</p>
+	// 			</Timeline-item>
+	// 			<Timeline-item>
+	// 				<p class="time">2017/06/01</p>
+	// 				<p class="content">initial</p>
+	// 			</Timeline-item>
+	// 			<Timeline-item>
+	// 				<p class="time">2017/06/01</p>
+	// 				<p class="content">login-server</p>
+	// 			</Timeline-item>
+	// 			<Timeline-item>
+	// 				<p class="time">2017/06/03</p>
+	// 				<p class="content">homepage</p>
+	// 			</Timeline-item>
+	// 		</Timeline>
+	// 	</div>
+	// </template>
+	// <script>
+	exports.default = {
+		created: function created() {},
+		ready: function ready() {},
+		data: function data() {
+			return {
+				msg: 'Welcome to Exciting-hub'
+			};
+		},
+
+		methods: {},
+		components: {},
+		computed: {}
+		// </script>
+
+	};
+
+/***/ },
+/* 39 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div flex=\"main:center cross:top\" style=\"padding-top:20px\">\n\t<Timeline>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/05/26</p>\n\t\t\t<p class=\"content\">create repo</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">initial</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/01</p>\n\t\t\t<p class=\"content\">login-server</p>\n\t\t</Timeline-item>\n\t\t<Timeline-item>\n\t\t\t<p class=\"time\">2017/06/03</p>\n\t\t\t<p class=\"content\">homepage</p>\n\t\t</Timeline-item>\n\t</Timeline>\n</div>\n";
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(41)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/myProfile.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(47)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-48b1973d/myProfile.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _stringify = __webpack_require__(16);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
+	var _uploadPic = __webpack_require__(42);
+
+	var _uploadPic2 = _interopRequireDefault(_uploadPic);
+
+	var _vue = __webpack_require__(1);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// <template>
+	//   <Form :model="userInfo" :label-width="80" style="width: 600px" v-if="show">
+	//     <Form-item label="代号">
+	//       <Input v-model="userInfo.nickname" placeholder="请输入代号"></Input>
+	//     </Form-item>
+	//     <Form-item label="头像">
+	//       <upload-pic :upload-list="userInfo.avatar"></upload-pic>
+	//     </Form-item>
+	//     <Form-item label="性别">
+	//       <Radio-group v-model="userInfo.sex">
+	//         <Radio label="male">男</Radio>
+	//         <Radio label="female">女</Radio>
+	//         <Radio label="unknown">未知</Radio>
+	//       </Radio-group>
+	//     </Form-item>
+	//     <Form-item label="出生年月">
+	//       <Date-picker v-model="userInfo.birthday" format="yyyy-MM-dd" type="date" placeholder="选择出生年月"></Date-picker>
+	//     </Form-item>
+	//     <Form-item label="自我介绍">
+	//       <Input v-model="userInfo.introduction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
+	//     </Form-item>
+	//     <Form-item>
+	//       <Button type="primary" @click="update_user()">提交</Button>
+	//       <Button type="ghost" @click="skip_2_home()" style="margin-left: 8px">取消</Button>
+	//     </Form-item>
+	//   </Form>
+	// </template>
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    var _this = this;
+
+	    var this_ = this;
+	    var param = {
+	      httpType: 'get',
+	      serviceUrl: 'users/user/getuserinfo',
+	      apiModule: 'newAPI'
+	    };
+	    var queryUserInfo = util.ajaxQuery(param, function (res) {
+	      var default_info = {
+	        nickname: '测试',
+	        avatar: [],
+	        sex: 'unknown',
+	        introduction: '这个人很懒，什么也没写...',
+	        birthday: ''
+	      };
+	      var userInfo = $.extend({}, default_info, res.data.user);
+	      _this.userInfo = $.extend({}, default_info, userInfo);
+	      _this.show = true;
+	    });
+	  },
+	  ready: function ready() {},
+	  data: function data() {
+	    return {
+	      show: false,
+	      userInfo: {}
+	    };
+	  },
+
+	  methods: {
+	    update_user: function update_user() {
+	      var _this2 = this;
+
+	      var param = {
+	        httpType: 'post',
+	        serviceUrl: 'users/user/update',
+	        apiModule: 'newAPI',
+	        user: (0, _stringify2.default)(this.userInfo)
+	      };
+	      var queryUserInfo = util.ajaxQuery(param, function (res) {
+	        if (res.data.result) {
+	          _this2.$Message.success('保存成功！');
+	          _this2.$store.dispatch('initUserInfo');
+	          _this2.$router.push({ path: '/' });
+	        }
+	      });
+	    },
+	    skip_2_home: function skip_2_home() {
+	      this.$router.push({ path: '/' });
+	    }
+	  },
+	  components: {
+	    'upload-pic': _uploadPic2.default
+	  },
+	  computed: {}
+	  // </script>
+
+	};
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(43)
+	__vue_script__ = __webpack_require__(45)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/components/uploadPic.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(46)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-5ccc94c2/uploadPic.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(44);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./uploadPic.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./uploadPic.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.demo-upload-list{\n    display: inline-block;\n    width: 60px;\n    height: 60px;\n    text-align: center;\n    line-height: 60px;\n    border: 1px solid transparent;\n    border-radius: 4px;\n    overflow: hidden;\n    background: #fff;\n    position: relative;\n    box-shadow: 0 1px 1px rgba(0,0,0,.2);\n    margin-right: 4px;\n}\n.demo-upload-list img{\n    width: 100%;\n    height: 100%;\n}\n.demo-upload-list-cover{\n    display: none;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: rgba(0,0,0,.6);\n}\n.demo-upload-list:hover .demo-upload-list-cover{\n    display: block;\n}\n.demo-upload-list-cover i{\n    color: #fff;\n    font-size: 20px;\n    cursor: pointer;\n    margin: 0 2px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div>
+	//         <div class="demo-upload-list" v-for="item in uploadList">
+	//         <template v-if="item.status === 'finished'">
+	//             <img :src="item.url">
+	//             <div class="demo-upload-list-cover">
+	//                 <Icon type="ios-eye-outline" @click.native="handleView(item)"></Icon>
+	//                 <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
+	//             </div>
+	//         </template>
+	//         <template v-else>
+	//             <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
+	//         </template>
+	//     </div>
+	//     <Upload
+	//         ref="upload"
+	//         :show-upload-list="false"
+	//         :default-file-list="defaultList"
+	//         :on-success="handleSuccess"
+	//         :format="['jpg','jpeg','png']"
+	//         :max-size="2048"
+	//         :on-format-error="handleFormatError"
+	//         :on-exceeded-size="handleMaxSize"
+	//         :before-upload="handleBeforeUpload"
+	//         multiple
+	//         type="drag"
+	//         action="/upload"
+	//         style="display: inline-block;width:58px;">
+	//         <div style="width: 58px;height:58px;line-height: 58px;">
+	//             <Icon type="camera" size="20"></Icon>
+	//         </div>
+	//     </Upload>
+	//     <Modal title="查看图片" v-model="visible">
+	//         <img :src="preView_url">
+	//     </Modal>
+	//     </div>
+	//
+	// </template>
+	// <script>
+	exports.default = {
+	    data: function data() {
+	        return {
+	            defaultList: [],
+	            imgName: '',
+	            visible: false,
+	            preView_url: ''
+	        };
+	    },
+
+	    methods: {
+	        handleView: function handleView(name) {
+	            this.preView_url = item.url;
+	            this.visible = true;
+	        },
+	        handleRemove: function handleRemove(file) {
+	            // 从 upload 实例删除数据
+	            var fileList = this.$refs.upload.fileList;
+	            this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
+	        },
+	        handleSuccess: function handleSuccess(res, file) {
+	            // 因为上传过程为实例，这里模拟添加 url
+	            file.url = res.data.url;
+	            file.name = res.data.name;
+	        },
+	        handleFormatError: function handleFormatError(file) {
+	            this.$Notice.warning({
+	                title: '文件格式不正确',
+	                desc: '文件 ' + file.name + ' 格式不正确，请上传 jpg 或 png 格式的图片。'
+	            });
+	        },
+	        handleMaxSize: function handleMaxSize(file) {
+	            this.$Notice.warning({
+	                title: '超出文件大小限制',
+	                desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
+	            });
+	        },
+	        handleBeforeUpload: function handleBeforeUpload() {
+	            var check = this.uploadList.length < 5;
+	            if (!check) {
+	                this.$Notice.warning({
+	                    title: '最多只能上传 5 张图片。'
+	                });
+	            }
+	            return check;
+	        }
+	    },
+	    mounted: function mounted() {
+	        this.$refs.upload.fileList = this.uploadList;
+	    },
+
+	    props: {
+	        uploadList: {
+	            type: Array,
+	            default: function _default() {
+	                return [];
+	            },
+	            required: true
+	        }
+	    }
+	    // </script>
+	    // <style>
+	    //     .demo-upload-list{
+	    //         display: inline-block;
+	    //         width: 60px;
+	    //         height: 60px;
+	    //         text-align: center;
+	    //         line-height: 60px;
+	    //         border: 1px solid transparent;
+	    //         border-radius: 4px;
+	    //         overflow: hidden;
+	    //         background: #fff;
+	    //         position: relative;
+	    //         box-shadow: 0 1px 1px rgba(0,0,0,.2);
+	    //         margin-right: 4px;
+	    //     }
+	    //     .demo-upload-list img{
+	    //         width: 100%;
+	    //         height: 100%;
+	    //     }
+	    //     .demo-upload-list-cover{
+	    //         display: none;
+	    //         position: absolute;
+	    //         top: 0;
+	    //         bottom: 0;
+	    //         left: 0;
+	    //         right: 0;
+	    //         background: rgba(0,0,0,.6);
+	    //     }
+	    //     .demo-upload-list:hover .demo-upload-list-cover{
+	    //         display: block;
+	    //     }
+	    //     .demo-upload-list-cover i{
+	    //         color: #fff;
+	    //         font-size: 20px;
+	    //         cursor: pointer;
+	    //         margin: 0 2px;
+	    //     }
+	    // </style>
+
+	};
+
+/***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div>\n    <div class=\"demo-upload-list\" v-for=\"item in uploadList\">\n    <template v-if=\"item.status === 'finished'\">\n        <img :src=\"item.url\">\n        <div class=\"demo-upload-list-cover\">\n            <Icon type=\"ios-eye-outline\" @click.native=\"handleView(item)\"></Icon>\n            <Icon type=\"ios-trash-outline\" @click.native=\"handleRemove(item)\"></Icon>\n        </div>\n    </template>\n    <template v-else>\n        <Progress v-if=\"item.showProgress\" :percent=\"item.percentage\" hide-info></Progress>\n    </template>\n</div>\n<Upload\n    ref=\"upload\"\n    :show-upload-list=\"false\"\n    :default-file-list=\"defaultList\"\n    :on-success=\"handleSuccess\"\n    :format=\"['jpg','jpeg','png']\"\n    :max-size=\"2048\"\n    :on-format-error=\"handleFormatError\"\n    :on-exceeded-size=\"handleMaxSize\"\n    :before-upload=\"handleBeforeUpload\"\n    multiple\n    type=\"drag\"\n    action=\"/upload\"\n    style=\"display: inline-block;width:58px;\">\n    <div style=\"width: 58px;height:58px;line-height: 58px;\">\n        <Icon type=\"camera\" size=\"20\"></Icon>\n    </div>\n</Upload>\n<Modal title=\"查看图片\" v-model=\"visible\">\n    <img :src=\"preView_url\">\n</Modal>\n</div>\n\n";
+
+/***/ },
+/* 47 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<Form :model=\"userInfo\" :label-width=\"80\" style=\"width: 600px\" v-if=\"show\">\n  <Form-item label=\"代号\">\n    <Input v-model=\"userInfo.nickname\" placeholder=\"请输入代号\"></Input>\n  </Form-item>\n  <Form-item label=\"头像\">\n    <upload-pic :upload-list=\"userInfo.avatar\"></upload-pic>\n  </Form-item>\n  <Form-item label=\"性别\">\n    <Radio-group v-model=\"userInfo.sex\">\n      <Radio label=\"male\">男</Radio>\n      <Radio label=\"female\">女</Radio>\n      <Radio label=\"unknown\">未知</Radio>\n    </Radio-group>\n  </Form-item>\n  <Form-item label=\"出生年月\">\n    <Date-picker v-model=\"userInfo.birthday\" format=\"yyyy-MM-dd\" type=\"date\" placeholder=\"选择出生年月\"></Date-picker>\n  </Form-item>\n  <Form-item label=\"自我介绍\">\n    <Input v-model=\"userInfo.introduction\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n  </Form-item>\n  <Form-item>\n    <Button type=\"primary\" @click=\"update_user()\">提交</Button>\n    <Button type=\"ghost\" @click=\"skip_2_home()\" style=\"margin-left: 8px\">取消</Button>\n  </Form-item>\n</Form>\n";
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(49)
+	__vue_script__ = __webpack_require__(51)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/plus.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(52)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-0162c56a/plus.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(50);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0162c56a&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./plus.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0162c56a&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./plus.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n.plus[_v-0162c56a]{\n\twidth: 100%;\n\toverflow:  auto;\n}\n.app_list[_v-0162c56a]{\n\twidth: 100%;\n\tpadding: 100px 0;\n}\n.app_list .app_item[_v-0162c56a]{\n\twidth: 120px;\n\theight: 120px;\n\tborder: 1px solid #dedede;\n\tcursor: pointer;\n\tmargin: 0 40px;\n}\n.app_list .app_item span[_v-0162c56a]{\n\tfont-size: 14px;\n\tfont-weight: bold;\n}\n.app_list .app_item[_v-0162c56a]:hover{\n\tanimation: swing 1s;\n\t-moz-animation: swing 1s;\n\t-webkit-animation: swing 1s;\n\t-o-animation: swing 1s;\n\t-webkit-animation-fill-mode: both;\n\t        animation-fill-mode: both;\n\tbackground-color: #f5f5f5;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 51 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	// 	<div class="plus">
+	// 		<div v-if="!nowSmartApp" class="app_list" flex="main:center">
+	// 			<div v-for="app in appList" class="app_item animated" v-bind:class="app.class" @click="show_app(app)" flex="main:center cross:center">
+	// 				<span>{{app.name}}</span>
+	// 			</div>
+	// 		</div>
+	// 		<router-view></router-view>
+	// 	</div>
+	// </template>
+	// <style scoped>
+	// 	.plus{
+	// 		width: 100%;
+	// 		overflow:  auto;
+	// 	}
+	// 	.app_list{
+	// 		width: 100%;
+	// 		padding: 100px 0;
+	// 	}
+	// 	.app_list .app_item{
+	// 		width: 120px;
+	// 		height: 120px;
+	// 		border: 1px solid #dedede;
+	// 		cursor: pointer;
+	// 		margin: 0 40px;
+	// 	}
+	// 	.app_list .app_item span{
+	// 		font-size: 14px;
+	// 		font-weight: bold;
+	// 	}
+	// 	.app_list .app_item:hover{
+	// 		animation: swing 1s;
+	// 		-moz-animation: swing 1s;
+	// 		-webkit-animation: swing 1s;
+	// 		-o-animation: swing 1s;
+	// 		animation-fill-mode: both;
+	// 		background-color: #f5f5f5;
+	// 	}
+	// </style>
+	// <script>
+	exports.default = {
+	  created: function created() {
+	    this.init_smart_app();
+	  },
+	  ready: function ready() {},
+
+	  watch: {
+	    // 如果路由有变化，会再次执行该方法
+	    '$route': 'init_smart_app'
+	  },
+	  data: function data() {
+	    return {
+	      appList: [{
+	        name: '生命格子',
+	        value: 'lifeGrid',
+	        class: { 'tada': true }
+	      }, {
+	        name: '扫雷',
+	        value: 'mineSweeper',
+	        class: { 'jello': true }
+	      }, {
+	        name: '代码仓库',
+	        value: 'lifeGrid',
+	        class: { 'shake': true }
+	      }, {
+	        name: '人生',
+	        value: 'lifeGrid',
+	        class: { 'jello': true }
+	      }]
+	    };
+	  },
+
+	  methods: {
+	    show_app: function show_app(app) {
+	      var path_smart_app = '/plus/' + app.value;
+	      this.$router.push({ path: path_smart_app });
+	    },
+	    init_smart_app: function init_smart_app() {
+	      var now_route = this.$route.name;
+	      var app_name = false;
+	      if (now_route !== 'plus') {
+	        app_name = now_route;
+	      }
+	      this.$store.dispatch('initSmartApp', app_name);
+	    }
+	  },
+	  components: {},
+	  computed: {
+	    nowSmartApp: function nowSmartApp() {
+	      return this.$store.getters.getSmartApp;
+	    }
+	  }
+	  // </script>
+
+	};
+
+/***/ },
+/* 52 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"plus\" _v-0162c56a=\"\">\n\t<div v-if=\"!nowSmartApp\" class=\"app_list\" flex=\"main:center\" _v-0162c56a=\"\">\n\t\t<div v-for=\"app in appList\" class=\"app_item animated\" v-bind:class=\"app.class\" @click=\"show_app(app)\" flex=\"main:center cross:center\" _v-0162c56a=\"\">\n\t\t\t<span _v-0162c56a=\"\">{{app.name}}</span>\n\t\t</div>\n\t</div>\n\t<router-view _v-0162c56a=\"\"></router-view>\n</div>\n";
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(54)
+	__vue_script__ = __webpack_require__(56)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/views/smart_apps/lifeGrid.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(57)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-8c214f6e/lifeGrid.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(55);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-8c214f6e&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./lifeGrid.vue", function() {
+				var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-8c214f6e&scoped=true!../../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./lifeGrid.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.lifeGrid[_v-8c214f6e]{\n\twidth: 100%;\n}\n.lifeGrid .mainbody[_v-8c214f6e]{\n\twidth: 900px;\n}\n.lifeGrid .mainbody h2[_v-8c214f6e]{\n\tfont-size: 18px!important;\n\ttext-align: center;\n}\n.lifeGrid .mainbody p[_v-8c214f6e]{\n\tfont-size: 13px;\n\tmargin: 10px 200px;\n}\n.lifeGrid .mainbody .birthday_select[_v-8c214f6e]{\n\tmargin-top: 20px;\n}\n.lifeGrid .mainbody .birthday_select span[_v-8c214f6e]{\n\tmargin-right: 20px;\n}\n.lifeGrid .mainbody .tips[_v-8c214f6e]{\n\tmargin-top: 10px;\n\ttext-align: center;\n}\n.grid[_v-8c214f6e]{\n\twidth: 602px;\n\theight: 602px;\n\tmargin: 20px auto;\n\tborder-left: 1px solid #dedede;\n\tborder-top: 1px solid #dedede;\n}\n.grid .month_grid[_v-8c214f6e]{\n\tfloat: left;\n\twidth: 20px;\n\theight: 20px;\n\tborder-right: 1px solid #dedede;\n\tborder-bottom: 1px solid #dedede;\n}\n.grid .month_grid[_v-8c214f6e]:after{\n\tcontent: '';\n\tdisplay: block;\n\tclear: both;\n\theight: 0;\n\tvisibility: hidden;\n}\n.grid .month_grid.isGone[_v-8c214f6e]{\n\tbackground-color: #f90;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 56 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div class="lifeGrid" flex="main:center">
+	// 		<div class="mainbody">
+	// 			<h2>生命格子</h2>
+	// 			<p>如果一个月算一个小格子，人生其实只有900个格子。在一张A4纸上画一个30X30的表格，每过一个月就涂掉一格。也许你没有想过，被量化后的人生原来如此短暂...</p>
+	// 			<div class="birthday_select" flex="main:center cross:center">
+	// 				<span>出生日期</span>
+	// 				<Date-picker v-model="birthday" format="yyyy-MM-dd" type="date" style="width:200px" placeholder="选择出生年月"></Date-picker>
+	// 			</div>
+	// 			<div class="tips">
+	// 				<span>你已经活了</span><span>{{parseInt(yourlifeGone/12) + '年' + yourlifeGone%12 + '月'}}</span>
+	// 			</div>
+	// 			<div class="grid">
+	// 				<div v-for="i in 900" class="month_grid" v-bind:class="{isGone: i < yourlifeGone}"></div>
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// </template>
+	// <style scoped>
+	// 	.lifeGrid{
+	// 		width: 100%;
+	// 	}
+	// 	.lifeGrid .mainbody{
+	// 		width: 900px;
+	// 	}
+	// 	.lifeGrid .mainbody h2{
+	// 		font-size: 18px!important;
+	// 		text-align: center;
+	// 	}
+	// 	.lifeGrid .mainbody p{
+	// 		font-size: 13px;
+	// 		margin: 10px 200px;
+	// 	}
+	// 	.lifeGrid .mainbody .birthday_select{
+	// 		margin-top: 20px;
+	// 	}
+	// 	.lifeGrid .mainbody .birthday_select span{
+	// 		margin-right: 20px;
+	// 	}
+	// 	.lifeGrid .mainbody .tips{
+	// 		margin-top: 10px;
+	// 		text-align: center;
+	// 	}
+	// 	.grid{
+	// 		width: 602px;
+	// 		height: 602px;
+	// 		margin: 20px auto;
+	// 		border-left: 1px solid #dedede;
+	// 		border-top: 1px solid #dedede;
+	// 	}
+	// 	.grid .month_grid{
+	// 		float: left;
+	// 		width: 20px;
+	// 		height: 20px;
+	// 		border-right: 1px solid #dedede;
+	// 		border-bottom: 1px solid #dedede;
+	// 	}
+	// 	.grid .month_grid:after{
+	// 		content: '';
+	// 		display: block;
+	// 		clear: both;
+	// 		height: 0;
+	// 		visibility: hidden;
+	// 	}
+	// 	.grid .month_grid.isGone{
+	// 		background-color: #f90;
+	// 	}
+	// </style>
+	// <script>
+	exports.default = {
+		created: function created() {
+			this.birthday = this.userInfo.birthday;
+		},
+		ready: function ready() {},
+		data: function data() {
+			return {
+				birthday: ''
+			};
+		},
+
+		methods: {},
+		components: {},
+		computed: {
+			userInfo: function userInfo() {
+				return this.$store.getters.getUserInfo;
+			},
+			shouldSelect: function shouldSelect() {
+				if (this.userInfo.birthday === '') {
+					return true;
+				} else {
+					return false;
+				}
+			},
+			yourlifeGone: function yourlifeGone() {
+				var now_time = new Date(),
+				    birthday = new Date(this.birthday);
+				var months = (now_time.getFullYear() - birthday.getFullYear()) * 12;
+				months -= birthday.getMonth() + 1;
+				months += now_time.getMonth();
+				months = months || 0;
+				return months < 0 ? 0 : months;
+			}
+		}
+		// </script>
+
+	};
+
+/***/ },
+/* 57 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"lifeGrid\" flex=\"main:center\" _v-8c214f6e=\"\">\n\t<div class=\"mainbody\" _v-8c214f6e=\"\">\n\t\t<h2 _v-8c214f6e=\"\">生命格子</h2>\n\t\t<p _v-8c214f6e=\"\">如果一个月算一个小格子，人生其实只有900个格子。在一张A4纸上画一个30X30的表格，每过一个月就涂掉一格。也许你没有想过，被量化后的人生原来如此短暂...</p>\n\t\t<div class=\"birthday_select\" flex=\"main:center cross:center\" _v-8c214f6e=\"\">\n\t\t\t<span _v-8c214f6e=\"\">出生日期</span>\n\t\t\t<date-picker v-model=\"birthday\" format=\"yyyy-MM-dd\" type=\"date\" style=\"width:200px\" placeholder=\"选择出生年月\" _v-8c214f6e=\"\"></date-picker>\n\t\t</div>\n\t\t<div class=\"tips\" _v-8c214f6e=\"\">\n\t\t\t<span _v-8c214f6e=\"\">你已经活了</span><span _v-8c214f6e=\"\">{{parseInt(yourlifeGone/12) + '年' + yourlifeGone%12 + '月'}}</span>\n\t\t</div>\n\t\t<div class=\"grid\" _v-8c214f6e=\"\">\n\t\t\t<div v-for=\"i in 900\" class=\"month_grid\" v-bind:class=\"{isGone: i < yourlifeGone}\" _v-8c214f6e=\"\"></div>\n\t\t</div>\n\t</div>\n</div>\n";
+
+/***/ },
 /* 58 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _vue = __webpack_require__(1);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	var _vuex = __webpack_require__(4);
+
+	var _vuex2 = _interopRequireDefault(_vuex);
+
+	var _getters = __webpack_require__(59);
+
+	var _getters2 = _interopRequireDefault(_getters);
+
+	var _mutations = __webpack_require__(60);
+
+	var _mutations2 = _interopRequireDefault(_mutations);
+
+	var _actions = __webpack_require__(61);
+
+	var _actions2 = _interopRequireDefault(_actions);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	_vue2.default.use(_vuex2.default);
+
+	var state = {
+		userInfo: { asd: 'asd' },
+		data: {},
+		chat: {
+			roomId: 'default',
+			msgArr: []
+		},
+		smart_app: {
+			name: ''
+		},
+		readyState: false
+	};
+
+	exports.default = new _vuex2.default.Store({
+		state: state,
+		mutations: _mutations2.default,
+		getters: _getters2.default,
+		actions: _actions2.default
+	});
+
+/***/ },
+/* 59 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15591,7 +15638,7 @@
 	exports.default = getters;
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15614,7 +15661,7 @@
 	exports.default = mutations;
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15651,35 +15698,6 @@
 	};
 
 	exports.default = actions;
-
-/***/ },
-/* 61 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var filters = {
-		getSexStr: function getSexStr(sex) {
-			var str = '';
-			switch (sex) {
-				case 'male':
-					str = '男';
-					break;
-				case 'famale':
-					str = '女';
-					break;
-				default:
-					str = '未知';
-					break;
-			}
-			return str;
-		}
-	};
-
-	exports.default = filters;
 
 /***/ },
 /* 62 */
@@ -42388,7 +42406,7 @@
 /* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(9)();
 	// imports
 
 
@@ -42680,7 +42698,7 @@
 /* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(9)();
 	// imports
 
 

@@ -1,7 +1,7 @@
 <template>
 	<div class="plus">
 		<div v-if="!nowSmartApp" class="app_list" flex="main:center">
-			<div v-for="app in appList" class="app_item" @click="show_app(app)" flex="main:center cross:center">
+			<div v-for="app in appList" class="app_item animated" v-bind:class="app.class" @click="show_app(app)" flex="main:center cross:center">
 				<span>{{app.name}}</span>
 			</div>
 		</div>
@@ -34,6 +34,7 @@
 		-webkit-animation: swing 1s;
 		-o-animation: swing 1s;
 		animation-fill-mode: both;
+		background-color: #f5f5f5;
 	}
 </style>
 <script>
@@ -47,51 +48,55 @@
 		watch: {
     		// 如果路由有变化，会再次执行该方法
     		'$route': 'init_smart_app'
-		},
-		data(){
-			return {
-				appList:[
-					{
-						name: '生命格子',
-						value: 'lifeGrid'
-					},
-					{
-						name: '扫雷',
-						value: 'lifeGrid'
-					},
-					{
-						name: '代码仓库',
-						value: 'lifeGrid'
-					},
-					{
-						name: '人生',
-						value: 'lifeGrid'
-					}
-				]
-			}
-		},
-		methods:{
-			show_app: function(app){
-				let path_smart_app = `/plus/${app.value}`;
-				this.$router.push({ path: path_smart_app })
-				
-			},
-			init_smart_app: function(){
-				let now_route = this.$route.name;
-				let app_name = false;
-				if (now_route !== 'plus'){
-					app_name = now_route
-				}
-				this.$store.dispatch('initSmartApp', app_name);
-			}
-		},
-		components:{
+    	},
+    	data(){
+    		return {
+    			appList:[
+    			{
+    				name: '生命格子',
+    				value: 'lifeGrid',
+    				class: {'tada':true}
+    			},
+    			{
+    				name: '扫雷',
+    				value: 'mineSweeper',
+    				class: {'jello':true}
+    			},
+    			{
+    				name: '代码仓库',
+    				value: 'lifeGrid',
+    				class: {'shake':true}
+    			},
+    			{
+    				name: '人生',
+    				value: 'lifeGrid',
+    				class: {'jello':true}
+    			}
+    			]
+    		}
+    	},
+    	methods:{
+    		show_app: function(app){
+    			let path_smart_app = `/plus/${app.value}`;
+    			this.$router.push({ path: path_smart_app })
 
-		},
-		computed:{
-			nowSmartApp(){
-				return this.$store.getters.getSmartApp
-			}
-		}
-	}
+    		},
+    		init_smart_app: function(){
+    			let now_route = this.$route.name;
+    			let app_name = false;
+    			if (now_route !== 'plus'){
+    				app_name = now_route
+    			}
+    			this.$store.dispatch('initSmartApp', app_name);
+    		}
+    	},
+    	components:{
+
+    	},
+    	computed:{
+    		nowSmartApp(){
+    			return this.$store.getters.getSmartApp
+    		}
+    	}
+    }
 </script>
