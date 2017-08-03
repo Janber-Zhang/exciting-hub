@@ -11,7 +11,6 @@
 				<Icon class="pointer" type="social-nodejs" size="50"></Icon>
 			</li>
 		</ul>
-		<h1>{{flash_arr}}</h1>
 		<router-view></router-view>
 	</div>
 	
