@@ -42808,75 +42808,47 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t.mine_area table[_v-c25638a2]{\n\t\tborder: 1px solid #dedede;\n\t}\n\t.mine_area table tr td[_v-c25638a2]{\n\t\tdisplay: table-cell;\n    width: 30px;\n    height: 30px;\n    line-height: 30px;\n    border: 1px solid #dedede;\n    text-align: center;\n    background-color: #dddee1;\n    position: relative;\n\t}\n\t.mine_area table tr td span[_v-c25638a2]{\n\t\tfont-size: 10px;\n\t\tposition: absolute;\n\t}\n\t.mine_area table tr td img[_v-c25638a2]{\n\t\tpointer-events: none;\n\t}\n\t.grid[_v-c25638a2]:hover{\n\t\tbackground-color: #f5f5f5;\n\t}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.mine_area .option[_v-c25638a2]{\n\tpadding: 20px;\n}\n.mine_area .option .reset[_v-c25638a2]{\n\tmargin-left: 20px;\n}\n.mine_area table[_v-c25638a2]{\n\tborder: 1px solid #dedede;\n\tbackground-color: #69647b;\n}\n.mine_area table tr td[_v-c25638a2]{\n\tdisplay: table-cell;\n\twidth: 30px;\n\theight: 30px;\n\tline-height: 30px;\n\tborder: 1px solid #dedede;\n\ttext-align: center;\n\tbackground-color: #dddee1;\n\tposition: relative;\n}\n.mine_area table tr td span[_v-c25638a2]{\n\tfont-size: 10px;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n}\n.mine_area table tr td img[_v-c25638a2]{\n\tpointer-events: none;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%,-50%);\n\t        transform: translate(-50%,-50%);\n}\n.grid[_v-c25638a2]:hover{\n\tbackground-color: #f5f5f5;\n}\n.isOpen[_v-c25638a2]{\n\tbackground-color: #8ee094 !important;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
 /* 75 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	// <template>
-	// 	<div flex="main:center" class="app_warp">
-	// 		<div class="app_body" flex="main:center">
-	// 			<!-- <h1>扫雷大战</h1> -->
-	// 			<div class="mine_area">
-	// 			<h1>标记数：{{marked_num}}</h1>
-	// 				<table id="mines_table">
-	// 					<tbody>
-	// 						<tr v-for="xline in grid_array">
-	// 							<td class="grid" :grid-index="grid.index" v-for="grid in xline" @click="confirmNot(grid)">
-	// 								<img src="/images/boom.svg" width="22" v-show="grid.boom && grid.isShow" alt="">
-	// 								<img src="/images/flag.svg" width="14" v-show="grid.mark" alt="">
-	// 								<span v-show="!grid.boom && grid.isShow">{{grid.near}}</span>
-	// 							</td>
-	// 						</tr>
-	// 					</tbody>
-	// 				</table>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// </template>
-	// <style scoped>
-	// 	.mine_area table{
-	// 		border: 1px solid #dedede;
-	// 	}
-	// 	.mine_area table tr td{
-	// 		display: table-cell;
-	//     width: 30px;
-	//     height: 30px;
-	//     line-height: 30px;
-	//     border: 1px solid #dedede;
-	//     text-align: center;
-	//     background-color: #dddee1;
-	//     position: relative;
-	// 	}
-	// 	.mine_area table tr td span{
-	// 		font-size: 10px;
-	// 		position: absolute;
-	// 	}
-	// 	.mine_area table tr td img{
-	// 		pointer-events: none;
-	// 	}
-	// 	.grid:hover{
-	// 		background-color: #f5f5f5;
-	// 	}
-	// </style>
-	// <script>
+
+	var _timmer = __webpack_require__(96);
+
+	var _timmer2 = _interopRequireDefault(_timmer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	exports.default = {
 		created: function created() {},
 		mounted: function mounted() {
-			this.initMineGrids('Lower'); // DOM挂载结束后重写雷区oncontextmenu事件
+			this.initMineGrids(this.now_level); // DOM挂载结束后重写雷区oncontextmenu事件
 		},
 		data: function data() {
 			return {
-				config: {
+				level_arr: [//等级选择列表
+				{
+					value: 'Lower',
+					name: '初级'
+				}, {
+					value: 'Middle',
+					name: '中级'
+				}, {
+					value: 'High',
+					name: '高级'
+				}],
+				now_level: 'Lower', //当前游戏等级
+				config: { //等级配置
 					Lower: {
 						length: 9,
 						width: 9,
@@ -42893,9 +42865,14 @@
 						counts: 99
 					}
 				},
-				grid_array: [],
-				now_config: {},
-				marked_num: 0
+				grid_array: [], //格点阵列
+				now_config: {}, //当前配置
+				marked_num: 0, //标记数
+				opened_num: 0, //打开数
+				timming: {
+					timming_stop: true, //计时停止
+					timming: '' //时间
+				}
 			};
 		},
 
@@ -42937,7 +42914,7 @@
 				document.getElementById('mines_table').oncontextmenu = function (e) {
 					if (e.target.tagName == 'TD') {
 						var index = $(e.target).attr('grid-index');
-						if (vm.marked_num == vm.now_config.counts && !grid_arr_obj[index].mark || grid_arr_obj[index].isShow) {
+						if (grid_arr_obj[index].isShow) {
 							vm.$Message.error('不可标记');
 							return false;
 						}
@@ -42952,25 +42929,51 @@
 				};
 			},
 			confirmNot: function confirmNot(grid) {
-				grid.isShow = true;
-				if (grid.mark) {
+				if (grid.isShow) {
+					return;
+				} else if (grid.mark) {
 					this.$Message.error('has marked!!!');
 					return;
 				}
+				grid.isShow = true;
 				if (grid.boom) {
+					this.timming.timming_stop = true;
 					this.$Message.error('BOOM!!!');
+					this.openAllBooms();
 					return;
 				} else {
+					this.opened_num++;
 					// 获取附近的地雷个数
 					grid.near = this.getNearBoomNum(grid);
+					if (grid.near === 0) {
+						this.openAround(grid);
+					}
 				}
 			},
-			getNearBoomNum: function getNearBoomNum(grid) {
+			openAround: function openAround(grid) {
+				var vm = this;
+				var near_position = this.getAround(grid);
+				near_position.forEach(function (item) {
+					var grid_true = vm.grid_array[item.y - 1][item.x - 1];
+					vm.confirmNot(grid_true);
+				});
+			},
+			openAllBooms: function openAllBooms() {
+				this.grid_array.forEach(function (line) {
+					line.forEach(function (grid) {
+						if (!grid.isShow && grid.boom) {
+							grid.isShow = true;
+							grid.mark = false;
+						}
+					});
+				});
+			},
+			getAround: function getAround(grid) {
 				var vm = this;
 				var x = grid.x;
 				var y = grid.y;
-				var boom_number = 0;
-				var near_position = [{
+				var near_position = [];
+				var near_position_pre = [{
 					x: x - 1,
 					y: y - 1
 				}, {
@@ -42995,33 +42998,304 @@
 					x: x + 1,
 					y: y + 1
 				}];
+				near_position_pre.forEach(function (pos) {
+					if (pos.x == 0 || pos.x > vm.now_config.width || pos.y == 0 || pos.y > vm.now_config.length) {} else {
+						near_position.push(pos);
+					}
+				});
+				return near_position;
+			},
+			getNearBoomNum: function getNearBoomNum(grid) {
+				var vm = this;
+				var boom_number = 0;
+				var near_position = this.getAround(grid);
 				near_position.forEach(function (pos) {
-					if (pos.x == 0 || pos.x > vm.now_config.width || pos.y == 0 || pos.y > vm.now_config.length) {
-						console.log('position not exist');
-					} else {
+					if (pos.x == 0 || pos.x > vm.now_config.width || pos.y == 0 || pos.y > vm.now_config.length) {} else {
 						if (vm.grid_array[pos.y - 1][pos.x - 1]['boom']) {
 							boom_number++;
 						}
 					}
 				});
 				return boom_number;
-			},
-			confirmIs: function confirmIs(grid) {
-				console.log(grid);
 			}
 		},
-		components: {},
+		watch: {
+			marked_num: function marked_num(val) {
+				if (this.marked_num === this.now_config.counts && this.opened_num === this.now_config.length * this.now_config.width - this.now_config.counts) {
+					this.$Message.success('SUCCESS!!!');
+				}
+			},
+			opened_num: function opened_num(val) {
+				if (this.marked_num === this.now_config.counts && this.opened_num === this.now_config.length * this.now_config.width - this.now_config.counts) {
+					this.$Message.success('SUCCESS!!!');
+				}
+			}
+		},
+		components: {
+			'timmer': _timmer2.default
+		},
 		directives: {},
 		computed: {}
 		// </script>
 
-	};
+	}; // <template>
+	// 	<div flex="main:center" class="app_warp">
+	// 		<div class="app_body" flex="main:center">
+	// 			<!-- <h1>扫雷大战</h1> -->
+	// 			<div class="mine_area">
+	// 				<div class="option" flex="main:center">
+	// 					<i-select v-model="now_level" style="width:80px">
+	// 						<i-option v-for="item in level_arr" :value="item.value" :key="item.name">{{ item.name }}</i-option>
+	// 					</i-select>
+	// 					<i-button type="primary" class="reset" @click="initMineGrids(now_level)">重置</i-button>
+	// 				</div>
+	// 				<timmer :param="timming"></timmer>
+	// 				<table id="mines_table">
+	// 					<tbody>
+	// 						<tr v-for="xline in grid_array">
+	// 							<td class="grid" :grid-index="grid.index" v-for="grid in xline" v-bind:class="{'isOpen':!grid.boom && grid.isShow}" @click="confirmNot(grid)">
+	// 								<img src="/images/boom.svg" width="22" v-show="grid.boom && grid.isShow" alt="">
+	// 								<img src="/images/flag.svg" width="14" v-show="grid.mark" alt="">
+	// 								<span v-show="!grid.boom && grid.isShow">{{grid.near || ''}}</span>
+	// 							</td>
+	// 						</tr>
+	// 					</tbody>
+	// 				</table>
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// </template>
+	// <style scoped>
+	// 	.mine_area .option{
+	// 		padding: 20px;
+	// 	}
+	// 	.mine_area .option .reset{
+	// 		margin-left: 20px;
+	// 	}
+	// 	.mine_area table{
+	// 		border: 1px solid #dedede;
+	// 		background-color: #69647b;
+	// 	}
+	// 	.mine_area table tr td{
+	// 		display: table-cell;
+	// 		width: 30px;
+	// 		height: 30px;
+	// 		line-height: 30px;
+	// 		border: 1px solid #dedede;
+	// 		text-align: center;
+	// 		background-color: #dddee1;
+	// 		position: relative;
+	// 	}
+	// 	.mine_area table tr td span{
+	// 		font-size: 10px;
+	// 		position: absolute;
+	// 		left: 0;
+	// 		right: 0;
+	// 	}
+	// 	.mine_area table tr td img{
+	// 		pointer-events: none;
+	// 		position: absolute;
+	// 		left: 50%;
+	// 		top: 50%;
+	// 		transform: translate(-50%,-50%);
+	// 	}
+	// 	.grid:hover{
+	// 		background-color: #f5f5f5;
+	// 	}
+	// 	.isOpen{
+	// 		background-color: #8ee094 !important;
+	// 	}
+	// </style>
+	// <script>
 
 /***/ },
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div flex=\"main:center\" class=\"app_warp\" _v-c25638a2=\"\">\n\t<div class=\"app_body\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t<!-- <h1>扫雷大战</h1> -->\n\t\t<div class=\"mine_area\" _v-c25638a2=\"\">\n\t\t<h1 _v-c25638a2=\"\">标记数：{{marked_num}}</h1>\n\t\t\t<table id=\"mines_table\" _v-c25638a2=\"\">\n\t\t\t\t<tbody _v-c25638a2=\"\">\n\t\t\t\t\t<tr v-for=\"xline in grid_array\" _v-c25638a2=\"\">\n\t\t\t\t\t\t<td class=\"grid\" :grid-index=\"grid.index\" v-for=\"grid in xline\" @click=\"confirmNot(grid)\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/boom.svg\" width=\"22\" v-show=\"grid.boom &amp;&amp; grid.isShow\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/flag.svg\" width=\"14\" v-show=\"grid.mark\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<span v-show=\"!grid.boom &amp;&amp; grid.isShow\" _v-c25638a2=\"\">{{grid.near}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div flex=\"main:center\" class=\"app_warp\" _v-c25638a2=\"\">\n\t<div class=\"app_body\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t<!-- <h1>扫雷大战</h1> -->\n\t\t<div class=\"mine_area\" _v-c25638a2=\"\">\n\t\t\t<div class=\"option\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t\t\t<i-select v-model=\"now_level\" style=\"width:80px\" _v-c25638a2=\"\">\n\t\t\t\t\t<i-option v-for=\"item in level_arr\" :value=\"item.value\" :key=\"item.name\" _v-c25638a2=\"\">{{ item.name }}</i-option>\n\t\t\t\t</i-select>\n\t\t\t\t<i-button type=\"primary\" class=\"reset\" @click=\"initMineGrids(now_level)\" _v-c25638a2=\"\">重置</i-button>\n\t\t\t</div>\n\t\t\t<timmer :param=\"timming\" _v-c25638a2=\"\"></timmer>\n\t\t\t<table id=\"mines_table\" _v-c25638a2=\"\">\n\t\t\t\t<tbody _v-c25638a2=\"\">\n\t\t\t\t\t<tr v-for=\"xline in grid_array\" _v-c25638a2=\"\">\n\t\t\t\t\t\t<td class=\"grid\" :grid-index=\"grid.index\" v-for=\"grid in xline\" v-bind:class=\"{'isOpen':!grid.boom &amp;&amp; grid.isShow}\" @click=\"confirmNot(grid)\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/boom.svg\" width=\"22\" v-show=\"grid.boom &amp;&amp; grid.isShow\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/flag.svg\" width=\"14\" v-show=\"grid.mark\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<span v-show=\"!grid.boom &amp;&amp; grid.isShow\" _v-c25638a2=\"\">{{grid.near || ''}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(97)
+	__vue_script__ = __webpack_require__(99)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/components/timmer.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(100)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-4cd5d8dc/timmer.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(98);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(10)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4cd5d8dc&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./timmer.vue", function() {
+				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4cd5d8dc&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./timmer.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(9)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n\n\n\n\n.timmer[_v-4cd5d8dc]{\n    display: inline-block;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 99 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	// <template>
+	//     <div class="timmer">
+	//         {{time_rel}}
+	//     </div>    
+	// </template>
+	// <style scoped>
+	//     .timmer{
+	//         display: inline-block;
+	//     }
+	// </style>
+	// <script>
+	exports.default = {
+	    created: function created() {
+	        if (this.param.timming_stop) {} else {
+	            this.start();
+	        }
+	    },
+	    mounted: function mounted() {},
+	    data: function data() {
+	        return {
+	            hour: 0,
+	            min: 0,
+	            sec: 0,
+	            intervalId: ''
+	        };
+	    },
+
+	    methods: {
+	        start: function start() {
+	            var vm = this;
+	            this.intervalId = setInterval(function () {
+	                if (vm.sec < 59) {
+	                    vm.sec++;
+	                } else {
+	                    vm.sec = 0;
+	                    if (vm.min < 59) {
+	                        vm.min++;
+	                    } else {
+	                        vm.min = 0;
+	                        vm.hour++;
+	                    }
+	                }
+	                var H = vm.hour > 9 ? vm.hour : '0' + vm.hour;
+	                var M = vm.min > 9 ? vm.min : '0' + vm.min;
+	                var S = vm.sec > 9 ? vm.sec : '0' + vm.sec;
+	                vm.value = H + ' : ' + M + ' : ' + S;
+	            }, 1000);
+	        }
+	    },
+	    watch: {
+	        'param.timming_stop': function paramTimming_stop(val) {
+	            if (this.param.timming_stop) {
+	                clearInterval(this.intervalId);
+	            }
+	        },
+	        'time_rel': function time_rel(val) {
+	            this.param.timming = this.time_rel;
+	        }
+
+	    },
+	    props: ['param'],
+	    components: {},
+	    directives: {},
+	    computed: {
+	        'time_rel': function time_rel() {
+	            var H = this.hour > 9 ? this.hour : '0' + this.hour;
+	            var M = this.min > 9 ? this.min : '0' + this.min;
+	            var S = this.sec > 9 ? this.sec : '0' + this.sec;
+	            return H + ' : ' + M + ' : ' + S;
+	        }
+	    }
+	    // </script>
+
+	};
+
+/***/ },
+/* 100 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"timmer\" _v-4cd5d8dc=\"\">\n    {{time_rel}}\n</div>    \n";
 
 /***/ }
 /******/ ]);
