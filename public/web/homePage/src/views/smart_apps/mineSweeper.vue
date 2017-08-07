@@ -2,7 +2,7 @@
 	<div flex="main:center" class="app_warp">
 		<div class="app_body" flex="main:center">
 			<!-- <h1>扫雷大战</h1> -->
-			<div class="mine_area">
+			<div class="mine_area" v-show="record_list">
 				<div class="option" flex="main:center cross:center">
 					<span>难度：</span>
 					<i-select v-model="now_level" style="width:80px">
@@ -24,6 +24,58 @@
 				</table>
 			</div>
 		</div>
+		<Collapse v-model="show_sort" accordion style="width: 200px;" v-if="record_list">
+			<Panel name="1">
+				初级-风云榜
+				<ul class="record_list" slot="content">
+					<li class="head_item">我的排名：{{record_list.Lower.myOrder? record_list.Lower.myOrder: '暂无'}}</li>
+					<li class="list_item"><span class="index">排名</span><span class="nickname">昵称</span><span class="record">用时</span></li>
+					<li class="list_item" slot="content" v-for="(item,index) in record_list.Lower.dataList">
+						<span class="index">{{index+1}}</span>
+						<span class="nickname">{{item.nickname}}</span>
+						<span class="record">{{item.time_cost | getSeconds}}</span>
+					</li>
+				</ul>
+			</Panel>
+			<Panel name="2">
+				中级-风云榜
+				<ul class="record_list" slot="content">
+					<li class="head_item">我的排名：{{record_list.Middle.myOrder? record_list.Middle.myOrder: '暂无'}}</li>
+					<li class="list_item"><span class="index">排名</span><span class="nickname">昵称</span><span class="record">用时</span></li>
+					<li class="list_item" slot="content" v-for="(item,index) in record_list.Middle.dataList">
+						<span class="index">{{index+1}}</span>
+						<span class="nickname">{{item.nickname}}</span>
+						<span class="record">{{item.time_cost | getSeconds}}</span>
+					</li>
+				</ul>
+			</Panel>
+			<Panel name="3">
+				高级-风云榜
+				<ul class="record_list" slot="content">
+					<li class="head_item">我的排名：{{record_list.High.myOrder? record_list.High.myOrder: '暂无'}}</li>
+					<li class="list_item"><span class="index">排名</span><span class="nickname">昵称</span><span class="record">用时</span></li>
+					<li class="list_item" slot="content" v-for="(item,index) in record_list.High.dataList">
+						<span class="index">{{index+1}}</span>
+						<span class="nickname">{{item.nickname}}</span>
+						<span class="record">{{item.time_cost | getSeconds}}</span>
+					</li>
+				</ul>
+			</Panel>
+		</Collapse>
+		<Modal v-model="SUCCESS" width="360" :mask-closable="false">
+			<p slot="header" style="color:#42b983;text-align:center">
+				<Icon type="ios-checkmark"></Icon>
+				<span>恭喜你扫雷成功!!!</span>
+			</p>
+			<div style="text-align:center">
+				<p></p>
+				<p style="margin-bottom:10px">本次记录为: <span style="color: red">{{timming.length | getTimeStr}}</span>，是否发送本次记录！！！</p>
+				<i-input v-model="finish_desc" placeholder="请发表完赛感言..."></i-input>
+			</div>
+			<div slot="footer">
+				<i-button type="success" size="large" long @click="sendRecord">发送</i-button>
+			</div>
+		</Modal>
 	</div>
 </template>
 <style scoped>
@@ -76,12 +128,34 @@
 	.isOpen{
 		background-color: #8ee094 !important;
 	}
+	.record_list .head_item{
+		text-align: center;
+    background-color: #f9f9f9;
+	}
+	.record_list .list_item{
+		padding: 3px 0
+	}
+	.record_list .list_item span{
+		display: inline-block;
+		text-align: center;
+	}
+	.record_list .list_item .index{
+		width: 38px;
+	}
+	.record_list .list_item .nickname{
+		width: 80px;
+	}
+	.record_list .list_item .record{
+		width: 40px;
+		float: right
+	}
 </style>
 <script>
 	import filters      from './../../js/filters.js';
+	import API          from './../../js/service.js';
 	export default {
 		created(){
-			
+			this.initRecordList();
 		},
 		mounted(){
 			this.initMineGrids(this.now_level);   // DOM挂载结束后重写雷区oncontextmenu事件
@@ -103,7 +177,7 @@
 				}
 				],
 				now_level: 'Lower',		   //当前游戏等级
-				config:{                   //等级配置
+				config:{                 //等级配置
 					Lower:{
 						length  : 9, 
 						width   : 9, 
@@ -127,9 +201,13 @@
 				timming: {
 					start : '',       //计时
 					length: 0,        //计数(ms)
-				  interval:''       //IntervalId
+				  interval:''         //IntervalId
 				},
-				isDisabled: false   //是否可操作
+				isDisabled: false,    //是否可操作
+				SUCCESS   : false,    //是否已成功
+				finish_desc:'',       //完赛感言
+				show_sort : '1',      //历史记录
+				record_list: false
 			}
 		},
 		methods:{
@@ -307,6 +385,8 @@
 				this.marked_num = 0;   //标记数&打开数重置
 				this.opened_num = 0;
 				this.isDisabled = false;
+				this.SUCCESS = false;
+				this.finish_desc = '';
 			},
 			timmingStart: function(){   //开始计时
 				this.timmingStop();
@@ -327,6 +407,32 @@
 					length: 0,        //计数(ms)
 				  interval:'',      //IntervalId
 				}
+			},
+			sendRecord: function(){
+				let vm = this;
+				if (!this.timming.length) {
+					this.$Message.error('参数错误！！！');
+					// return
+				}
+				let param = {
+					app_name      :    'mineSweeper',
+					mine_record   :    this.timming.length,
+					type          :    this.now_level,
+					descr         :    this.finish_desc
+				}
+				API.addAppRecord(param,function(res){
+					vm.SUCCESS = false;
+					vm.initRecordList();
+				});
+			},
+			initRecordList: function(){
+				let vm = this;
+				API.getAppsRecords({
+					app_name: 'mineSweeper',
+					type: 2
+				}, function(res){
+					vm.record_list = res.data;
+				});
 			}
 		},
 		watch: {
@@ -334,6 +440,7 @@
 				if (this.marked_num === this.now_config.counts && this.opened_num === (this.now_config.length*this.now_config.width-this.now_config.counts)) {
 					this.isDisabled = true;
 					this.timmingStop();
+					this.SUCCESS = true;
 					this.$Message.success('SUCCESS!!!');
 				}
 			},
@@ -341,6 +448,7 @@
 				if (this.marked_num === this.now_config.counts && this.opened_num === (this.now_config.length*this.now_config.width-this.now_config.counts)) {
 					this.isDisabled = true;
 					this.timmingStop();
+					this.SUCCESS = true;
 					this.$Message.success('SUCCESS!!!');
 				}
 			}
@@ -349,7 +457,8 @@
 			
 		},
 		filters: {
-			getTimeStr: filters.getTimeStr
+			getTimeStr: filters.getTimeStr,
+			getSeconds: filters.getSeconds
 		},
 		directives: {
 

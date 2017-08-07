@@ -23,6 +23,10 @@ const filters = {
     	let min = Min>9? Min: '0'+Min;
     	let hour = Hour>9? Hour: '0'+Hour;
     	return hour + ' : ' + min + ' : ' + sec
+	},
+	getSeconds(length){
+		let str = Math.floor(length/1000) + '秒';
+    	return str
 	}
 }
 

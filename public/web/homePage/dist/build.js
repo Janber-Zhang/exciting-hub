@@ -14716,6 +14716,10 @@
 			var min = Min > 9 ? Min : '0' + Min;
 			var hour = Hour > 9 ? Hour : '0' + Hour;
 			return hour + ' : ' + min + ' : ' + sec;
+		},
+		getSeconds: function getSeconds(length) {
+			var str = Math.floor(length / 1000) + '秒';
+			return str;
 		}
 	};
 
@@ -42818,7 +42822,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.mine_area .option[_v-c25638a2]{\n\tpadding: 20px;\n}\n.mine_area .option span[_v-c25638a2]{\n\tfont-size: 14px;\n}\n.mine_area .option .reset[_v-c25638a2]{\n\tmargin-left: 20px;\n}\n.mine_area .timmer[_v-c25638a2]{\n\ttext-align: center;\n\tmargin-bottom: 10px;\n}\n.mine_area .timmer .length[_v-c25638a2]{\n\tcolor: #e07474;\n}\n.mine_area table[_v-c25638a2]{\n\tborder: 1px solid #dedede;\n\tbackground-color: #69647b;\n}\n.mine_area table tr td[_v-c25638a2]{\n\tdisplay: table-cell;\n\twidth: 30px;\n\theight: 30px;\n\tline-height: 30px;\n\tborder: 1px solid #dedede;\n\ttext-align: center;\n\tbackground-color: #dddee1;\n\tposition: relative;\n}\n.mine_area table tr td span[_v-c25638a2]{\n\tfont-size: 10px;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n}\n.mine_area table tr td img[_v-c25638a2]{\n\tpointer-events: none;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%,-50%);\n\t        transform: translate(-50%,-50%);\n}\n.grid[_v-c25638a2]:hover{\n\tbackground-color: #f5f5f5;\n}\n.isOpen[_v-c25638a2]{\n\tbackground-color: #8ee094 !important;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t.mine_area .option[_v-c25638a2]{\n\t\tpadding: 20px;\n\t}\n\t.mine_area .option span[_v-c25638a2]{\n\t\tfont-size: 14px;\n\t}\n\t.mine_area .option .reset[_v-c25638a2]{\n\t\tmargin-left: 20px;\n\t}\n\t.mine_area .timmer[_v-c25638a2]{\n\t\ttext-align: center;\n\t\tmargin-bottom: 10px;\n\t}\n\t.mine_area .timmer .length[_v-c25638a2]{\n\t\tcolor: #e07474;\n\t}\n\t.mine_area table[_v-c25638a2]{\n\t\tborder: 1px solid #dedede;\n\t\tbackground-color: #69647b;\n\t}\n\t.mine_area table tr td[_v-c25638a2]{\n\t\tdisplay: table-cell;\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tline-height: 30px;\n\t\tborder: 1px solid #dedede;\n\t\ttext-align: center;\n\t\tbackground-color: #dddee1;\n\t\tposition: relative;\n\t}\n\t.mine_area table tr td span[_v-c25638a2]{\n\t\tfont-size: 10px;\n\t\tposition: absolute;\n\t\tleft: 0;\n\t\tright: 0;\n\t}\n\t.mine_area table tr td img[_v-c25638a2]{\n\t\tpointer-events: none;\n\t\tposition: absolute;\n\t\tleft: 50%;\n\t\ttop: 50%;\n\t\t-webkit-transform: translate(-50%,-50%);\n\t\t        transform: translate(-50%,-50%);\n\t}\n\t.grid[_v-c25638a2]:hover{\n\t\tbackground-color: #f5f5f5;\n\t}\n\t.isOpen[_v-c25638a2]{\n\t\tbackground-color: #8ee094 !important;\n\t}\n\t.record_list .head_item[_v-c25638a2]{\n\t\ttext-align: center;\n    background-color: #f9f9f9;\n\t}\n\t.record_list .list_item[_v-c25638a2]{\n\t\tpadding: 3px 0\n\t}\n\t.record_list .list_item span[_v-c25638a2]{\n\t\tdisplay: inline-block;\n\t\ttext-align: center;\n\t}\n\t.record_list .list_item .index[_v-c25638a2]{\n\t\twidth: 38px;\n\t}\n\t.record_list .list_item .nickname[_v-c25638a2]{\n\t\twidth: 80px;\n\t}\n\t.record_list .list_item .record[_v-c25638a2]{\n\t\twidth: 40px;\n\t\tfloat: right\n\t}\n", ""]);
 
 	// exports
 
@@ -42837,10 +42841,169 @@
 
 	var _filters2 = _interopRequireDefault(_filters);
 
+	var _service = __webpack_require__(101);
+
+	var _service2 = _interopRequireDefault(_service);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// <template>
+	// 	<div flex="main:center" class="app_warp">
+	// 		<div class="app_body" flex="main:center">
+	// 			<!-- <h1>扫雷大战</h1> -->
+	// 			<div class="mine_area" v-show="record_list">
+	// 				<div class="option" flex="main:center cross:center">
+	// 					<span>难度：</span>
+	// 					<i-select v-model="now_level" style="width:80px">
+	// 						<i-option v-for="item in level_arr" :value="item.value" :key="item.name">{{ item.name }}</i-option>
+	// 					</i-select>
+	// 					<i-button type="primary" class="reset" @click="initMineGrids(now_level)">重置</i-button>
+	// 				</div>
+	// 				<div class="timmer"><span>计时器：</span><span class="length">{{timming.length | getTimeStr}}</span></div>
+	// 				<table id="mines_table">
+	// 					<tbody>
+	// 						<tr v-for="xline in grid_array">
+	// 							<td class="grid" :grid-index="grid.index" v-for="grid in xline" v-bind:class="{'isOpen':!grid.boom && grid.isShow}" @click="confirmNot(grid)">
+	// 								<img src="/images/boom.svg" width="22" v-show="grid.boom && grid.isShow" alt="">
+	// 								<img src="/images/flag.svg" width="14" v-show="grid.mark" alt="">
+	// 								<span v-show="!grid.boom && grid.isShow">{{grid.near || ''}}</span>
+	// 							</td>
+	// 						</tr>
+	// 					</tbody>
+	// 				</table>
+	// 			</div>
+	// 		</div>
+	// 		<Collapse v-model="show_sort" accordion style="width: 200px;" v-if="record_list">
+	// 			<Panel name="1">
+	// 				初级-风云榜
+	// 				<ul class="record_list" slot="content">
+	// 					<li class="head_item">我的排名：{{record_list.Lower.myOrder? record_list.Lower.myOrder: '暂无'}}</li>
+	// 					<li class="list_item"><span class="index">排名</span><span class="nickname">昵称</span><span class="record">用时</span></li>
+	// 					<li class="list_item" slot="content" v-for="(item,index) in record_list.Lower.dataList">
+	// 						<span class="index">{{index+1}}</span>
+	// 						<span class="nickname">{{item.nickname}}</span>
+	// 						<span class="record">{{item.time_cost | getSeconds}}</span>
+	// 					</li>
+	// 				</ul>
+	// 			</Panel>
+	// 			<Panel name="2">
+	// 				中级-风云榜
+	// 				<ul class="record_list" slot="content">
+	// 					<li class="head_item">我的排名：{{record_list.Middle.myOrder? record_list.Middle.myOrder: '暂无'}}</li>
+	// 					<li class="list_item"><span class="index">排名</span><span class="nickname">昵称</span><span class="record">用时</span></li>
+	// 					<li class="list_item" slot="content" v-for="(item,index) in record_list.Middle.dataList">
+	// 						<span class="index">{{index+1}}</span>
+	// 						<span class="nickname">{{item.nickname}}</span>
+	// 						<span class="record">{{item.time_cost | getSeconds}}</span>
+	// 					</li>
+	// 				</ul>
+	// 			</Panel>
+	// 			<Panel name="3">
+	// 				高级-风云榜
+	// 				<ul class="record_list" slot="content">
+	// 					<li class="head_item">我的排名：{{record_list.High.myOrder? record_list.High.myOrder: '暂无'}}</li>
+	// 					<li class="list_item"><span class="index">排名</span><span class="nickname">昵称</span><span class="record">用时</span></li>
+	// 					<li class="list_item" slot="content" v-for="(item,index) in record_list.High.dataList">
+	// 						<span class="index">{{index+1}}</span>
+	// 						<span class="nickname">{{item.nickname}}</span>
+	// 						<span class="record">{{item.time_cost | getSeconds}}</span>
+	// 					</li>
+	// 				</ul>
+	// 			</Panel>
+	// 		</Collapse>
+	// 		<Modal v-model="SUCCESS" width="360" :mask-closable="false">
+	// 			<p slot="header" style="color:#42b983;text-align:center">
+	// 				<Icon type="ios-checkmark"></Icon>
+	// 				<span>恭喜你扫雷成功!!!</span>
+	// 			</p>
+	// 			<div style="text-align:center">
+	// 				<p></p>
+	// 				<p style="margin-bottom:10px">本次记录为: <span style="color: red">{{timming.length | getTimeStr}}</span>，是否发送本次记录！！！</p>
+	// 				<i-input v-model="finish_desc" placeholder="请发表完赛感言..."></i-input>
+	// 			</div>
+	// 			<div slot="footer">
+	// 				<i-button type="success" size="large" long @click="sendRecord">发送</i-button>
+	// 			</div>
+	// 		</Modal>
+	// 	</div>
+	// </template>
+	// <style scoped>
+	// 	.mine_area .option{
+	// 		padding: 20px;
+	// 	}
+	// 	.mine_area .option span{
+	// 		font-size: 14px;
+	// 	}
+	// 	.mine_area .option .reset{
+	// 		margin-left: 20px;
+	// 	}
+	// 	.mine_area .timmer{
+	// 		text-align: center;
+	// 		margin-bottom: 10px;
+	// 	}
+	// 	.mine_area .timmer .length{
+	// 		color: #e07474;
+	// 	}
+	// 	.mine_area table{
+	// 		border: 1px solid #dedede;
+	// 		background-color: #69647b;
+	// 	}
+	// 	.mine_area table tr td{
+	// 		display: table-cell;
+	// 		width: 30px;
+	// 		height: 30px;
+	// 		line-height: 30px;
+	// 		border: 1px solid #dedede;
+	// 		text-align: center;
+	// 		background-color: #dddee1;
+	// 		position: relative;
+	// 	}
+	// 	.mine_area table tr td span{
+	// 		font-size: 10px;
+	// 		position: absolute;
+	// 		left: 0;
+	// 		right: 0;
+	// 	}
+	// 	.mine_area table tr td img{
+	// 		pointer-events: none;
+	// 		position: absolute;
+	// 		left: 50%;
+	// 		top: 50%;
+	// 		transform: translate(-50%,-50%);
+	// 	}
+	// 	.grid:hover{
+	// 		background-color: #f5f5f5;
+	// 	}
+	// 	.isOpen{
+	// 		background-color: #8ee094 !important;
+	// 	}
+	// 	.record_list .head_item{
+	// 		text-align: center;
+	//     background-color: #f9f9f9;
+	// 	}
+	// 	.record_list .list_item{
+	// 		padding: 3px 0
+	// 	}
+	// 	.record_list .list_item span{
+	// 		display: inline-block;
+	// 		text-align: center;
+	// 	}
+	// 	.record_list .list_item .index{
+	// 		width: 38px;
+	// 	}
+	// 	.record_list .list_item .nickname{
+	// 		width: 80px;
+	// 	}
+	// 	.record_list .list_item .record{
+	// 		width: 40px;
+	// 		float: right
+	// 	}
+	// </style>
+	// <script>
 	exports.default = {
-		created: function created() {},
+		created: function created() {
+			this.initRecordList();
+		},
 		mounted: function mounted() {
 			this.initMineGrids(this.now_level); // DOM挂载结束后重写雷区oncontextmenu事件
 		},
@@ -42884,7 +43047,11 @@
 					length: 0, //计数(ms)
 					interval: '' //IntervalId
 				},
-				isDisabled: false //是否可操作
+				isDisabled: false, //是否可操作
+				SUCCESS: false, //是否已成功
+				finish_desc: '', //完赛感言
+				show_sort: '1', //历史记录
+				record_list: false
 			};
 		},
 
@@ -43052,6 +43219,8 @@
 				this.marked_num = 0; //标记数&打开数重置
 				this.opened_num = 0;
 				this.isDisabled = false;
+				this.SUCCESS = false;
+				this.finish_desc = '';
 			},
 			timmingStart: function timmingStart() {
 				//开始计时
@@ -43075,6 +43244,32 @@
 					length: 0, //计数(ms)
 					interval: '' //IntervalId
 				};
+			},
+			sendRecord: function sendRecord() {
+				var vm = this;
+				if (!this.timming.length) {
+					this.$Message.error('参数错误！！！');
+					// return
+				}
+				var param = {
+					app_name: 'mineSweeper',
+					mine_record: this.timming.length,
+					type: this.now_level,
+					descr: this.finish_desc
+				};
+				_service2.default.addAppRecord(param, function (res) {
+					vm.SUCCESS = false;
+					vm.initRecordList();
+				});
+			},
+			initRecordList: function initRecordList() {
+				var vm = this;
+				_service2.default.getAppsRecords({
+					app_name: 'mineSweeper',
+					type: 2
+				}, function (res) {
+					vm.record_list = res.data;
+				});
 			}
 		},
 		watch: {
@@ -43082,6 +43277,7 @@
 				if (this.marked_num === this.now_config.counts && this.opened_num === this.now_config.length * this.now_config.width - this.now_config.counts) {
 					this.isDisabled = true;
 					this.timmingStop();
+					this.SUCCESS = true;
 					this.$Message.success('SUCCESS!!!');
 				}
 			},
@@ -43089,104 +43285,109 @@
 				if (this.marked_num === this.now_config.counts && this.opened_num === this.now_config.length * this.now_config.width - this.now_config.counts) {
 					this.isDisabled = true;
 					this.timmingStop();
+					this.SUCCESS = true;
 					this.$Message.success('SUCCESS!!!');
 				}
 			}
 		},
 		components: {},
 		filters: {
-			getTimeStr: _filters2.default.getTimeStr
+			getTimeStr: _filters2.default.getTimeStr,
+			getSeconds: _filters2.default.getSeconds
 		},
 		directives: {},
 		computed: {}
 		// </script>
 
-	}; // <template>
-	// 	<div flex="main:center" class="app_warp">
-	// 		<div class="app_body" flex="main:center">
-	// 			<!-- <h1>扫雷大战</h1> -->
-	// 			<div class="mine_area">
-	// 				<div class="option" flex="main:center cross:center">
-	// 					<span>难度：</span>
-	// 					<i-select v-model="now_level" style="width:80px">
-	// 						<i-option v-for="item in level_arr" :value="item.value" :key="item.name">{{ item.name }}</i-option>
-	// 					</i-select>
-	// 					<i-button type="primary" class="reset" @click="initMineGrids(now_level)">重置</i-button>
-	// 				</div>
-	// 				<div class="timmer"><span>计时器：</span><span class="length">{{timming.length | getTimeStr}}</span></div>
-	// 				<table id="mines_table">
-	// 					<tbody>
-	// 						<tr v-for="xline in grid_array">
-	// 							<td class="grid" :grid-index="grid.index" v-for="grid in xline" v-bind:class="{'isOpen':!grid.boom && grid.isShow}" @click="confirmNot(grid)">
-	// 								<img src="/images/boom.svg" width="22" v-show="grid.boom && grid.isShow" alt="">
-	// 								<img src="/images/flag.svg" width="14" v-show="grid.mark" alt="">
-	// 								<span v-show="!grid.boom && grid.isShow">{{grid.near || ''}}</span>
-	// 							</td>
-	// 						</tr>
-	// 					</tbody>
-	// 				</table>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// </template>
-	// <style scoped>
-	// 	.mine_area .option{
-	// 		padding: 20px;
-	// 	}
-	// 	.mine_area .option span{
-	// 		font-size: 14px;
-	// 	}
-	// 	.mine_area .option .reset{
-	// 		margin-left: 20px;
-	// 	}
-	// 	.mine_area .timmer{
-	// 		text-align: center;
-	// 		margin-bottom: 10px;
-	// 	}
-	// 	.mine_area .timmer .length{
-	// 		color: #e07474;
-	// 	}
-	// 	.mine_area table{
-	// 		border: 1px solid #dedede;
-	// 		background-color: #69647b;
-	// 	}
-	// 	.mine_area table tr td{
-	// 		display: table-cell;
-	// 		width: 30px;
-	// 		height: 30px;
-	// 		line-height: 30px;
-	// 		border: 1px solid #dedede;
-	// 		text-align: center;
-	// 		background-color: #dddee1;
-	// 		position: relative;
-	// 	}
-	// 	.mine_area table tr td span{
-	// 		font-size: 10px;
-	// 		position: absolute;
-	// 		left: 0;
-	// 		right: 0;
-	// 	}
-	// 	.mine_area table tr td img{
-	// 		pointer-events: none;
-	// 		position: absolute;
-	// 		left: 50%;
-	// 		top: 50%;
-	// 		transform: translate(-50%,-50%);
-	// 	}
-	// 	.grid:hover{
-	// 		background-color: #f5f5f5;
-	// 	}
-	// 	.isOpen{
-	// 		background-color: #8ee094 !important;
-	// 	}
-	// </style>
-	// <script>
+	};
 
 /***/ },
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div flex=\"main:center\" class=\"app_warp\" _v-c25638a2=\"\">\n\t<div class=\"app_body\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t<!-- <h1>扫雷大战</h1> -->\n\t\t<div class=\"mine_area\" _v-c25638a2=\"\">\n\t\t\t<div class=\"option\" flex=\"main:center cross:center\" _v-c25638a2=\"\">\n\t\t\t\t<span _v-c25638a2=\"\">难度：</span>\n\t\t\t\t<i-select v-model=\"now_level\" style=\"width:80px\" _v-c25638a2=\"\">\n\t\t\t\t\t<i-option v-for=\"item in level_arr\" :value=\"item.value\" :key=\"item.name\" _v-c25638a2=\"\">{{ item.name }}</i-option>\n\t\t\t\t</i-select>\n\t\t\t\t<i-button type=\"primary\" class=\"reset\" @click=\"initMineGrids(now_level)\" _v-c25638a2=\"\">重置</i-button>\n\t\t\t</div>\n\t\t\t<div class=\"timmer\" _v-c25638a2=\"\"><span _v-c25638a2=\"\">计时器：</span><span class=\"length\" _v-c25638a2=\"\">{{timming.length | getTimeStr}}</span></div>\n\t\t\t<table id=\"mines_table\" _v-c25638a2=\"\">\n\t\t\t\t<tbody _v-c25638a2=\"\">\n\t\t\t\t\t<tr v-for=\"xline in grid_array\" _v-c25638a2=\"\">\n\t\t\t\t\t\t<td class=\"grid\" :grid-index=\"grid.index\" v-for=\"grid in xline\" v-bind:class=\"{'isOpen':!grid.boom &amp;&amp; grid.isShow}\" @click=\"confirmNot(grid)\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/boom.svg\" width=\"22\" v-show=\"grid.boom &amp;&amp; grid.isShow\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/flag.svg\" width=\"14\" v-show=\"grid.mark\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<span v-show=\"!grid.boom &amp;&amp; grid.isShow\" _v-c25638a2=\"\">{{grid.near || ''}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div flex=\"main:center\" class=\"app_warp\" _v-c25638a2=\"\">\n\t<div class=\"app_body\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t<!-- <h1>扫雷大战</h1> -->\n\t\t<div class=\"mine_area\" v-show=\"record_list\" _v-c25638a2=\"\">\n\t\t\t<div class=\"option\" flex=\"main:center cross:center\" _v-c25638a2=\"\">\n\t\t\t\t<span _v-c25638a2=\"\">难度：</span>\n\t\t\t\t<i-select v-model=\"now_level\" style=\"width:80px\" _v-c25638a2=\"\">\n\t\t\t\t\t<i-option v-for=\"item in level_arr\" :value=\"item.value\" :key=\"item.name\" _v-c25638a2=\"\">{{ item.name }}</i-option>\n\t\t\t\t</i-select>\n\t\t\t\t<i-button type=\"primary\" class=\"reset\" @click=\"initMineGrids(now_level)\" _v-c25638a2=\"\">重置</i-button>\n\t\t\t</div>\n\t\t\t<div class=\"timmer\" _v-c25638a2=\"\"><span _v-c25638a2=\"\">计时器：</span><span class=\"length\" _v-c25638a2=\"\">{{timming.length | getTimeStr}}</span></div>\n\t\t\t<table id=\"mines_table\" _v-c25638a2=\"\">\n\t\t\t\t<tbody _v-c25638a2=\"\">\n\t\t\t\t\t<tr v-for=\"xline in grid_array\" _v-c25638a2=\"\">\n\t\t\t\t\t\t<td class=\"grid\" :grid-index=\"grid.index\" v-for=\"grid in xline\" v-bind:class=\"{'isOpen':!grid.boom &amp;&amp; grid.isShow}\" @click=\"confirmNot(grid)\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/boom.svg\" width=\"22\" v-show=\"grid.boom &amp;&amp; grid.isShow\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/flag.svg\" width=\"14\" v-show=\"grid.mark\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<span v-show=\"!grid.boom &amp;&amp; grid.isShow\" _v-c25638a2=\"\">{{grid.near || ''}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n\t<collapse v-model=\"show_sort\" accordion=\"\" style=\"width: 200px;\" v-if=\"record_list\" _v-c25638a2=\"\">\n\t\t<panel name=\"1\" _v-c25638a2=\"\">\n\t\t\t初级-风云榜\n\t\t\t<ul class=\"record_list\" slot=\"content\" _v-c25638a2=\"\">\n\t\t\t\t<li class=\"head_item\" _v-c25638a2=\"\">我的排名：{{record_list.Lower.myOrder? record_list.Lower.myOrder: '暂无'}}</li>\n\t\t\t\t<li class=\"list_item\" _v-c25638a2=\"\"><span class=\"index\" _v-c25638a2=\"\">排名</span><span class=\"nickname\" _v-c25638a2=\"\">昵称</span><span class=\"record\" _v-c25638a2=\"\">用时</span></li>\n\t\t\t\t<li class=\"list_item\" slot=\"content\" v-for=\"(item,index) in record_list.Lower.dataList\" _v-c25638a2=\"\">\n\t\t\t\t\t<span class=\"index\" _v-c25638a2=\"\">{{index+1}}</span>\n\t\t\t\t\t<span class=\"nickname\" _v-c25638a2=\"\">{{item.nickname}}</span>\n\t\t\t\t\t<span class=\"record\" _v-c25638a2=\"\">{{item.time_cost | getSeconds}}</span>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</panel>\n\t\t<panel name=\"2\" _v-c25638a2=\"\">\n\t\t\t中级-风云榜\n\t\t\t<ul class=\"record_list\" slot=\"content\" _v-c25638a2=\"\">\n\t\t\t\t<li class=\"head_item\" _v-c25638a2=\"\">我的排名：{{record_list.Middle.myOrder? record_list.Middle.myOrder: '暂无'}}</li>\n\t\t\t\t<li class=\"list_item\" _v-c25638a2=\"\"><span class=\"index\" _v-c25638a2=\"\">排名</span><span class=\"nickname\" _v-c25638a2=\"\">昵称</span><span class=\"record\" _v-c25638a2=\"\">用时</span></li>\n\t\t\t\t<li class=\"list_item\" slot=\"content\" v-for=\"(item,index) in record_list.Middle.dataList\" _v-c25638a2=\"\">\n\t\t\t\t\t<span class=\"index\" _v-c25638a2=\"\">{{index+1}}</span>\n\t\t\t\t\t<span class=\"nickname\" _v-c25638a2=\"\">{{item.nickname}}</span>\n\t\t\t\t\t<span class=\"record\" _v-c25638a2=\"\">{{item.time_cost | getSeconds}}</span>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</panel>\n\t\t<panel name=\"3\" _v-c25638a2=\"\">\n\t\t\t高级-风云榜\n\t\t\t<ul class=\"record_list\" slot=\"content\" _v-c25638a2=\"\">\n\t\t\t\t<li class=\"head_item\" _v-c25638a2=\"\">我的排名：{{record_list.High.myOrder? record_list.High.myOrder: '暂无'}}</li>\n\t\t\t\t<li class=\"list_item\" _v-c25638a2=\"\"><span class=\"index\" _v-c25638a2=\"\">排名</span><span class=\"nickname\" _v-c25638a2=\"\">昵称</span><span class=\"record\" _v-c25638a2=\"\">用时</span></li>\n\t\t\t\t<li class=\"list_item\" slot=\"content\" v-for=\"(item,index) in record_list.High.dataList\" _v-c25638a2=\"\">\n\t\t\t\t\t<span class=\"index\" _v-c25638a2=\"\">{{index+1}}</span>\n\t\t\t\t\t<span class=\"nickname\" _v-c25638a2=\"\">{{item.nickname}}</span>\n\t\t\t\t\t<span class=\"record\" _v-c25638a2=\"\">{{item.time_cost | getSeconds}}</span>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</panel>\n\t</collapse>\n\t<modal v-model=\"SUCCESS\" width=\"360\" :mask-closable=\"false\" _v-c25638a2=\"\">\n\t\t<p slot=\"header\" style=\"color:#42b983;text-align:center\" _v-c25638a2=\"\">\n\t\t\t<icon type=\"ios-checkmark\" _v-c25638a2=\"\"></icon>\n\t\t\t<span _v-c25638a2=\"\">恭喜你扫雷成功!!!</span>\n\t\t</p>\n\t\t<div style=\"text-align:center\" _v-c25638a2=\"\">\n\t\t\t<p _v-c25638a2=\"\"></p>\n\t\t\t<p style=\"margin-bottom:10px\" _v-c25638a2=\"\">本次记录为: <span style=\"color: red\" _v-c25638a2=\"\">{{timming.length | getTimeStr}}</span>，是否发送本次记录！！！</p>\n\t\t\t<i-input v-model=\"finish_desc\" placeholder=\"请发表完赛感言...\" _v-c25638a2=\"\"></i-input>\n\t\t</div>\n\t\t<div slot=\"footer\" _v-c25638a2=\"\">\n\t\t\t<i-button type=\"success\" size=\"large\" long=\"\" @click=\"sendRecord\" _v-c25638a2=\"\">发送</i-button>\n\t\t</div>\n\t</modal>\n</div>\n";
+
+/***/ },
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Created by janber on 2017/08/06.
+	 */
+	exports.default = {
+	    /**
+	     * 获取应用数据
+	     * 
+	     */
+	    addAppRecord: function addAppRecord(param, cb) {
+	        var params = {
+	            httpType: 'post',
+	            serviceUrl: 'smartapps/index/addrecord',
+	            apiModule: 'newAPI',
+	            app_name: param.app_name,
+	            type: param.type,
+	            mine_record: param.mine_record,
+	            descr: param.descr
+	        };
+	        util.ajaxQuery(params, function (res) {
+	            if (res.data.result) {
+	                if (cb && typeof cb !== 'undefined') {
+	                    cb(res.data);
+	                }
+	            }
+	        });
+	    },
+
+	    /**
+	     * 获取应用数据
+	     * 
+	     */
+	    getAppsRecords: function getAppsRecords(param, cb) {
+	        var params = {
+	            httpType: 'get',
+	            serviceUrl: 'smartapps/index/getapprecord',
+	            apiModule: 'newAPI',
+	            app_name: param.app_name,
+	            type: param.type
+	        };
+	        util.ajaxQuery(params, function (res) {
+	            if (res.data.result) {
+	                if (cb && typeof cb !== 'undefined') {
+	                    cb(res.data);
+	                }
+	            }
+	        });
+	    }
+	};
 
 /***/ }
 /******/ ]);
