@@ -2,7 +2,7 @@
 	<div flex="main:center" class="app_warp">
 		<div class="app_body" flex="main:center">
 			<!-- <h1>扫雷大战</h1> -->
-			<div class="mine_area" v-show="record_list">
+			<div class="mine_area" v-show="true">
 				<div class="option" flex="main:center cross:center">
 					<span>难度：</span>
 					<i-select v-model="now_level" style="width:80px">
@@ -33,7 +33,7 @@
 					<li class="list_item" slot="content" v-for="(item,index) in record_list.Lower.dataList">
 						<span class="index">{{index+1}}</span>
 						<span class="nickname">{{item.nickname}}</span>
-						<span class="record">{{item.time_cost | getSeconds}}</span>
+						<span class="record">{{item.data.mine_record | getSeconds}}</span>
 					</li>
 				</ul>
 			</Panel>
