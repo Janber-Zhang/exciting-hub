@@ -3,13 +3,14 @@
 		<div class="app_body" flex="main:center">
 			<!-- <h1>扫雷大战</h1> -->
 			<div class="mine_area">
-				<div class="option" flex="main:center">
+				<div class="option" flex="main:center cross:center">
+					<span>难度：</span>
 					<i-select v-model="now_level" style="width:80px">
 						<i-option v-for="item in level_arr" :value="item.value" :key="item.name">{{ item.name }}</i-option>
 					</i-select>
 					<i-button type="primary" class="reset" @click="initMineGrids(now_level)">重置</i-button>
 				</div>
-				<timmer :param="timming"></timmer>
+				<div class="timmer"><span>计时器：</span><span class="length">{{timming.length | getTimeStr}}</span></div>
 				<table id="mines_table">
 					<tbody>
 						<tr v-for="xline in grid_array">
@@ -29,8 +30,18 @@
 	.mine_area .option{
 		padding: 20px;
 	}
+	.mine_area .option span{
+		font-size: 14px;
+	}
 	.mine_area .option .reset{
 		margin-left: 20px;
+	}
+	.mine_area .timmer{
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	.mine_area .timmer .length{
+		color: #e07474;
 	}
 	.mine_area table{
 		border: 1px solid #dedede;
@@ -67,7 +78,7 @@
 	}
 </style>
 <script>
-	import Timmer from '../../components/timmer'
+	import filters      from './../../js/filters.js';
 	export default {
 		created(){
 			
@@ -109,18 +120,23 @@
 						counts  : 99
 					}
 				},
-				grid_array: [],       //格点阵列
-				now_config: {},       //当前配置
-				marked_num: 0,	      //标记数
-				opened_num: 0,        //打开数
+				grid_array    : [],       //格点阵列
+				now_config    : {},       //当前配置
+				marked_num    : 0,	      //标记数
+				opened_num    : 0,        //打开数
 				timming: {
-					timming_stop: true,   //计时停止
-					timming: ''           //时间
-				}
+					start : '',       //计时
+					length: 0,        //计数(ms)
+				  interval:''       //IntervalId
+				},
+				isDisabled: false   //是否可操作
 			}
 		},
 		methods:{
 			initMineGrids: function(type){
+				this.initState();     //初始化各状态信息
+				this.timmingStop();   //停止计时
+				this.timmingInit();   //初始化计时器
 				let vm = this;
 				let param = this.config[type];
 				this.now_config = param;
@@ -155,7 +171,14 @@
 				this.grid_array = grid_array;
 				// 重写鼠标右键事件
 				document.getElementById('mines_table').oncontextmenu = (e)=>{
+					if (vm.isDisabled) {
+						return false
+					}
 					if (e.target.tagName == 'TD') {
+						// 第一次点击，开始计时
+						if (!vm.marked_num && !vm.opened_num) {
+							vm.timmingStart();
+						}
 						let index = $(e.target).attr('grid-index');
 						if (grid_arr_obj[index].isShow) {
 							vm.$Message.error('不可标记');
@@ -168,10 +191,17 @@
 							vm.marked_num--
 						}
 					}
-					return false
+					return false   //阻止默认事件
 				};
 			},
 			confirmNot: function(grid){
+				if (this.isDisabled) {
+					return
+				}
+				// 第一次点击，开始计时
+				if (!this.marked_num && !this.opened_num) {
+					this.timmingStart();
+				}
 				if (grid.isShow) {
 					return
 				} else if (grid.mark) {
@@ -180,7 +210,8 @@
 				}
 				grid.isShow = true;
 				if (grid.boom) {
-					this.timming.timming_stop = true;
+					this.isDisabled = true;
+					this.timmingStop();
 					this.$Message.error('BOOM!!!');
 					this.openAllBooms();
 					return
@@ -217,38 +248,38 @@
 				let y = grid.y;
 				let near_position = [];
 				let near_position_pre = [
-				{
-					x:x-1,
-					y:y-1
-				},
-				{
-					x:x,
-					y:y-1
-				},
-				{
-					x:x+1,
-					y:y-1
-				},
-				{
-					x:x-1,
-					y:y
-				},
-				{
-					x:x+1,
-					y:y
-				},
-				{
-					x:x-1,
-					y:y+1
-				},
-				{
-					x:x,
-					y:y+1
-				},
-				{
-					x:x+1,
-					y:y+1
-				},
+					{
+						x:x-1,
+						y:y-1
+					},
+					{
+						x:x,
+						y:y-1
+					},
+					{
+						x:x+1,
+						y:y-1
+					},
+					{
+						x:x-1,
+						y:y
+					},
+					{
+						x:x+1,
+						y:y
+					},
+					{
+						x:x-1,
+						y:y+1
+					},
+					{
+						x:x,
+						y:y+1
+					},
+					{
+						x:x+1,
+						y:y+1
+					},
 				];
 				near_position_pre.forEach(function(pos){
 					if (pos.x == 0 || pos.x > vm.now_config.width || pos.y == 0 || pos.y > vm.now_config.length) {
@@ -271,22 +302,54 @@
 					}
 				});
 				return boom_number;
+			},
+			initState: function(){
+				this.marked_num = 0;   //标记数&打开数重置
+				this.opened_num = 0;
+				this.isDisabled = false;
+			},
+			timmingStart: function(){   //开始计时
+				this.timmingStop();
+				let vm = this;
+				this.timming.start = new Date();
+				this.timming.interval = setInterval(function(){
+					vm.timming.length = new Date() - vm.timming.start;
+				}, 1000);
+			},
+			timmingStop: function(){    //停止计时
+				if (this.timming.interval) {
+					clearInterval(this.timming.interval);
+				}
+			},
+			timmingInit: function(){    //初始化计时器
+				this.timming = {
+					start : '',       //计时
+					length: 0,        //计数(ms)
+				  interval:'',      //IntervalId
+				}
 			}
 		},
 		watch: {
 			marked_num: function(val){
 				if (this.marked_num === this.now_config.counts && this.opened_num === (this.now_config.length*this.now_config.width-this.now_config.counts)) {
+					this.isDisabled = true;
+					this.timmingStop();
 					this.$Message.success('SUCCESS!!!');
 				}
 			},
 			opened_num: function(val){
 				if (this.marked_num === this.now_config.counts && this.opened_num === (this.now_config.length*this.now_config.width-this.now_config.counts)) {
+					this.isDisabled = true;
+					this.timmingStop();
 					this.$Message.success('SUCCESS!!!');
 				}
 			}
 		},
 		components:{
-			'timmer' : Timmer
+			
+		},
+		filters: {
+			getTimeStr: filters.getTimeStr
 		},
 		directives: {
 

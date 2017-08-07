@@ -14706,6 +14706,16 @@
 					break;
 			}
 			return str;
+		},
+		getTimeStr: function getTimeStr(length) {
+			var seconds = Math.round(length / 1000);
+			var Sec = seconds % 60;
+			var Min = (seconds - Sec) / 60 % 60;
+			var Hour = (seconds - Sec - Min * 60) / 3600;
+			var sec = Sec > 9 ? Sec : '0' + Sec;
+			var min = Min > 9 ? Min : '0' + Min;
+			var hour = Hour > 9 ? Hour : '0' + Hour;
+			return hour + ' : ' + min + ' : ' + sec;
 		}
 	};
 
@@ -42808,7 +42818,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.mine_area .option[_v-c25638a2]{\n\tpadding: 20px;\n}\n.mine_area .option .reset[_v-c25638a2]{\n\tmargin-left: 20px;\n}\n.mine_area table[_v-c25638a2]{\n\tborder: 1px solid #dedede;\n\tbackground-color: #69647b;\n}\n.mine_area table tr td[_v-c25638a2]{\n\tdisplay: table-cell;\n\twidth: 30px;\n\theight: 30px;\n\tline-height: 30px;\n\tborder: 1px solid #dedede;\n\ttext-align: center;\n\tbackground-color: #dddee1;\n\tposition: relative;\n}\n.mine_area table tr td span[_v-c25638a2]{\n\tfont-size: 10px;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n}\n.mine_area table tr td img[_v-c25638a2]{\n\tpointer-events: none;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%,-50%);\n\t        transform: translate(-50%,-50%);\n}\n.grid[_v-c25638a2]:hover{\n\tbackground-color: #f5f5f5;\n}\n.isOpen[_v-c25638a2]{\n\tbackground-color: #8ee094 !important;\n}\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.mine_area .option[_v-c25638a2]{\n\tpadding: 20px;\n}\n.mine_area .option span[_v-c25638a2]{\n\tfont-size: 14px;\n}\n.mine_area .option .reset[_v-c25638a2]{\n\tmargin-left: 20px;\n}\n.mine_area .timmer[_v-c25638a2]{\n\ttext-align: center;\n\tmargin-bottom: 10px;\n}\n.mine_area .timmer .length[_v-c25638a2]{\n\tcolor: #e07474;\n}\n.mine_area table[_v-c25638a2]{\n\tborder: 1px solid #dedede;\n\tbackground-color: #69647b;\n}\n.mine_area table tr td[_v-c25638a2]{\n\tdisplay: table-cell;\n\twidth: 30px;\n\theight: 30px;\n\tline-height: 30px;\n\tborder: 1px solid #dedede;\n\ttext-align: center;\n\tbackground-color: #dddee1;\n\tposition: relative;\n}\n.mine_area table tr td span[_v-c25638a2]{\n\tfont-size: 10px;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n}\n.mine_area table tr td img[_v-c25638a2]{\n\tpointer-events: none;\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\t-webkit-transform: translate(-50%,-50%);\n\t        transform: translate(-50%,-50%);\n}\n.grid[_v-c25638a2]:hover{\n\tbackground-color: #f5f5f5;\n}\n.isOpen[_v-c25638a2]{\n\tbackground-color: #8ee094 !important;\n}\n", ""]);
 
 	// exports
 
@@ -42823,9 +42833,9 @@
 		value: true
 	});
 
-	var _timmer = __webpack_require__(96);
+	var _filters = __webpack_require__(35);
 
-	var _timmer2 = _interopRequireDefault(_timmer);
+	var _filters2 = _interopRequireDefault(_filters);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42870,14 +42880,19 @@
 				marked_num: 0, //标记数
 				opened_num: 0, //打开数
 				timming: {
-					timming_stop: true, //计时停止
-					timming: '' //时间
-				}
+					start: '', //计时
+					length: 0, //计数(ms)
+					interval: '' //IntervalId
+				},
+				isDisabled: false //是否可操作
 			};
 		},
 
 		methods: {
 			initMineGrids: function initMineGrids(type) {
+				this.initState(); //初始化各状态信息
+				this.timmingStop(); //停止计时
+				this.timmingInit(); //初始化计时器
 				var vm = this;
 				var param = this.config[type];
 				this.now_config = param;
@@ -42912,7 +42927,14 @@
 				this.grid_array = grid_array;
 				// 重写鼠标右键事件
 				document.getElementById('mines_table').oncontextmenu = function (e) {
+					if (vm.isDisabled) {
+						return false;
+					}
 					if (e.target.tagName == 'TD') {
+						// 第一次点击，开始计时
+						if (!vm.marked_num && !vm.opened_num) {
+							vm.timmingStart();
+						}
 						var index = $(e.target).attr('grid-index');
 						if (grid_arr_obj[index].isShow) {
 							vm.$Message.error('不可标记');
@@ -42925,10 +42947,17 @@
 							vm.marked_num--;
 						}
 					}
-					return false;
+					return false; //阻止默认事件
 				};
 			},
 			confirmNot: function confirmNot(grid) {
+				if (this.isDisabled) {
+					return;
+				}
+				// 第一次点击，开始计时
+				if (!this.marked_num && !this.opened_num) {
+					this.timmingStart();
+				}
 				if (grid.isShow) {
 					return;
 				} else if (grid.mark) {
@@ -42937,7 +42966,8 @@
 				}
 				grid.isShow = true;
 				if (grid.boom) {
-					this.timming.timming_stop = true;
+					this.isDisabled = true;
+					this.timmingStop();
 					this.$Message.error('BOOM!!!');
 					this.openAllBooms();
 					return;
@@ -43017,22 +43047,55 @@
 					}
 				});
 				return boom_number;
+			},
+			initState: function initState() {
+				this.marked_num = 0; //标记数&打开数重置
+				this.opened_num = 0;
+				this.isDisabled = false;
+			},
+			timmingStart: function timmingStart() {
+				//开始计时
+				this.timmingStop();
+				var vm = this;
+				this.timming.start = new Date();
+				this.timming.interval = setInterval(function () {
+					vm.timming.length = new Date() - vm.timming.start;
+				}, 1000);
+			},
+			timmingStop: function timmingStop() {
+				//停止计时
+				if (this.timming.interval) {
+					clearInterval(this.timming.interval);
+				}
+			},
+			timmingInit: function timmingInit() {
+				//初始化计时器
+				this.timming = {
+					start: '', //计时
+					length: 0, //计数(ms)
+					interval: '' //IntervalId
+				};
 			}
 		},
 		watch: {
 			marked_num: function marked_num(val) {
 				if (this.marked_num === this.now_config.counts && this.opened_num === this.now_config.length * this.now_config.width - this.now_config.counts) {
+					this.isDisabled = true;
+					this.timmingStop();
 					this.$Message.success('SUCCESS!!!');
 				}
 			},
 			opened_num: function opened_num(val) {
 				if (this.marked_num === this.now_config.counts && this.opened_num === this.now_config.length * this.now_config.width - this.now_config.counts) {
+					this.isDisabled = true;
+					this.timmingStop();
 					this.$Message.success('SUCCESS!!!');
 				}
 			}
 		},
-		components: {
-			'timmer': _timmer2.default
+		components: {},
+		filters: {
+			getTimeStr: _filters2.default.getTimeStr
 		},
 		directives: {},
 		computed: {}
@@ -43043,13 +43106,14 @@
 	// 		<div class="app_body" flex="main:center">
 	// 			<!-- <h1>扫雷大战</h1> -->
 	// 			<div class="mine_area">
-	// 				<div class="option" flex="main:center">
+	// 				<div class="option" flex="main:center cross:center">
+	// 					<span>难度：</span>
 	// 					<i-select v-model="now_level" style="width:80px">
 	// 						<i-option v-for="item in level_arr" :value="item.value" :key="item.name">{{ item.name }}</i-option>
 	// 					</i-select>
 	// 					<i-button type="primary" class="reset" @click="initMineGrids(now_level)">重置</i-button>
 	// 				</div>
-	// 				<timmer :param="timming"></timmer>
+	// 				<div class="timmer"><span>计时器：</span><span class="length">{{timming.length | getTimeStr}}</span></div>
 	// 				<table id="mines_table">
 	// 					<tbody>
 	// 						<tr v-for="xline in grid_array">
@@ -43069,8 +43133,18 @@
 	// 	.mine_area .option{
 	// 		padding: 20px;
 	// 	}
+	// 	.mine_area .option span{
+	// 		font-size: 14px;
+	// 	}
 	// 	.mine_area .option .reset{
 	// 		margin-left: 20px;
+	// 	}
+	// 	.mine_area .timmer{
+	// 		text-align: center;
+	// 		margin-bottom: 10px;
+	// 	}
+	// 	.mine_area .timmer .length{
+	// 		color: #e07474;
 	// 	}
 	// 	.mine_area table{
 	// 		border: 1px solid #dedede;
@@ -43112,190 +43186,7 @@
 /* 76 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div flex=\"main:center\" class=\"app_warp\" _v-c25638a2=\"\">\n\t<div class=\"app_body\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t<!-- <h1>扫雷大战</h1> -->\n\t\t<div class=\"mine_area\" _v-c25638a2=\"\">\n\t\t\t<div class=\"option\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t\t\t<i-select v-model=\"now_level\" style=\"width:80px\" _v-c25638a2=\"\">\n\t\t\t\t\t<i-option v-for=\"item in level_arr\" :value=\"item.value\" :key=\"item.name\" _v-c25638a2=\"\">{{ item.name }}</i-option>\n\t\t\t\t</i-select>\n\t\t\t\t<i-button type=\"primary\" class=\"reset\" @click=\"initMineGrids(now_level)\" _v-c25638a2=\"\">重置</i-button>\n\t\t\t</div>\n\t\t\t<timmer :param=\"timming\" _v-c25638a2=\"\"></timmer>\n\t\t\t<table id=\"mines_table\" _v-c25638a2=\"\">\n\t\t\t\t<tbody _v-c25638a2=\"\">\n\t\t\t\t\t<tr v-for=\"xline in grid_array\" _v-c25638a2=\"\">\n\t\t\t\t\t\t<td class=\"grid\" :grid-index=\"grid.index\" v-for=\"grid in xline\" v-bind:class=\"{'isOpen':!grid.boom &amp;&amp; grid.isShow}\" @click=\"confirmNot(grid)\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/boom.svg\" width=\"22\" v-show=\"grid.boom &amp;&amp; grid.isShow\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/flag.svg\" width=\"14\" v-show=\"grid.mark\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<span v-show=\"!grid.boom &amp;&amp; grid.isShow\" _v-c25638a2=\"\">{{grid.near || ''}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(97)
-	__vue_script__ = __webpack_require__(99)
-	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
-	  console.warn("[vue-loader] src/components/timmer.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(100)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-4cd5d8dc/timmer.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 97 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(98);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(10)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4cd5d8dc&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./timmer.vue", function() {
-				var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-4cd5d8dc&scoped=true!../../../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./timmer.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 98 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(9)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n\n\n\n\n\n.timmer[_v-4cd5d8dc]{\n    display: inline-block;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 99 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	// <template>
-	//     <div class="timmer">
-	//         {{time_rel}}
-	//     </div>    
-	// </template>
-	// <style scoped>
-	//     .timmer{
-	//         display: inline-block;
-	//     }
-	// </style>
-	// <script>
-	exports.default = {
-	    created: function created() {
-	        if (this.param.timming_stop) {} else {
-	            this.start();
-	        }
-	    },
-	    mounted: function mounted() {},
-	    data: function data() {
-	        return {
-	            hour: 0,
-	            min: 0,
-	            sec: 0,
-	            intervalId: ''
-	        };
-	    },
-
-	    methods: {
-	        start: function start() {
-	            var vm = this;
-	            this.intervalId = setInterval(function () {
-	                if (vm.sec < 59) {
-	                    vm.sec++;
-	                } else {
-	                    vm.sec = 0;
-	                    if (vm.min < 59) {
-	                        vm.min++;
-	                    } else {
-	                        vm.min = 0;
-	                        vm.hour++;
-	                    }
-	                }
-	                var H = vm.hour > 9 ? vm.hour : '0' + vm.hour;
-	                var M = vm.min > 9 ? vm.min : '0' + vm.min;
-	                var S = vm.sec > 9 ? vm.sec : '0' + vm.sec;
-	                vm.value = H + ' : ' + M + ' : ' + S;
-	            }, 1000);
-	        }
-	    },
-	    watch: {
-	        'param.timming_stop': function paramTimming_stop(val) {
-	            if (this.param.timming_stop) {
-	                clearInterval(this.intervalId);
-	            }
-	        },
-	        'time_rel': function time_rel(val) {
-	            this.param.timming = this.time_rel;
-	        }
-
-	    },
-	    props: ['param'],
-	    components: {},
-	    directives: {},
-	    computed: {
-	        'time_rel': function time_rel() {
-	            var H = this.hour > 9 ? this.hour : '0' + this.hour;
-	            var M = this.min > 9 ? this.min : '0' + this.min;
-	            var S = this.sec > 9 ? this.sec : '0' + this.sec;
-	            return H + ' : ' + M + ' : ' + S;
-	        }
-	    }
-	    // </script>
-
-	};
-
-/***/ },
-/* 100 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"timmer\" _v-4cd5d8dc=\"\">\n    {{time_rel}}\n</div>    \n";
+	module.exports = "\n<div flex=\"main:center\" class=\"app_warp\" _v-c25638a2=\"\">\n\t<div class=\"app_body\" flex=\"main:center\" _v-c25638a2=\"\">\n\t\t<!-- <h1>扫雷大战</h1> -->\n\t\t<div class=\"mine_area\" _v-c25638a2=\"\">\n\t\t\t<div class=\"option\" flex=\"main:center cross:center\" _v-c25638a2=\"\">\n\t\t\t\t<span _v-c25638a2=\"\">难度：</span>\n\t\t\t\t<i-select v-model=\"now_level\" style=\"width:80px\" _v-c25638a2=\"\">\n\t\t\t\t\t<i-option v-for=\"item in level_arr\" :value=\"item.value\" :key=\"item.name\" _v-c25638a2=\"\">{{ item.name }}</i-option>\n\t\t\t\t</i-select>\n\t\t\t\t<i-button type=\"primary\" class=\"reset\" @click=\"initMineGrids(now_level)\" _v-c25638a2=\"\">重置</i-button>\n\t\t\t</div>\n\t\t\t<div class=\"timmer\" _v-c25638a2=\"\"><span _v-c25638a2=\"\">计时器：</span><span class=\"length\" _v-c25638a2=\"\">{{timming.length | getTimeStr}}</span></div>\n\t\t\t<table id=\"mines_table\" _v-c25638a2=\"\">\n\t\t\t\t<tbody _v-c25638a2=\"\">\n\t\t\t\t\t<tr v-for=\"xline in grid_array\" _v-c25638a2=\"\">\n\t\t\t\t\t\t<td class=\"grid\" :grid-index=\"grid.index\" v-for=\"grid in xline\" v-bind:class=\"{'isOpen':!grid.boom &amp;&amp; grid.isShow}\" @click=\"confirmNot(grid)\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/boom.svg\" width=\"22\" v-show=\"grid.boom &amp;&amp; grid.isShow\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<img src=\"/images/flag.svg\" width=\"14\" v-show=\"grid.mark\" alt=\"\" _v-c25638a2=\"\">\n\t\t\t\t\t\t\t<span v-show=\"!grid.boom &amp;&amp; grid.isShow\" _v-c25638a2=\"\">{{grid.near || ''}}</span>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ }
 /******/ ]);

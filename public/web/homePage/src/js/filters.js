@@ -13,6 +13,16 @@ const filters = {
 				break;	
 		}
 		return str
+	},
+	getTimeStr(length){
+		let seconds = Math.round(length/1000);
+		let Sec = seconds%60;
+    	let Min = ((seconds-Sec)/60)%60;
+    	let Hour = (seconds-Sec-Min*60)/3600;
+    	let sec = Sec>9? Sec: '0'+Sec;
+    	let min = Min>9? Min: '0'+Min;
+    	let hour = Hour>9? Hour: '0'+Hour;
+    	return hour + ' : ' + min + ' : ' + sec
 	}
 }
 
