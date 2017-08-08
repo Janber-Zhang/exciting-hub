@@ -1,5 +1,5 @@
 <template>
-	<div flex="main:center" class="app_warp">
+	<div flex="main:center cross:top" class="app_warp">
 		<div class="app_body" flex="main:center">
 			<!-- <h1>扫雷大战</h1> -->
 			<div class="mine_area" v-show="true">
@@ -24,7 +24,7 @@
 				</table>
 			</div>
 		</div>
-		<Collapse v-model="show_sort" accordion style="width: 200px;" v-if="record_list">
+		<Collapse v-model="show_sort" accordion style="width: 200px;margin-top:100px;" v-if="record_list">
 			<Panel name="1">
 				初级-风云榜
 				<ul class="record_list" slot="content">
@@ -45,7 +45,7 @@
 					<li class="list_item" slot="content" v-for="(item,index) in record_list.Middle.dataList">
 						<span class="index">{{index+1}}</span>
 						<span class="nickname">{{item.nickname}}</span>
-						<span class="record">{{item.time_cost | getSeconds}}</span>
+						<span class="record">{{item.data.mine_record | getSeconds}}</span>
 					</li>
 				</ul>
 			</Panel>
@@ -57,7 +57,7 @@
 					<li class="list_item" slot="content" v-for="(item,index) in record_list.High.dataList">
 						<span class="index">{{index+1}}</span>
 						<span class="nickname">{{item.nickname}}</span>
-						<span class="record">{{item.time_cost | getSeconds}}</span>
+						<span class="record">{{item.data.mine_record | getSeconds}}</span>
 					</li>
 				</ul>
 			</Panel>
