@@ -143,7 +143,7 @@
 		width: 38px;
 	}
 	.record_list .list_item .nickname{
-		width: 80px;
+		max-width: 80px;
 	}
 	.record_list .list_item .record{
 		width: 40px;
