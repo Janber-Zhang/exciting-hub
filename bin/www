@@ -23,7 +23,10 @@
 
  var server = http.createServer(app);
 
-// 创建socket服务
+/**
+ * Create Socket server.
+ */
+ 
 var socketIO = IO(server);
 // 房间用户名单
 var roomInfo = {};

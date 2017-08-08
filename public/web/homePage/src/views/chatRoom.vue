@@ -36,14 +36,14 @@
 			</div>
 		</div>
 		<Modal
-			v-model="showTargetUser"
-			title="用户信息"
-			width="300">
-			<p>姓名：{{targetUser.nickname}}</p>
-			<p>性别：{{targetUser.sex | getSexStr}}</p>
-			<p>简介：{{targetUser.introduction}}</p>
-		</Modal>
-	</div>
+		v-model="showTargetUser"
+		title="用户信息"
+		width="300">
+		<p>姓名：{{targetUser.nickname}}</p>
+		<p>性别：{{targetUser.sex | getSexStr}}</p>
+		<p>简介：{{targetUser.introduction}}</p>
+	</Modal>
+</div>
 </template>
 <style lang='less' scoped>
 	.chatRoom{
@@ -177,11 +177,13 @@
 </style>
 <script>
 	import filters      from './../js/filters.js';
+	import API          from './../js/service.js';
 	export default {
 		created(){
 
 		},
 		mounted(){
+			this.initChatRoom();
 			this.socketInit();
 		},
 		data(){
@@ -195,8 +197,7 @@
 			}
 		},
 		methods:{
-			socketInit: function(){
-				let this_ = this;
+			getUserObj: function(){
 				let defaultAvatar = '/images/logo.jpg';
 				if (this.userInfo.avatar && this.userInfo.avatar[0]) {
 					defaultAvatar = this.userInfo.avatar[0].url;
@@ -213,6 +214,11 @@
 					},
 					roomInfo: this.$route.params.roomId
 				}
+				return userObj
+			},
+			socketInit: function(){
+				let this_ = this;
+				let userObj = this.getUserObj();
 				// ---------创建连接-----------
 				this.SOCKET = io();
 			  // 加入房间
@@ -227,17 +233,17 @@
 		      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
 		      	this_.dealSysInfo(sysMsg, users, user, type);
 		      });
-	    },
-	    dealSysInfo: function(sysMsg, users, user, type) {
-	    	let this_ = this;
-	    	let roomUsers = [];
-	    	let roomUsersObj = {}
-	    	users.forEach(function(item,index){
-	    		if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
-	    			roomUsers.push(item);
-	    			roomUsersObj[item.user._id] = true;
-	    		}
-	    	});
+		    },
+		    dealSysInfo: function(sysMsg, users, user, type) {
+		    	let this_ = this;
+		    	let roomUsers = [];
+		    	let roomUsersObj = {}
+		    	users.forEach(function(item,index){
+		    		if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
+		    			roomUsers.push(item);
+		    			roomUsersObj[item.user._id] = true;
+		    		}
+		    	});
 	    	// 判断当前推出人员是否是本房间退出
 	    	let isLocal = false;
 	    	this.users.forEach(function(item){
@@ -274,13 +280,38 @@
 	    		this.inputMsg = '';
 	    		return
 	    	}
-	    	this.SOCKET.send(this.inputMsg);
-	    	this.inputMsg = '';
+	    	let vm = this;
+	    	let userObj = this.getUserObj();
+	    	let param = {
+	    		room_id   : this.$route.params.roomId,
+	    		user      : JSON.stringify(userObj),
+	    		msg       : this.inputMsg
+	    	}
+	    	API.storeChatMsg(param, function(res){
+	    		vm.SOCKET.send(vm.inputMsg);
+	    		vm.inputMsg = '';
+	    	});
+	    	
 	    },
 	    showUserInfo: function(user){
 	    	const userInfo = JSON.parse(JSON.stringify(user));
 	    	this.targetUser = userInfo;
 	    	this.showTargetUser = true;
+	    },
+	    initChatRoom: function() {
+	    	let vm = this;
+	    	API.getMsyByRoom({room_id: this.$route.params.roomId},function(res){
+	    		res.data.sort(function(left, right){
+	    			return left.created<right.created? -1:1
+	    		})
+	    		vm.msgArr = res.data.map(function(item, index){
+	    			if (item.user_id == vm.userInfo._id) {
+	    				item.isMine = true;
+	    			}
+	    			return item
+	    		});
+	    		console.log(vm.msgArr)
+	    	})
 	    }
 	  },
 	  components:{

@@ -14383,126 +14383,12 @@
 
 	var _filters2 = _interopRequireDefault(_filters);
 
+	var _service = __webpack_require__(101);
+
+	var _service2 = _interopRequireDefault(_service);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = {
-	  created: function created() {},
-	  mounted: function mounted() {
-	    this.socketInit();
-	  },
-	  data: function data() {
-	    return {
-	      SOCKET: null, //保存socket对象
-	      users: [], //当前聊天室用户
-	      msgArr: [], //消息列表
-	      inputMsg: '', //待发送消息
-	      targetUser: {},
-	      showTargetUser: false
-	    };
-	  },
-
-	  methods: {
-	    socketInit: function socketInit() {
-	      var this_ = this;
-	      var defaultAvatar = '/images/logo.jpg';
-	      if (this.userInfo.avatar && this.userInfo.avatar[0]) {
-	        defaultAvatar = this.userInfo.avatar[0].url;
-	      }
-	      //封装用户-房间信息
-	      var userObj = {
-	        user: {
-	          nickname: this.userInfo.nickname,
-	          avatar: defaultAvatar,
-	          _id: this.userInfo._id,
-	          introduction: this.userInfo.introduction,
-	          birthday: this.userInfo.birthday,
-	          sex: this.userInfo.sex
-	        },
-	        roomInfo: this.$route.params.roomId
-	        // ---------创建连接-----------
-	      };this.SOCKET = io();
-	      // 加入房间
-	      this.SOCKET.on('connect', function () {
-	        this_.SOCKET.emit('join', (0, _stringify2.default)(userObj));
-	      });
-	      //监听消息
-	      this.SOCKET.on('msg', function (user, msg) {
-	        this_.dealMsgInfo(user, msg);
-	      });
-	      // 监听系统消息
-	      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
-	        this_.dealSysInfo(sysMsg, users, user, type);
-	      });
-	    },
-	    dealSysInfo: function dealSysInfo(sysMsg, users, user, type) {
-	      var this_ = this;
-	      var roomUsers = [];
-	      var roomUsersObj = {};
-	      users.forEach(function (item, index) {
-	        if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
-	          roomUsers.push(item);
-	          roomUsersObj[item.user._id] = true;
-	        }
-	      });
-	      // 判断当前推出人员是否是本房间退出
-	      var isLocal = false;
-	      this.users.forEach(function (item) {
-	        if (item.user._id == user.user._id) {
-	          isLocal = true;
-	        }
-	      });
-	      if (type == 'in' && roomUsersObj[user.user._id]) {
-	        this_.$Message.success(sysMsg);
-	      }
-	      if (type == 'out' && !roomUsersObj[user.user._id] && isLocal) {
-	        this_.$Message.success(sysMsg);
-	      }
-	      this.users = roomUsers;
-	      roomUsers = null;
-	    },
-	    dealMsgInfo: function dealMsgInfo(user, msg) {
-	      var isMine = false;
-	      if (user.user._id === this.userInfo._id) {
-	        isMine = true;
-	      }
-	      this.msgArr.push({
-	        msg: msg,
-	        user: user,
-	        isMine: isMine
-	      });
-	      setTimeout(function () {
-	        $('#msgBox').scrollTop($('#msgBox')[0].scrollHeight);
-	      }, 10);
-	    },
-	    send: function send() {
-	      if (this.inputMsg.length === 1) {
-	        this.$Message.error('对方不想说话，并且向你抛出了一个异常');
-	        this.inputMsg = '';
-	        return;
-	      }
-	      this.SOCKET.send(this.inputMsg);
-	      this.inputMsg = '';
-	    },
-	    showUserInfo: function showUserInfo(user) {
-	      var userInfo = JSON.parse((0, _stringify2.default)(user));
-	      this.targetUser = userInfo;
-	      this.showTargetUser = true;
-	    }
-	  },
-	  components: {},
-	  filters: {
-	    getSexStr: _filters2.default.getSexStr
-	  },
-	  computed: {
-	    userInfo: function userInfo() {
-	      return this.$store.getters.getUserInfo;
-	    }
-	  },
-	  beforeDestroy: function beforeDestroy() {
-	    this.SOCKET.emit('leave');
-	  }
-	};
-	// </script>
 	// <template>
 	// 	<div class="chatRoom" flex="main:justify">
 	// 		<div class="userList">
@@ -14541,14 +14427,14 @@
 	// 			</div>
 	// 		</div>
 	// 		<Modal
-	// 			v-model="showTargetUser"
-	// 			title="用户信息"
-	// 			width="300">
-	// 			<p>姓名：{{targetUser.nickname}}</p>
-	// 			<p>性别：{{targetUser.sex | getSexStr}}</p>
-	// 			<p>简介：{{targetUser.introduction}}</p>
-	// 		</Modal>
-	// 	</div>
+	// 		v-model="showTargetUser"
+	// 		title="用户信息"
+	// 		width="300">
+	// 		<p>姓名：{{targetUser.nickname}}</p>
+	// 		<p>性别：{{targetUser.sex | getSexStr}}</p>
+	// 		<p>简介：{{targetUser.introduction}}</p>
+	// 	</Modal>
+	// </div>
 	// </template>
 	// <style lang='less' scoped>
 	// 	.chatRoom{
@@ -14681,6 +14567,154 @@
 	//
 	// </style>
 	// <script>
+	exports.default = {
+	  created: function created() {},
+	  mounted: function mounted() {
+	    this.initChatRoom();
+	    this.socketInit();
+	  },
+	  data: function data() {
+	    return {
+	      SOCKET: null, //保存socket对象
+	      users: [], //当前聊天室用户
+	      msgArr: [], //消息列表
+	      inputMsg: '', //待发送消息
+	      targetUser: {},
+	      showTargetUser: false
+	    };
+	  },
+
+	  methods: {
+	    getUserObj: function getUserObj() {
+	      var defaultAvatar = '/images/logo.jpg';
+	      if (this.userInfo.avatar && this.userInfo.avatar[0]) {
+	        defaultAvatar = this.userInfo.avatar[0].url;
+	      }
+	      //封装用户-房间信息
+	      var userObj = {
+	        user: {
+	          nickname: this.userInfo.nickname,
+	          avatar: defaultAvatar,
+	          _id: this.userInfo._id,
+	          introduction: this.userInfo.introduction,
+	          birthday: this.userInfo.birthday,
+	          sex: this.userInfo.sex
+	        },
+	        roomInfo: this.$route.params.roomId
+	      };
+	      return userObj;
+	    },
+	    socketInit: function socketInit() {
+	      var this_ = this;
+	      var userObj = this.getUserObj();
+	      // ---------创建连接-----------
+	      this.SOCKET = io();
+	      // 加入房间
+	      this.SOCKET.on('connect', function () {
+	        this_.SOCKET.emit('join', (0, _stringify2.default)(userObj));
+	      });
+	      //监听消息
+	      this.SOCKET.on('msg', function (user, msg) {
+	        this_.dealMsgInfo(user, msg);
+	      });
+	      // 监听系统消息
+	      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
+	        this_.dealSysInfo(sysMsg, users, user, type);
+	      });
+	    },
+	    dealSysInfo: function dealSysInfo(sysMsg, users, user, type) {
+	      var this_ = this;
+	      var roomUsers = [];
+	      var roomUsersObj = {};
+	      users.forEach(function (item, index) {
+	        if (item.roomInfo === this_.$route.params.roomId && !roomUsersObj[item.user._id]) {
+	          roomUsers.push(item);
+	          roomUsersObj[item.user._id] = true;
+	        }
+	      });
+	      // 判断当前推出人员是否是本房间退出
+	      var isLocal = false;
+	      this.users.forEach(function (item) {
+	        if (item.user._id == user.user._id) {
+	          isLocal = true;
+	        }
+	      });
+	      if (type == 'in' && roomUsersObj[user.user._id]) {
+	        this_.$Message.success(sysMsg);
+	      }
+	      if (type == 'out' && !roomUsersObj[user.user._id] && isLocal) {
+	        this_.$Message.success(sysMsg);
+	      }
+	      this.users = roomUsers;
+	      roomUsers = null;
+	    },
+	    dealMsgInfo: function dealMsgInfo(user, msg) {
+	      var isMine = false;
+	      if (user.user._id === this.userInfo._id) {
+	        isMine = true;
+	      }
+	      this.msgArr.push({
+	        msg: msg,
+	        user: user,
+	        isMine: isMine
+	      });
+	      setTimeout(function () {
+	        $('#msgBox').scrollTop($('#msgBox')[0].scrollHeight);
+	      }, 10);
+	    },
+	    send: function send() {
+	      if (this.inputMsg.length === 1) {
+	        this.$Message.error('对方不想说话，并且向你抛出了一个异常');
+	        this.inputMsg = '';
+	        return;
+	      }
+	      var vm = this;
+	      var userObj = this.getUserObj();
+	      var param = {
+	        room_id: this.$route.params.roomId,
+	        user: (0, _stringify2.default)(userObj),
+	        msg: this.inputMsg
+	      };
+	      _service2.default.storeChatMsg(param, function (res) {
+	        vm.SOCKET.send(vm.inputMsg);
+	        vm.inputMsg = '';
+	      });
+	    },
+	    showUserInfo: function showUserInfo(user) {
+	      var userInfo = JSON.parse((0, _stringify2.default)(user));
+	      this.targetUser = userInfo;
+	      this.showTargetUser = true;
+	    },
+	    initChatRoom: function initChatRoom() {
+	      var vm = this;
+	      _service2.default.getMsyByRoom({ room_id: this.$route.params.roomId }, function (res) {
+	        res.data.sort(function (left, right) {
+	          return left.created < right.created ? -1 : 1;
+	        });
+	        vm.msgArr = res.data.map(function (item, index) {
+	          if (item.user_id == vm.userInfo._id) {
+	            item.isMine = true;
+	          }
+	          return item;
+	        });
+	        console.log(vm.msgArr);
+	      });
+	    }
+	  },
+	  components: {},
+	  filters: {
+	    getSexStr: _filters2.default.getSexStr
+	  },
+	  computed: {
+	    userInfo: function userInfo() {
+	      return this.$store.getters.getUserInfo;
+	    }
+	  },
+	  beforeDestroy: function beforeDestroy() {
+	    this.SOCKET.emit('leave');
+	  }
+	};
+	// </script>
 
 /***/ },
 /* 35 */
@@ -14729,7 +14763,7 @@
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"chatRoom\" flex=\"main:justify\" _v-4ad763a3=\"\">\n\t<div class=\"userList\" _v-4ad763a3=\"\">\n\t\t<ul _v-4ad763a3=\"\">\n\t\t\t<li _v-4ad763a3=\"\">用户列表</li>\n\t\t\t<li v-for=\"user in users\" class=\"user\" @click=\"showUserInfo(user.user)\" flex=\"main:left corss:cneter\" _v-4ad763a3=\"\">\n\t\t\t\t<img :src=\"user.user.avatar\" alt=\"\" width=\"20\" height=\"20\" _v-4ad763a3=\"\">\n\t\t\t\t<span _v-4ad763a3=\"\">{{user.user.nickname}}</span>\n\t\t\t</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"content\" flex=\"dir:top main:justify\" _v-4ad763a3=\"\">\n\t\t<ul id=\"msgBox\" class=\"msgBox\" _v-4ad763a3=\"\">\n\t\t\t<li v-for=\"msg in msgArr\" _v-4ad763a3=\"\">\n\t\t\t\t<div class=\"right_\" v-if=\"msg.isMine\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" class=\"right\" alt=\"\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p class=\"name_right\" _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr_right\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"left_\" v-else=\"\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"msg.user.user.avatar\" alt=\"\" class=\"left\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t<p _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<i class=\"arr\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t</p>\n\t\t\t\t</div>\n\t\t\t</li>\n\t\t</ul>\n\t\t<div class=\"inputBox\" _v-4ad763a3=\"\">\n\t\t\t<textarea name=\"msg\" v-model=\"inputMsg\" id=\"inputMsg\" @keyup.enter=\"send()\" cols=\"30\" rows=\"10\" _v-4ad763a3=\"\"></textarea>\n\t\t\t<button @click=\"send()\" _v-4ad763a3=\"\">发送</button>\n\t\t</div>\n\t</div>\n\t<modal v-model=\"showTargetUser\" title=\"用户信息\" width=\"300\" _v-4ad763a3=\"\">\n\t\t<p _v-4ad763a3=\"\">姓名：{{targetUser.nickname}}</p>\n\t\t<p _v-4ad763a3=\"\">性别：{{targetUser.sex | getSexStr}}</p>\n\t\t<p _v-4ad763a3=\"\">简介：{{targetUser.introduction}}</p>\n\t</modal>\n</div>\n";
+	module.exports = "\n\t<div class=\"chatRoom\" flex=\"main:justify\" _v-4ad763a3=\"\">\n\t\t<div class=\"userList\" _v-4ad763a3=\"\">\n\t\t\t<ul _v-4ad763a3=\"\">\n\t\t\t\t<li _v-4ad763a3=\"\">用户列表</li>\n\t\t\t\t<li v-for=\"user in users\" class=\"user\" @click=\"showUserInfo(user.user)\" flex=\"main:left corss:cneter\" _v-4ad763a3=\"\">\n\t\t\t\t\t<img :src=\"user.user.avatar\" alt=\"\" width=\"20\" height=\"20\" _v-4ad763a3=\"\">\n\t\t\t\t\t<span _v-4ad763a3=\"\">{{user.user.nickname}}</span>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>\n\t\t<div class=\"content\" flex=\"dir:top main:justify\" _v-4ad763a3=\"\">\n\t\t\t<ul id=\"msgBox\" class=\"msgBox\" _v-4ad763a3=\"\">\n\t\t\t\t<li v-for=\"msg in msgArr\" _v-4ad763a3=\"\">\n\t\t\t\t\t<div class=\"right_\" v-if=\"msg.isMine\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<img :src=\"msg.user.user.avatar\" class=\"right\" alt=\"\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<p class=\"name_right\" _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t\t<i class=\"arr_right\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"left_\" v-else=\"\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<img :src=\"msg.user.user.avatar\" alt=\"\" class=\"left\" @click=\"showUserInfo(msg.user.user)\" width=\"30\" height=\"30\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t<p _v-4ad763a3=\"\">{{msg.user.user.nickname}}</p>\n\t\t\t\t\t\t<p class=\"msg\" _v-4ad763a3=\"\">\n\t\t\t\t\t\t\t<i class=\"arr\" _v-4ad763a3=\"\"></i>\n\t\t\t\t\t\t\t{{msg.msg}}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t\t<div class=\"inputBox\" _v-4ad763a3=\"\">\n\t\t\t\t<textarea name=\"msg\" v-model=\"inputMsg\" id=\"inputMsg\" @keyup.enter=\"send()\" cols=\"30\" rows=\"10\" _v-4ad763a3=\"\"></textarea>\n\t\t\t\t<button @click=\"send()\" _v-4ad763a3=\"\">发送</button>\n\t\t\t</div>\n\t\t</div>\n\t\t<modal v-model=\"showTargetUser\" title=\"用户信息\" width=\"300\" _v-4ad763a3=\"\">\n\t\t<p _v-4ad763a3=\"\">姓名：{{targetUser.nickname}}</p>\n\t\t<p _v-4ad763a3=\"\">性别：{{targetUser.sex | getSexStr}}</p>\n\t\t<p _v-4ad763a3=\"\">简介：{{targetUser.introduction}}</p>\n\t</modal>\n</div>\n";
 
 /***/ },
 /* 37 */
@@ -43338,55 +43372,100 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	/**
 	 * Created by janber on 2017/08/06.
 	 */
 	exports.default = {
-	    /**
-	     * 获取应用数据
-	     * 
-	     */
-	    addAppRecord: function addAppRecord(param, cb) {
-	        var params = {
-	            httpType: 'post',
-	            serviceUrl: 'smartapps/index/addrecord',
-	            apiModule: 'newAPI',
-	            app_name: param.app_name,
-	            type: param.type,
-	            mine_record: param.mine_record,
-	            descr: param.descr
-	        };
-	        util.ajaxQuery(params, function (res) {
-	            if (res.data.result) {
-	                if (cb && typeof cb !== 'undefined') {
-	                    cb(res.data);
-	                }
-	            }
-	        });
-	    },
+	  /**
+	   * 获取应用数据
+	   * 
+	   */
+	  addAppRecord: function addAppRecord(param, cb) {
+	    var params = {
+	      httpType: 'post',
+	      serviceUrl: 'smartapps/index/addrecord',
+	      apiModule: 'newAPI',
+	      app_name: param.app_name,
+	      type: param.type,
+	      mine_record: param.mine_record,
+	      descr: param.descr
+	    };
+	    util.ajaxQuery(params, function (res) {
+	      if (res.data.result) {
+	        if (cb && typeof cb !== 'undefined') {
+	          cb(res.data);
+	        }
+	      }
+	    });
+	  },
 
-	    /**
-	     * 获取应用数据
-	     * 
-	     */
-	    getAppsRecords: function getAppsRecords(param, cb) {
-	        var params = {
-	            httpType: 'get',
-	            serviceUrl: 'smartapps/index/getapprecord',
-	            apiModule: 'newAPI',
-	            app_name: param.app_name,
-	            type: param.type
-	        };
-	        util.ajaxQuery(params, function (res) {
-	            if (res.data.result) {
-	                if (cb && typeof cb !== 'undefined') {
-	                    cb(res.data);
-	                }
-	            }
-	        });
-	    }
+
+	  /**
+	   * 获取应用数据
+	   * 
+	   */
+	  getAppsRecords: function getAppsRecords(param, cb) {
+	    var params = {
+	      httpType: 'get',
+	      serviceUrl: 'smartapps/index/getapprecord',
+	      apiModule: 'newAPI',
+	      app_name: param.app_name,
+	      type: param.type
+	    };
+	    util.ajaxQuery(params, function (res) {
+	      if (res.data.result) {
+	        if (cb && typeof cb !== 'undefined') {
+	          cb(res.data);
+	        }
+	      }
+	    });
+	  },
+
+
+	  /**
+	   * 保存聊天记录
+	   *
+	   */
+	  storeChatMsg: function storeChatMsg(param, cb) {
+	    var params = {
+	      httpType: 'post',
+	      serviceUrl: 'chat/index/storemsg',
+	      apiModule: 'newAPI',
+	      msg: param.msg,
+	      room_id: param.room_id,
+	      user: param.user
+	    };
+	    util.ajaxQuery(params, function (res) {
+	      if (res.data.result) {
+	        if (cb && typeof cb !== 'undefined') {
+	          cb(res.data);
+	        }
+	      }
+	    });
+	  },
+
+
+	  /**
+	   *
+	   *
+	   */
+	  getMsyByRoom: function getMsyByRoom(param, cb) {
+	    var params = {
+	      httpType: 'get',
+	      serviceUrl: 'chat/index/getmsg',
+	      apiModule: 'newAPI',
+	      room_id: param.room_id
+	    };
+	    util.ajaxQuery(params, function (res) {
+	      if (res.data.result) {
+	        if (cb && typeof cb !== 'undifined') {
+	          cb(res.data);
+	        }
+	      }
+	    });
+	  }
 	};
 
 /***/ }
