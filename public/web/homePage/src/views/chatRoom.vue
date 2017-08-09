@@ -310,7 +310,9 @@
 	    			}
 	    			return item
 	    		});
-	    		console.log(vm.msgArr)
+	    		setTimeout(function() {
+	    			$('#msgBox').scrollTop($('#msgBox')[0].scrollHeight);
+	    		}, 10);
 	    	})
 	    }
 	  },
