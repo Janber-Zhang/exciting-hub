@@ -67,3 +67,15 @@
  	bottom: 0;
  	left: 0;
  }
+ #loading {
+ 	position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    display: none; 
+    background: url(/images/loading.gif) no-repeat center;
+    background-size: 60px;
+}

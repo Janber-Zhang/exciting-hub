@@ -221,18 +221,18 @@
 				let userObj = this.getUserObj();
 				// ---------创建连接-----------
 				this.SOCKET = io();
-			  // 加入房间
-			  this.SOCKET.on('connect', function () {
-			  	this_.SOCKET.emit('join', JSON.stringify(userObj));
-			  });
-			  //监听消息
-			  this.SOCKET.on('msg', function (user, msg) {
-			  	this_.dealMsgInfo(user, msg);
-			  });
-		      // 监听系统消息
-		      this.SOCKET.on('sys', function (sysMsg, users, user, type) {
-		      	this_.dealSysInfo(sysMsg, users, user, type);
-		      });
+				// 加入房间
+				this.SOCKET.on('connect', function () {
+					this_.SOCKET.emit('join', JSON.stringify(userObj));
+				});
+				//监听消息
+				this.SOCKET.on('msg', function (user, msg) {
+					this_.dealMsgInfo(user, msg);
+				});
+			    // 监听系统消息
+			    this.SOCKET.on('sys', function (sysMsg, users, user, type) {
+			    	this_.dealSysInfo(sysMsg, users, user, type);
+			    });
 		    },
 		    dealSysInfo: function(sysMsg, users, user, type) {
 		    	let this_ = this;

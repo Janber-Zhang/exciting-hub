@@ -1,6 +1,8 @@
 var util = {
 	ajaxQuery: function (param,cb) {           //通用请求
+		$('#loading').show();
 		var promise_ =  axios.post('/query/queryData', param).then((res) => {
+			$('#loading').hide();
 			if (res.data.errno == 1111) {
 				location.href = '/login';
 				return
