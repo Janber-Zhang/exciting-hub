@@ -9,5 +9,6 @@
 	"apiWhitelist": ["users/user/add", "users/user/login", "users/user/checkexist"],
 	"queryAPI":"http://localhost:8080",
 	"newAPI":"http://localhost:8002",
+	"githubAPI": "https://api.github.com",
 	"mongodb":"mongodb://localhost:27017/excited"
 }

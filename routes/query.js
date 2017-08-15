@@ -40,8 +40,8 @@ router.post('/queryData', (req, res, next) => {
   delete params["serviceUrl"];
   delete params["httpType"];
   var apiUrl = config.queryAPI;
-  if (params.apiModule && params.apiModule == 'newAPI') {
-    apiUrl = config.newAPI;
+  if (params.apiModule) {
+    apiUrl = config[params.apiModule];
     delete params["apiModule"];
   }
   if (!checkSession(serviceUrl,req.session)) {        //判断登录状态

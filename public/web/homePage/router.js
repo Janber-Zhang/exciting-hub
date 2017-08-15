@@ -7,6 +7,7 @@ import myProfile   from './src/views/myProfile.vue'
 import Plus        from './src/views/plus.vue'
 import lifeGrid    from './src/views/smart_apps/lifeGrid.vue'
 import mineSweeper from './src/views/smart_apps/mineSweeper.vue'
+import codeRepo    from './src/views/smart_apps/codeRepo.vue'
 const routes = [
 	{ 
 		path: '/', 
@@ -47,6 +48,11 @@ const routes = [
 						path: 'mineSweeper',
 						name: 'mineSweeper',
 						component : mineSweeper
+					},
+					{
+						path: 'codeRepo',
+						name: 'codeRepo',
+						component : codeRepo
 					}
 				]
 			}

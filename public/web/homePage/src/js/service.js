@@ -66,10 +66,10 @@
           }
         }
       });
-     },
+    },
 
      /**
-      *
+      * 获取聊天历史记录
       *
       */
       getMsyByRoom(param, cb){
@@ -86,5 +86,26 @@
             }
           }
         });
+      },
+
+
+
+
+     /**
+      * 获取github个人信息
+      *
+      */
+      getGitHubUserInfo(param, cb){
+        let url =  `users/${param.username}`
+        let params = {
+          httpType      :    'get',
+          serviceUrl    :    url,
+          apiModule     :    'githubAPI'
+        }
+        util.ajaxQuery(params, function(res){
+          if (cb && typeof cb !== 'undifined') {
+              cb(res)
+          }
+        });
       }
-   }
+    }

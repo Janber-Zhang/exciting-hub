@@ -64,7 +64,7 @@
     			},
     			{
     				name: '代码仓库',
-    				value: 'lifeGrid',
+    				value: 'codeRepo',
     				class: {'shake':true}
     			},
     			{
