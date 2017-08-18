@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var config = require('./config/config.json');
+var compression = require('compression');
 
 var index = require('./routes/index');
 var Users = require('./routes/users');
@@ -20,6 +21,7 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
 var partials = require('express-partials');
 app.use(partials());
+app.use(compression());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
