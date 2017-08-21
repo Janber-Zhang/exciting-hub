@@ -4,7 +4,6 @@
 var webpack = require('webpack');
 var path = require('path');
 var projectRoot = './../../../'
-var ROOTPATH = path.resolve(__dirname, '../../../');
 module.exports = {
     entry: './main.js',
     output: {
@@ -44,11 +43,6 @@ module.exports = {
             {test: /\.(html|tpl)$/, loader: 'html-loader' },
             { test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader'},
         ] 
-    }, 
-    resolve: {
-        alias: {
-            'iview-components': path.resolve(ROOTPATH, 'node_modules/iview/components')
-        }
     },
     // eslint: {
     //     configFile: path.resolve(projectRoot, '.eslintrc.js'), // 指定eslint的配置文件在哪里
