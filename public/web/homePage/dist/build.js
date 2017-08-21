@@ -16811,7 +16811,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n.keyword[_v-45fa9f34]{\n\tdisplay: inline-block;\n    width: 100%;\n    height: 32px;\n    line-height: 1.5;\n    padding: 4px 7px;\n    font-size: 12px;\n    border: 1px solid #dddee1;\n    border-radius: 4px;\n    color: #495060;\n    background-color: #fff;\n    background-image: none;\n    position: relative;\n    cursor: text;\n    transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;\n}\n", ""]);
 
 	// exports
 
@@ -16837,24 +16837,69 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// <template>
-	// 	<h1>github repo</h1>
+	// 	<div flex="main:center cross:top" class="app_warp">
+	// 		<div flex="main:center cross:center">
+	// 			<input type="text" class="keyword" v-model="searchKey" @keyup.enter="searchUser" placeholder="请输入github昵称。。。">
+	// 		</div>
+	// 	</div>
 	// </template>
 	// <style scoped>
-	//
+	// 	.keyword{
+	// 		display: inline-block;
+	// 	    width: 100%;
+	// 	    height: 32px;
+	// 	    line-height: 1.5;
+	// 	    padding: 4px 7px;
+	// 	    font-size: 12px;
+	// 	    border: 1px solid #dddee1;
+	// 	    border-radius: 4px;
+	// 	    color: #495060;
+	// 	    background-color: #fff;
+	// 	    background-image: none;
+	// 	    position: relative;
+	// 	    cursor: text;
+	// 	    transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
+	// 	}
 	// </style>
 	// <script>
 	exports.default = {
 		created: function created() {
-			_service2.default.getGitHubUserInfo({ username: 'janber-zhang' }, function (res) {
-				console.log(res);
-			});
+			this.getUserList();
 		},
 		mounted: function mounted() {},
 		data: function data() {
-			return {};
+			return {
+				searchKey: '' //搜索github用户
+			};
 		},
 
-		methods: {},
+		methods: {
+			getUserList: function getUserList() {
+				var vm = this;
+				_service2.default.getAppsRecords({
+					app_name: 'codeRepo',
+					type: 2
+				}, function (res) {
+					console.log(res);
+				});
+			},
+			searchUser: function searchUser() {
+				_service2.default.getGitHubUserInfo({ username: this.searchKey || 'janber-zhang' }, function (res) {
+					console.log(res);
+				});
+			},
+			addWhatchUser: function addWhatchUser(param) {
+				var vm = this;
+				var params = {
+					app_name: 'codeRepo',
+					data: param.data
+				};
+				_service2.default.addAppRecord(params, function (res) {
+					vm.SUCCESS = false;
+					vm.initRecordList();
+				});
+			}
+		},
 		watch: {},
 		components: {},
 		filters: {},
@@ -16868,7 +16913,7 @@
 /* 68 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<h1 _v-45fa9f34=\"\">github repo</h1>\n";
+	module.exports = "\n<div flex=\"main:center cross:top\" class=\"app_warp\" _v-45fa9f34=\"\">\n\t<div flex=\"main:center cross:center\" _v-45fa9f34=\"\">\n\t\t<input type=\"text\" class=\"keyword\" v-model=\"searchKey\" @keyup.enter=\"searchUser\" placeholder=\"请输入github昵称。。。\" _v-45fa9f34=\"\">\n\t</div>\n</div>\n";
 
 /***/ },
 /* 69 */
