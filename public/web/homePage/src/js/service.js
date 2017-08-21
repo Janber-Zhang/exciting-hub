@@ -92,15 +92,31 @@
 
 
      /**
-      * 获取github个人信息
+      * 获取豆瓣电影-搜索
       *
       */
-      getGitHubUserInfo(param, cb){
-        let url =  `users/${param.username}`
+      searchMovie(param, cb){
         let params = {
           httpType      :    'get',
-          serviceUrl    :    url,
-          apiModule     :    'githubAPI'
+          serviceUrl    :    'v2/movie/search',
+          apiModule     :    'doubanAPI',
+          q             :     encodeURIComponent(param.key)
+        }
+        util.ajaxQuery(params, function(res){
+          if (cb && typeof cb !== 'undifined') {
+              cb(res)
+          }
+        });
+      },
+      /**
+      * 获取豆瓣电影-当前热映
+      *
+      */
+      getNewMovieList(param, cb){
+        let params = {
+          httpType      :    'get',
+          serviceUrl    :    'v2/movie/in_theaters',
+          apiModule     :    'doubanAPI'
         }
         util.ajaxQuery(params, function(res){
           if (cb && typeof cb !== 'undifined') {

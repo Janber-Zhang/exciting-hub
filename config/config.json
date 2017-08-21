@@ -10,5 +10,6 @@
 	"queryAPI":"http://localhost:8080",
 	"newAPI":"http://localhost:8002",
 	"githubAPI": "https://api.github.com",
+	"doubanAPI": "https://api.douban.com",
 	"mongodb":"mongodb://localhost:27017/excited"
 }

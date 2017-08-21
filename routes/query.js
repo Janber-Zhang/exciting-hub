@@ -65,6 +65,7 @@ router.post('/queryData', (req, res, next) => {
         i++
       }
     }
+    console.log('GET-URL:' + serviceUrl)
     axios.get(serviceUrl)
     .then((res_) => {
       res.send(res_.data);

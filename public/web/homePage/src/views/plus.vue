@@ -63,8 +63,8 @@
     				class: {'jello':true}
     			},
     			{
-    				name: '代码仓库',
-    				value: 'codeRepo',
+    				name: '影视人生',
+    				value: 'movie',
     				class: {'shake':true}
     			},
     			{
