@@ -14,4 +14,11 @@ router.get('/login', function(req, res, next) {
   });
 });
 
+
+router.get('/test', function(req, res, next) {
+	res.render('web/test/index', {
+		title: 'test'
+	})
+});
+
 module.exports = router;
