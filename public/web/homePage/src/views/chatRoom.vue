@@ -94,6 +94,7 @@
 						position: absolute;
 						right: 10px;
 						cursor: pointer;
+						border-radius: 50%;
 					}
 					.name_right{
 						text-align: right;
@@ -185,6 +186,17 @@
 		mounted(){
 			this.initChatRoom();
 			this.socketInit();
+			/*
+			 * 输入框禁用回车事件
+			 */
+
+			$('#inputMsg').keydown(function(event) {
+				switch(event.keyCode){
+					case 13:
+						return false; 
+						break
+				}
+			});
 		},
 		data(){
 			return {
@@ -275,7 +287,7 @@
 	    	}, 10);
 	    },
 	    send: function(){
-	    	if (this.inputMsg.length === 1) {
+	    	if (this.inputMsg.length === 0) {
 	    		this.$Message.error('对方不想说话，并且向你抛出了一个异常');
 	    		this.inputMsg = '';
 	    		return
@@ -291,7 +303,6 @@
 	    		vm.SOCKET.send(vm.inputMsg);
 	    		vm.inputMsg = '';
 	    	});
-	    	
 	    },
 	    showUserInfo: function(user){
 	    	const userInfo = JSON.parse(JSON.stringify(user));
