@@ -19,9 +19,9 @@
     <Form-item label="自我介绍">
       <Input v-model="userInfo.introduction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
     </Form-item>
-    <Form-item label="图片裁切">
+    <!-- <Form-item label="图片裁切">
       <img-cutting></img-cutting>
-    </Form-item>
+    </Form-item> -->
     <Form-item>
       <Button type="primary" @click="update_user()">提交</Button>
       <Button type="ghost" @click="skip_2_home()" style="margin-left: 8px">取消</Button>

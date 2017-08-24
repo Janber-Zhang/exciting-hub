@@ -15596,9 +15596,9 @@
 	//     <Form-item label="自我介绍">
 	//       <Input v-model="userInfo.introduction" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
 	//     </Form-item>
-	//     <Form-item label="图片裁切">
+	//     <!-- <Form-item label="图片裁切">
 	//       <img-cutting></img-cutting>
-	//     </Form-item>
+	//     </Form-item> -->
 	//     <Form-item>
 	//       <Button type="primary" @click="update_user()">提交</Button>
 	//       <Button type="ghost" @click="skip_2_home()" style="margin-left: 8px">取消</Button>
@@ -16053,7 +16053,7 @@
 /* 53 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<Form :model=\"userInfo\" :label-width=\"80\" style=\"width: 600px\" v-if=\"show\">\n  <Form-item label=\"代号\">\n    <Input v-model=\"userInfo.nickname\" placeholder=\"请输入代号\"></Input>\n  </Form-item>\n  <Form-item label=\"头像\">\n    <upload-pic :upload-list=\"userInfo.avatar\"></upload-pic>\n  </Form-item>\n  <Form-item label=\"性别\">\n    <Radio-group v-model=\"userInfo.sex\">\n      <Radio label=\"male\">男</Radio>\n      <Radio label=\"female\">女</Radio>\n      <Radio label=\"unknown\">未知</Radio>\n    </Radio-group>\n  </Form-item>\n  <Form-item label=\"出生年月\">\n    <Date-picker v-model=\"userInfo.birthday\" format=\"yyyy-MM-dd\" type=\"date\" placeholder=\"选择出生年月\"></Date-picker>\n  </Form-item>\n  <Form-item label=\"自我介绍\">\n    <Input v-model=\"userInfo.introduction\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n  </Form-item>\n  <Form-item label=\"图片裁切\">\n    <img-cutting></img-cutting>\n  </Form-item>\n  <Form-item>\n    <Button type=\"primary\" @click=\"update_user()\">提交</Button>\n    <Button type=\"ghost\" @click=\"skip_2_home()\" style=\"margin-left: 8px\">取消</Button>\n  </Form-item>\n</Form>\n";
+	module.exports = "\n<Form :model=\"userInfo\" :label-width=\"80\" style=\"width: 600px\" v-if=\"show\">\n  <Form-item label=\"代号\">\n    <Input v-model=\"userInfo.nickname\" placeholder=\"请输入代号\"></Input>\n  </Form-item>\n  <Form-item label=\"头像\">\n    <upload-pic :upload-list=\"userInfo.avatar\"></upload-pic>\n  </Form-item>\n  <Form-item label=\"性别\">\n    <Radio-group v-model=\"userInfo.sex\">\n      <Radio label=\"male\">男</Radio>\n      <Radio label=\"female\">女</Radio>\n      <Radio label=\"unknown\">未知</Radio>\n    </Radio-group>\n  </Form-item>\n  <Form-item label=\"出生年月\">\n    <Date-picker v-model=\"userInfo.birthday\" format=\"yyyy-MM-dd\" type=\"date\" placeholder=\"选择出生年月\"></Date-picker>\n  </Form-item>\n  <Form-item label=\"自我介绍\">\n    <Input v-model=\"userInfo.introduction\" type=\"textarea\" :autosize=\"{minRows: 2,maxRows: 5}\" placeholder=\"请输入...\"></Input>\n  </Form-item>\n  <!-- <Form-item label=\"图片裁切\">\n    <img-cutting></img-cutting>\n  </Form-item> -->\n  <Form-item>\n    <Button type=\"primary\" @click=\"update_user()\">提交</Button>\n    <Button type=\"ghost\" @click=\"skip_2_home()\" style=\"margin-left: 8px\">取消</Button>\n  </Form-item>\n</Form>\n";
 
 /***/ },
 /* 54 */
