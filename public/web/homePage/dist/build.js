@@ -44522,7 +44522,7 @@
 
 
 	// module
-	exports.push([module.id, "/**\n * \n * @ smart_app layout\n * \n * -------------------------------------------------------\n * \n */\n.app_warp {\n  width: 100%;\n}\n.app_body {\n  width: 900px;\n}\n", ""]);
+	exports.push([module.id, "/**\n *\n * @ iview-style\n *\n *\n */\n.ivu-rate {\n  font-size: inherit !important;\n}\n/**\n * \n * @ smart_app layout\n * \n * -------------------------------------------------------\n * \n */\n.app_warp {\n  width: 100%;\n}\n.app_body {\n  width: 900px;\n}\n", ""]);
 
 	// exports
 
