@@ -8,6 +8,7 @@
 	<link rel="shortcut icon" href="../images/logo.jpg" type="image/x-icon">
 	<link rel="stylesheet" href="../css/libs/flex.css">
 	<link rel="stylesheet" href="../css/libs/animate.css">
+	<link rel="stylesheet" href="../css/libs/loading.css">
 	<link rel="stylesheet" href="../css/global.css">
 	<script src="../js/libs/jquery.min.js"></script>
 	<script src="../js/libs/ejs.js"></script>
@@ -19,7 +20,13 @@
 	<div id="main" style="display: relative;">
 		<%-body%>
 	</div>
-	<div id="loading"></div>
+	<div id="loading">
+		<div class="inner ball_grid">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
 </body>
 <script>
 	$(document).ready(function() {
