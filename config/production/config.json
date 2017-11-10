@@ -1,11 +1,15 @@
 {
 	"desc": "test",
-	"port":"8080",
+	"port":"80",
 	"session":{
-		"secret": "excited",
+		"secret": "B*W&LX$S",
 		"key": "excited",
 		"maxAge": 2592000000
 	},
-	"queryAPI":"http://localhost:8888",
+	"apiWhitelist": ["users/user/add", "users/user/login", "users/user/checkexist"],
+	"queryAPI":"http://localhost:8080",
+	"newAPI":"http://localhost:8002",
+	"githubAPI": "https://api.github.com",
+	"doubanAPI": "https://api.douban.com",
 	"mongodb":"mongodb://localhost:27017/excited"
 }
