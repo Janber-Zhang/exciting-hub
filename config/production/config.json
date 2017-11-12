@@ -7,7 +7,7 @@
 		"maxAge": 2592000000
 	},
 	"apiWhitelist": ["users/user/add", "users/user/login", "users/user/checkexist"],
-	"queryAPI":"http://localhost:8080",
+	"queryAPI":"http://localhost:8001",
 	"newAPI":"http://localhost:8002",
 	"githubAPI": "https://api.github.com",
 	"doubanAPI": "https://api.douban.com",
